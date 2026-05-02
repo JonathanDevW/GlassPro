@@ -513,7 +513,7 @@
           <div class="slide">
             <div
               class="item active"
-              style="background-image: url(/assets/images/slide1.jpeg)"
+              style="background-image: url(images/slide1.jpeg)"
             >
               <div class="content">
                 <div class="name">EXPLORA DONDE QUIERAS</div>
@@ -529,7 +529,7 @@
             </div>
             <div
               class="item"
-              style="background-image: url(/assets/images/slide2.jpeg)"
+              style="background-image: url(./images/slide2.jpeg)"
             >
               <div class="content">
                 <div class="name">EN LA COMODIDAD DE TU HOGAR</div>
@@ -544,7 +544,7 @@
             </div>
             <div
               class="item"
-              style="background-image: url(/assets/images/slide3.jpeg)"
+              style="background-image: url(./images/slide3.jpeg)"
             >
               <div class="content">
                 <div class="name">Siempre claro</div>
@@ -557,7 +557,7 @@
             </div>
             <div
               class="item"
-              style="background-image: url(/assets/images/slide4.jpeg)"
+              style="background-image: url(./images/slide4.jpeg)"
             >
               <div class="content"></div>
             </div>
@@ -1019,393 +1019,1047 @@
         </div>
       </div>
 
-      <section class="space" id="team-metrics-section" style="background: linear-gradient(135deg, #f0f4f8 0%, #ffffff 100%); padding: 60px 0;">
-    <div class="container">
-        <!-- Encabezado principal -->
-        <div class="text-center mb-5">
+      <section
+        class="space"
+        id="team-metrics-section"
+        style="
+          background: linear-gradient(135deg, #f0f4f8 0%, #ffffff 100%);
+          padding: 60px 0;
+        "
+      >
+        <div class="container">
+          <!-- Encabezado principal -->
+          <div class="text-center mb-5">
             <div class="title">
-                <h2 style="font-size: 2.5rem; font-weight: 800; color: #1a3c5e;">
-                    <i class="fa-solid fa-users me-3" style="color: #2c7da0;"></i>
-                    Nuestro Equipo Glass Pro
-                </h2>
-                <p class="text-secondary mt-2">Conoce a los integrantes y el rendimiento del equipo</p>
+              <h2 style="font-size: 2.5rem; font-weight: 800; color: #1a3c5e">
+                <i class="fa-solid fa-users me-3" style="color: #2c7da0"></i>
+                Nuestro Equipo Glass Pro
+              </h2>
+              <p class="text-secondary mt-2">
+                Conoce a los integrantes y el rendimiento del equipo
+              </p>
             </div>
-        </div>
+          </div>
 
-        <!-- Sistema de pestañas principal -->
-        <ul class="nav nav-tabs custom-tabs mb-4" id="teamTab" role="tablist">
+          <!-- Sistema de pestañas principal -->
+          <ul class="nav nav-tabs custom-tabs mb-4" id="teamTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="team-tab" data-bs-toggle="tab" data-bs-target="#teamMembers" type="button" role="tab">
-                    <i class="fa-solid fa-users me-2"></i> Integrantes
-                </button>
+              <button
+                class="nav-link active"
+                id="team-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#teamMembers"
+                type="button"
+                role="tab"
+              >
+                <i class="fa-solid fa-users me-2"></i> Integrantes
+              </button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="metrics-tab" data-bs-toggle="tab" data-bs-target="#teamMetrics" type="button" role="tab">
-                    <i class="fa-solid fa-chart-line me-2"></i> Métricas del Equipo
-                </button>
+              <button
+                class="nav-link"
+                id="metrics-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#teamMetrics"
+                type="button"
+                role="tab"
+              >
+                <i class="fa-solid fa-chart-line me-2"></i> Métricas del Equipo
+              </button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="ranking-tab" data-bs-toggle="tab" data-bs-target="#teamRanking" type="button" role="tab">
-                    <i class="fa-solid fa-trophy me-2"></i> Ranking y Logros
-                </button>
+              <button
+                class="nav-link"
+                id="ranking-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#teamRanking"
+                type="button"
+                role="tab"
+              >
+                <i class="fa-solid fa-trophy me-2"></i> Ranking y Logros
+              </button>
             </li>
-        </ul>
+          </ul>
 
-        <!-- Contenido de pestañas -->
-        <div class="tab-content">
+          <!-- Contenido de pestañas -->
+          <div class="tab-content">
             <!-- PESTAÑA 1: INTEGRANTES -->
-            <div class="tab-pane fade show active" id="teamMembers" role="tabpanel">
-                <div class="row g-4">
-                    <div class="col-lg-4 col-xl-3 col-md-6">
-                        <div class="team-card" onclick="showIndividualMetrics('enrique')">
-                            <div class="team-card-img">
-                                <img src="./assets/images/enrique.jpeg" alt="Enrique Lucha" style="height: 450px;">
-                                <div class="team-card-overlay">
-                                    <i class="fa-solid fa-chart-simple"></i>
-                                    <span>Ver métricas</span>
-                                </div>
-                            </div>
-                            <div class="team-card-content">
-                                <h4>Enrique Lucha</h4>
-                                <span class="role-badge marketing">Marketing</span>
-                                <div class="social-icons" onclick="event.stopPropagation()">
-                                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                                </div>
-                            </div>
-                        </div>
+            <div
+              class="tab-pane fade show active"
+              id="teamMembers"
+              role="tabpanel"
+            >
+              <div class="row g-4">
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                  <div
+                    class="team-card"
+                    onclick="showIndividualMetrics('enrique')"
+                  >
+                    <div class="team-card-img">
+                      <img
+                        src="./images/enrique.jpeg"
+                        alt="Enrique Lucha"
+                        style="height: 450px"
+                      />
+                      <div class="team-card-overlay">
+                        <i class="fa-solid fa-chart-simple"></i>
+                        <span>Ver métricas</span>
+                      </div>
                     </div>
-                    <div class="col-lg-4 col-xl-3 col-md-6">
-                        <div class="team-card" onclick="showIndividualMetrics('kenia')">
-                            <div class="team-card-img">
-                                <img src="./assets/images/WhatsApp Image 2026-05-01 at 1.32.57 PM.jpeg" alt="Kenia García" >
-                                <div class="team-card-overlay">
-                                    <i class="fa-solid fa-chart-simple"></i>
-                                    <span>Ver métricas</span>
-                                </div>
-                            </div>
-                            <div class="team-card-content">
-                                <h4>Kenia García</h4>
-                                <span class="role-badge finance">Contadora</span>
-                                <div class="social-icons" onclick="event.stopPropagation()">
-                                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="team-card-content">
+                      <h4>Enrique Lucha</h4>
+                      <span class="role-badge marketing">Marketing</span>
+                      <div
+                        class="social-icons"
+                        onclick="event.stopPropagation()"
+                      >
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                      </div>
                     </div>
-                    <div class="col-lg-4 col-xl-3 col-md-6">
-                        <div class="team-card" onclick="showIndividualMetrics('jonathan')">
-                            <div class="team-card-img">
-                                <img src="./assets/images/jonathan.png" alt="Jonathan López">
-                                <div class="team-card-overlay">
-                                    <i class="fa-solid fa-chart-simple"></i>
-                                    <span>Ver métricas</span>
-                                </div>
-                            </div>
-                            <div class="team-card-content">
-                                <h4>Jonathan López</h4>
-                                <span class="role-badge dev">Developer</span>
-                                <div class="social-icons" onclick="event.stopPropagation()">
-                                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-xl-3 col-md-6">
-                        <div class="team-card leader" onclick="showIndividualMetrics('alejandro')">
-                            <div class="team-card-img">
-                                <img src="./assets/images/alejandro.jpeg" alt="Alejandro Ramos">
-                                <div class="team-card-overlay">
-                                    <i class="fa-solid fa-chart-simple"></i>
-                                    <span>Ver métricas</span>
-                                </div>
-                            </div>
-                            <div class="team-card-content">
-                                <h4>Alejandro Ramos <i class="fa-solid fa-crown" style="color: #ffc107; font-size: 0.9rem;"></i></h4>
-                                <span class="role-badge leader">Team Leader</span>
-                                <div class="social-icons" onclick="event.stopPropagation()">
-                                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-xl-3 col-md-6">
-                        <div class="team-card" onclick="showIndividualMetrics('carlos')">
-                            <div class="team-card-img">
-                                <img src="./assets/images/carlos.jpeg" alt="Carlos Sandoval">
-                                <div class="team-card-overlay">
-                                    <i class="fa-solid fa-chart-simple"></i>
-                                    <span>Ver métricas</span>
-                                </div>
-                            </div>
-                            <div class="team-card-content">
-                                <h4>Carlos Sandoval</h4>
-                                <span class="role-badge admin">Administrador</span>
-                                <div class="social-icons" onclick="event.stopPropagation()">
-                                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                  </div>
                 </div>
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                  <div
+                    class="team-card"
+                    onclick="showIndividualMetrics('kenia')"
+                  >
+                    <div class="team-card-img">
+                      <img
+                        src="./images/WhatsApp Image 2026-05-01 at 1.32.57 PM.jpeg"
+                        alt="Kenia García"
+                      />
+                      <div class="team-card-overlay">
+                        <i class="fa-solid fa-chart-simple"></i>
+                        <span>Ver métricas</span>
+                      </div>
+                    </div>
+                    <div class="team-card-content">
+                      <h4>Kenia García</h4>
+                      <span class="role-badge finance">Contadora</span>
+                      <div
+                        class="social-icons"
+                        onclick="event.stopPropagation()"
+                      >
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                  <div
+                    class="team-card"
+                    onclick="showIndividualMetrics('jonathan')"
+                  >
+                    <div class="team-card-img">
+                      <img
+                        src="./images/jonathan.png"
+                        alt="Jonathan López"
+                      />
+                      <div class="team-card-overlay">
+                        <i class="fa-solid fa-chart-simple"></i>
+                        <span>Ver métricas</span>
+                      </div>
+                    </div>
+                    <div class="team-card-content">
+                      <h4>Jonathan López</h4>
+                      <span class="role-badge dev">Developer</span>
+                      <div
+                        class="social-icons"
+                        onclick="event.stopPropagation()"
+                      >
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                  <div
+                    class="team-card leader"
+                    onclick="showIndividualMetrics('alejandro')"
+                  >
+                    <div class="team-card-img">
+                      <img
+                        src="./images/alejandro.jpeg"
+                        alt="Alejandro Ramos"
+                      />
+                      <div class="team-card-overlay">
+                        <i class="fa-solid fa-chart-simple"></i>
+                        <span>Ver métricas</span>
+                      </div>
+                    </div>
+                    <div class="team-card-content">
+                      <h4>
+                        Alejandro Ramos
+                        <i
+                          class="fa-solid fa-crown"
+                          style="color: #ffc107; font-size: 0.9rem"
+                        ></i>
+                      </h4>
+                      <span class="role-badge leader">Team Leader</span>
+                      <div
+                        class="social-icons"
+                        onclick="event.stopPropagation()"
+                      >
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                  <div
+                    class="team-card"
+                    onclick="showIndividualMetrics('carlos')"
+                  >
+                    <div class="team-card-img">
+                      <img
+                        src="./images/carlos.jpeg"
+                        alt="Carlos Sandoval"
+                      />
+                      <div class="team-card-overlay">
+                        <i class="fa-solid fa-chart-simple"></i>
+                        <span>Ver métricas</span>
+                      </div>
+                    </div>
+                    <div class="team-card-content">
+                      <h4>Carlos Sandoval</h4>
+                      <span class="role-badge admin">Administrador</span>
+                      <div
+                        class="social-icons"
+                        onclick="event.stopPropagation()"
+                      >
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <!-- PESTAÑA 2: MÉTRICAS DEL EQUIPO -->
             <div class="tab-pane fade" id="teamMetrics" role="tabpanel">
-                <div class="row g-4 mb-4">
-                    <div class="col-md-3 col-sm-6">
-                        <div class="stat-card-mini">
-                            <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
-                            <div class="stat-info"><span class="stat-number" id="statIntegrantes">5</span><span class="stat-label">Integrantes</span></div>
-                        </div>
+              <div class="row g-4 mb-4">
+                <div class="col-md-3 col-sm-6">
+                  <div class="stat-card-mini">
+                    <div class="stat-icon">
+                      <i class="fa-solid fa-users"></i>
                     </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="stat-card-mini">
-                            <div class="stat-icon"><i class="fa-regular fa-calendar-check"></i></div>
-                            <div class="stat-info"><span class="stat-number" id="statAsistencias">10</span><span class="stat-label">Asistencias</span></div>
-                        </div>
+                    <div class="stat-info">
+                      <span class="stat-number" id="statIntegrantes">5</span
+                      ><span class="stat-label">Integrantes</span>
                     </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="stat-card-mini">
-                            <div class="stat-icon"><i class="fa-regular fa-clock"></i></div>
-                            <div class="stat-info"><span class="stat-number" id="statTardanza">31</span><span class="stat-label">Minutos tarde</span></div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="stat-card-mini">
-                            <div class="stat-icon"><i class="fa-solid fa-trophy"></i></div>
-                            <div class="stat-info"><span class="stat-number" id="statPuntos">10</span><span class="stat-label">Puntos totales</span></div>
-                        </div>
-                    </div>
+                  </div>
                 </div>
+                <div class="col-md-3 col-sm-6">
+                  <div class="stat-card-mini">
+                    <div class="stat-icon">
+                      <i class="fa-regular fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-info">
+                      <span class="stat-number" id="statAsistencias">10</span
+                      ><span class="stat-label">Asistencias</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                  <div class="stat-card-mini">
+                    <div class="stat-icon">
+                      <i class="fa-regular fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                      <span class="stat-number" id="statTardanza">31</span
+                      ><span class="stat-label">Minutos tarde</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                  <div class="stat-card-mini">
+                    <div class="stat-icon">
+                      <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <div class="stat-info">
+                      <span class="stat-number" id="statPuntos">10</span
+                      ><span class="stat-label">Puntos totales</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-                <!-- Gráficos en grid con tamaño controlado -->
-                <div class="row g-4">
-                    <div class="col-md-6">
-                        <div class="chart-box">
-                            <h5><i class="fa-solid fa-chart-simple me-2" style="color:#2c7da0;"></i> Asistencia por Integrante</h5>
-                            <canvas id="asistenciaChartCompact" style="height: 250px; width: 100%;"></canvas>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="chart-box">
-                            <h5><i class="fa-solid fa-hourglass-half me-2" style="color:#ff9800;"></i> Minutos Tarde por Integrante</h5>
-                            <canvas id="tardanzaChartCompact" style="height: 250px; width: 100%;"></canvas>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="chart-box">
-                            <h5><i class="fa-solid fa-chart-line me-2" style="color:#6c5ce7;"></i> Evolución Semanal de Tardanzas</h5>
-                            <canvas id="evolucionChartCompact" style="height: 250px; width: 100%;"></canvas>
-                        </div>
-                    </div>
+              <!-- Gráficos en grid con tamaño controlado -->
+              <div class="row g-4">
+                <div class="col-md-6">
+                  <div class="chart-box">
+                    <h5>
+                      <i
+                        class="fa-solid fa-chart-simple me-2"
+                        style="color: #2c7da0"
+                      ></i>
+                      Asistencia por Integrante
+                    </h5>
+                    <canvas
+                      id="asistenciaChartCompact"
+                      style="height: 250px; width: 100%"
+                    ></canvas>
+                  </div>
                 </div>
+                <div class="col-md-6">
+                  <div class="chart-box">
+                    <h5>
+                      <i
+                        class="fa-solid fa-hourglass-half me-2"
+                        style="color: #ff9800"
+                      ></i>
+                      Minutos Tarde por Integrante
+                    </h5>
+                    <canvas
+                      id="tardanzaChartCompact"
+                      style="height: 250px; width: 100%"
+                    ></canvas>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="chart-box">
+                    <h5>
+                      <i
+                        class="fa-solid fa-chart-line me-2"
+                        style="color: #6c5ce7"
+                      ></i>
+                      Evolución Semanal de Tardanzas
+                    </h5>
+                    <canvas
+                      id="evolucionChartCompact"
+                      style="height: 250px; width: 100%"
+                    ></canvas>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <!-- PESTAÑA 3: RANKING Y LOGROS -->
             <div class="tab-pane fade" id="teamRanking" role="tabpanel">
-                <div class="row g-4">
-                    <div class="col-lg-5">
-                        <div class="ranking-card">
-                            <h4><i class="fa-solid fa-podium me-2"></i> Top 3 del Equipo</h4>
-                            <div class="podium-ranking" id="podiumCompact"></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-7">
-                        <div class="ranking-card">
-                            <h4><i class="fa-solid fa-table-list me-2"></i> Tabla de Rendimiento</h4>
-                            <div class="table-responsive">
-                                <table class="table compact-table">
-                                    <thead><tr><th>#</th><th>Integrante</th><th>Rol</th><th>Asist.</th><th>Tardanza</th><th>Pts</th></tr></thead>
-                                    <tbody id="compactRankingBody"></tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="ranking-card">
-                            <h4><i class="fa-solid fa-list-check me-2"></i> Actividades Realizadas</h4>
-                            <div class="activity-item-compact"><div class="activity-badge winner">🥇</div><div><strong>Storytime</strong><br><small>1er Lugar - 10 puntos</small></div></div>
-                            <div class="activity-item-compact"><div class="activity-badge pending">⏳</div><div><strong>Buyer Person</strong><br><small>Sin puntaje - Pendiente</small></div></div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="ranking-card">
-                            <h4><i class="fa-solid fa-stopwatch me-2"></i> Puntualidad del Equipo</h4>
-                            <div class="puntualidad-circle" id="puntualidadCircle"><span class="percentage" id="puntualidadPorcentaje">0%</span></div>
-                            <p class="text-center mt-2 text-muted">Integrantes sin minutos de tardanza</p>
-                        </div>
-                    </div>
+              <div class="row g-4">
+                <div class="col-lg-5">
+                  <div class="ranking-card">
+                    <h4>
+                      <i class="fa-solid fa-podium me-2"></i> Top 3 del Equipo
+                    </h4>
+                    <div class="podium-ranking" id="podiumCompact"></div>
+                  </div>
                 </div>
+                <div class="col-lg-7">
+                  <div class="ranking-card">
+                    <h4>
+                      <i class="fa-solid fa-table-list me-2"></i> Tabla de
+                      Rendimiento
+                    </h4>
+                    <div class="table-responsive">
+                      <table class="table compact-table">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Integrante</th>
+                            <th>Rol</th>
+                            <th>Asist.</th>
+                            <th>Tardanza</th>
+                            <th>Pts</th>
+                          </tr>
+                        </thead>
+                        <tbody id="compactRankingBody"></tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="ranking-card">
+                    <h4>
+                      <i class="fa-solid fa-list-check me-2"></i> Actividades
+                      Realizadas
+                    </h4>
+                    <div class="activity-item-compact">
+                      <div class="activity-badge winner">🥇</div>
+                      <div>
+                        <strong>Storytime</strong><br /><small
+                          >1er Lugar - 10 puntos</small
+                        >
+                      </div>
+                    </div>
+                    <div class="activity-item-compact">
+                      <div class="activity-badge pending">⏳</div>
+                      <div>
+                        <strong>Buyer Person</strong><br /><small
+                          >Sin puntaje - Pendiente</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="ranking-card">
+                    <h4>
+                      <i class="fa-solid fa-stopwatch me-2"></i> Puntualidad del
+                      Equipo
+                    </h4>
+                    <div class="puntualidad-circle" id="puntualidadCircle">
+                      <span class="percentage" id="puntualidadPorcentaje"
+                        >0%</span
+                      >
+                    </div>
+                    <p class="text-center mt-2 text-muted">
+                      Integrantes sin minutos de tardanza
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-</section>
+      </section>
 
-<!-- Modal para métricas individuales -->
-<div id="individualMetricsModal" class="metrics-modal" style="display: none;">
-    <div class="metrics-modal-content">
-        <div class="metrics-header">
-            <h3 id="modalName"><i class="fa-solid fa-chart-simple me-2"></i>Métricas del Integrante</h3>
-            <span class="close-btn" onclick="closeIndividualMetrics()">&times;</span>
+      <!-- Modal para métricas individuales -->
+      <div
+        id="individualMetricsModal"
+        class="metrics-modal"
+        style="display: none"
+      >
+        <div class="metrics-modal-content">
+          <div class="metrics-header">
+            <h3 id="modalName">
+              <i class="fa-solid fa-chart-simple me-2"></i>Métricas del
+              Integrante
+            </h3>
+            <span class="close-btn" onclick="closeIndividualMetrics()"
+              >&times;</span
+            >
+          </div>
+          <div class="metrics-body" id="individualMetricsBody"></div>
         </div>
-        <div class="metrics-body" id="individualMetricsBody"></div>
-    </div>
-</div>
+      </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
-<style>
-    .custom-tabs { border-bottom: 2px solid #e0e6ed; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-    .custom-tabs .nav-link { border: none; padding: 10px 24px; border-radius: 50px; font-weight: 600; color: #1a3c5e; background: white; transition: all 0.3s; }
-    .custom-tabs .nav-link:hover { background: #e6f3f8; color: #2c7da0; }
-    .custom-tabs .nav-link.active { background: linear-gradient(135deg, #2c7da0, #1e5f7a); color: white; box-shadow: 0 4px 12px rgba(44,125,160,0.3); }
-    
-    .team-card { background: white; border-radius: 20px; overflow: hidden; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.08); cursor: pointer; }
-    .team-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(44,125,160,0.15); }
-    .team-card-img { position: relative; overflow: hidden; height: 260px; }
-    .team-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
-    .team-card:hover .team-card-img img { transform: scale(1.05); }
-    .team-card-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(44,125,160,0.85); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: white; opacity: 0; transition: opacity 0.3s; }
-    .team-card:hover .team-card-overlay { opacity: 1; }
-    .team-card-overlay i { font-size: 1.8rem; }
-    .team-card-content { padding: 1rem; text-align: center; }
-    .team-card-content h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; color: #1a3c5e; }
-    .role-badge { display: inline-block; padding: 3px 10px; border-radius: 30px; font-size: 0.7rem; font-weight: 600; }
-    .role-badge.marketing { background: #e3f2fd; color: #1565c0; }
-    .role-badge.finance { background: #e8f5e9; color: #2e7d32; }
-    .role-badge.dev { background: #f3e5f5; color: #7b1fa2; }
-    .role-badge.leader { background: #fff8e1; color: #f57c00; }
-    .role-badge.admin { background: #e0f7fa; color: #00838f; }
-    .social-icons { display: flex; justify-content: center; gap: 8px; margin-top: 8px; }
-    .social-icons a { width: 28px; height: 28px; background: #f0f4f8; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: #2c7da0; font-size: 0.8rem; }
-    .social-icons a:hover { background: #2c7da0; color: white; }
-    
-    .stat-card-mini { background: white; border-radius: 16px; padding: 0.8rem; display: flex; align-items: center; gap: 0.8rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-    .stat-icon { width: 45px; height: 45px; background: #e6f3f8; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #2c7da0; }
-    .stat-number { font-size: 1.5rem; font-weight: 800; color: #1a3c5e; display: block; line-height: 1; }
-    .stat-label { font-size: 0.7rem; color: #6c757d; }
-    
-    .chart-box { background: white; border-radius: 20px; padding: 1.2rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-    .chart-box h5 { font-size: 1rem; font-weight: 600; margin-bottom: 1rem; color: #1a3c5e; }
-    
-    .ranking-card { background: white; border-radius: 20px; padding: 1.2rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05); height: 100%; }
-    .ranking-card h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; color: #1a3c5e; }
-    
-    .podium-ranking { display: flex; justify-content: space-around; align-items: flex-end; text-align: center; padding: 0.5rem 0; }
-    .podium-item-compact { text-align: center; flex: 1; }
-    .podium-medal-compact { font-size: 1.8rem; }
-    .podium-name-compact { font-weight: 700; font-size: 0.8rem; margin-top: 5px; }
-    .podium-score-compact { font-size: 1rem; font-weight: 800; color: #ffc107; }
-    
-    .compact-table th { background: #1a3c5e; color: white; padding: 8px; font-size: 0.75rem; }
-    .compact-table td { padding: 8px; font-size: 0.8rem; vertical-align: middle; }
-    
-    .activity-item-compact { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #eee; }
-    .activity-badge { width: 40px; height: 40px; background: #f0f4f8; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
-    
-    .puntualidad-circle { width: 120px; height: 120px; margin: 0 auto; background: conic-gradient(#4caf50 0deg, #e0e0e0 0deg); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-    .puntualidad-circle .percentage { font-size: 1.5rem; font-weight: 800; color: #1a3c5e; background: white; width: 90px; height: 90px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-    
-    .metrics-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); z-index: 2000; display: flex; align-items: center; justify-content: center; }
-    .metrics-modal-content { background: white; border-radius: 24px; width: 90%; max-width: 600px; max-height: 85vh; overflow-y: auto; }
-    .metrics-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; background: linear-gradient(135deg, #1a3c5e, #2c7da0); color: white; border-radius: 24px 24px 0 0; }
-    .metrics-header h3 { margin: 0; font-size: 1.2rem; }
-    .close-btn { font-size: 1.8rem; cursor: pointer; line-height: 1; }
-    .close-btn:hover { transform: scale(1.1); color: #ffd700; }
-    .metrics-body { padding: 1.5rem; }
-    .metric-item { margin-bottom: 1rem; padding: 0.8rem; background: #f8fafc; border-radius: 12px; border-left: 3px solid #2c7da0; }
-    .metric-label { font-weight: 700; color: #1a3c5e; font-size: 0.75rem; text-transform: uppercase; }
-    .metric-value { font-size: 1.3rem; font-weight: 800; color: #2c7da0; }
-    
-    @media (max-width: 768px) {
-        .custom-tabs .nav-link { padding: 6px 16px; font-size: 0.8rem; }
-        .chart-box canvas { height: 200px !important; }
-    }
-</style>
+      <style>
+        .custom-tabs {
+          border-bottom: 2px solid #e0e6ed;
+          justify-content: center;
+          gap: 1rem;
+          flex-wrap: wrap;
+        }
+        .custom-tabs .nav-link {
+          border: none;
+          padding: 10px 24px;
+          border-radius: 50px;
+          font-weight: 600;
+          color: #1a3c5e;
+          background: white;
+          transition: all 0.3s;
+        }
+        .custom-tabs .nav-link:hover {
+          background: #e6f3f8;
+          color: #2c7da0;
+        }
+        .custom-tabs .nav-link.active {
+          background: linear-gradient(135deg, #2c7da0, #1e5f7a);
+          color: white;
+          box-shadow: 0 4px 12px rgba(44, 125, 160, 0.3);
+        }
 
-<script>
-    // Datos de métricas individuales
-    const individualMetrics = {
-        enrique: { name: "José Enrique Chávez Lucha", role: "Marketing", projectRole: "Estrategia digital y promoción", semanas: 2, tardanza: 0, puntaje: 10, actividades: "Storytime (1er lugar - 10 pts)", asistencia: [{ semana: 1, fecha: "18-abr", hora: "12:40", tarde: 0 }, { semana: 2, fecha: "25-abr", hora: "12:40", tarde: 0 }] },
-        kenia: { name: "Kenia Marisol García García", role: "Contadora", projectRole: "Gestión financiera", semanas: 2, tardanza: 18, puntaje: 0, actividades: "Sin puntajes", asistencia: [{ semana: 1, fecha: "18-abr", hora: "13:04", tarde: 4 }, { semana: 2, fecha: "25-abr", hora: "13:14", tarde: 14 }] },
-        jonathan: { name: "Jonathan Eduardo López Sánchez", role: "Developer", projectRole: "Desarrollo web", semanas: 2, tardanza: 0, puntaje: 10, actividades: "Storytime (10 pts)", asistencia: [{ semana: 1, fecha: "18-abr", hora: "12:50", tarde: 0 }, { semana: 2, fecha: "25-abr", hora: "12:50", tarde: 0 }] },
-        alejandro: { name: "Luis Alejandro Ramos Ochoa", role: "Team Leader", projectRole: "Liderazgo y coordinación", semanas: 2, tardanza: 0, puntaje: 10, actividades: "Storytime (10 pts)", asistencia: [{ semana: 1, fecha: "18-abr", hora: "12:50", tarde: 0 }, { semana: 2, fecha: "25-abr", hora: "13:00", tarde: 0 }] },
-        carlos: { name: "Carlos Armando Sandoval Medina", role: "Administrador", projectRole: "Gestión administrativa", semanas: 2, tardanza: 13, puntaje: 0, actividades: "Sin puntajes", asistencia: [{ semana: 1, fecha: "18-abr", hora: "13:10", tarde: 10 }, { semana: 2, fecha: "25-abr", hora: "13:03", tarde: 3 }] }
-    };
+        .team-card {
+          background: white;
+          border-radius: 20px;
+          overflow: hidden;
+          transition: all 0.3s ease;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+          cursor: pointer;
+        }
+        .team-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 15px 30px rgba(44, 125, 160, 0.15);
+        }
+        .team-card-img {
+          position: relative;
+          overflow: hidden;
+          height: 260px;
+        }
+        .team-card-img img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s;
+        }
+        .team-card:hover .team-card-img img {
+          transform: scale(1.05);
+        }
+        .team-card-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(44, 125, 160, 0.85);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          color: white;
+          opacity: 0;
+          transition: opacity 0.3s;
+        }
+        .team-card:hover .team-card-overlay {
+          opacity: 1;
+        }
+        .team-card-overlay i {
+          font-size: 1.8rem;
+        }
+        .team-card-content {
+          padding: 1rem;
+          text-align: center;
+        }
+        .team-card-content h4 {
+          font-size: 1rem;
+          font-weight: 700;
+          margin-bottom: 0.3rem;
+          color: #1a3c5e;
+        }
+        .role-badge {
+          display: inline-block;
+          padding: 3px 10px;
+          border-radius: 30px;
+          font-size: 0.7rem;
+          font-weight: 600;
+        }
+        .role-badge.marketing {
+          background: #e3f2fd;
+          color: #1565c0;
+        }
+        .role-badge.finance {
+          background: #e8f5e9;
+          color: #2e7d32;
+        }
+        .role-badge.dev {
+          background: #f3e5f5;
+          color: #7b1fa2;
+        }
+        .role-badge.leader {
+          background: #fff8e1;
+          color: #f57c00;
+        }
+        .role-badge.admin {
+          background: #e0f7fa;
+          color: #00838f;
+        }
+        .social-icons {
+          display: flex;
+          justify-content: center;
+          gap: 8px;
+          margin-top: 8px;
+        }
+        .social-icons a {
+          width: 28px;
+          height: 28px;
+          background: #f0f4f8;
+          border-radius: 50%;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          color: #2c7da0;
+          font-size: 0.8rem;
+        }
+        .social-icons a:hover {
+          background: #2c7da0;
+          color: white;
+        }
 
-    let currentIndividualChart = null;
+        .stat-card-mini {
+          background: white;
+          border-radius: 16px;
+          padding: 0.8rem;
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .stat-icon {
+          width: 45px;
+          height: 45px;
+          background: #e6f3f8;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.2rem;
+          color: #2c7da0;
+        }
+        .stat-number {
+          font-size: 1.5rem;
+          font-weight: 800;
+          color: #1a3c5e;
+          display: block;
+          line-height: 1;
+        }
+        .stat-label {
+          font-size: 0.7rem;
+          color: #6c757d;
+        }
 
-    function showIndividualMetrics(memberId) {
-        const m = individualMetrics[memberId];
-        if (!m) return;
-        const modal = document.getElementById('individualMetricsModal');
-        document.getElementById('modalName').innerHTML = `<i class="fa-solid fa-user-astronaut me-2"></i>${m.name}`;
-        const body = document.getElementById('individualMetricsBody');
-        body.innerHTML = `
+        .chart-box {
+          background: white;
+          border-radius: 20px;
+          padding: 1.2rem;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        .chart-box h5 {
+          font-size: 1rem;
+          font-weight: 600;
+          margin-bottom: 1rem;
+          color: #1a3c5e;
+        }
+
+        .ranking-card {
+          background: white;
+          border-radius: 20px;
+          padding: 1.2rem;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+          height: 100%;
+        }
+        .ranking-card h4 {
+          font-size: 1.1rem;
+          font-weight: 700;
+          margin-bottom: 1rem;
+          color: #1a3c5e;
+        }
+
+        .podium-ranking {
+          display: flex;
+          justify-content: space-around;
+          align-items: flex-end;
+          text-align: center;
+          padding: 0.5rem 0;
+        }
+        .podium-item-compact {
+          text-align: center;
+          flex: 1;
+        }
+        .podium-medal-compact {
+          font-size: 1.8rem;
+        }
+        .podium-name-compact {
+          font-weight: 700;
+          font-size: 0.8rem;
+          margin-top: 5px;
+        }
+        .podium-score-compact {
+          font-size: 1rem;
+          font-weight: 800;
+          color: #ffc107;
+        }
+
+        .compact-table th {
+          background: #1a3c5e;
+          color: white;
+          padding: 8px;
+          font-size: 0.75rem;
+        }
+        .compact-table td {
+          padding: 8px;
+          font-size: 0.8rem;
+          vertical-align: middle;
+        }
+
+        .activity-item-compact {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 10px 0;
+          border-bottom: 1px solid #eee;
+        }
+        .activity-badge {
+          width: 40px;
+          height: 40px;
+          background: #f0f4f8;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.2rem;
+        }
+
+        .puntualidad-circle {
+          width: 120px;
+          height: 120px;
+          margin: 0 auto;
+          background: conic-gradient(#4caf50 0deg, #e0e0e0 0deg);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .puntualidad-circle .percentage {
+          font-size: 1.5rem;
+          font-weight: 800;
+          color: #1a3c5e;
+          background: white;
+          width: 90px;
+          height: 90px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .metrics-modal {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.7);
+          backdrop-filter: blur(5px);
+          z-index: 2000;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .metrics-modal-content {
+          background: white;
+          border-radius: 24px;
+          width: 90%;
+          max-width: 600px;
+          max-height: 85vh;
+          overflow-y: auto;
+        }
+        .metrics-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1rem 1.5rem;
+          background: linear-gradient(135deg, #1a3c5e, #2c7da0);
+          color: white;
+          border-radius: 24px 24px 0 0;
+        }
+        .metrics-header h3 {
+          margin: 0;
+          font-size: 1.2rem;
+        }
+        .close-btn {
+          font-size: 1.8rem;
+          cursor: pointer;
+          line-height: 1;
+        }
+        .close-btn:hover {
+          transform: scale(1.1);
+          color: #ffd700;
+        }
+        .metrics-body {
+          padding: 1.5rem;
+        }
+        .metric-item {
+          margin-bottom: 1rem;
+          padding: 0.8rem;
+          background: #f8fafc;
+          border-radius: 12px;
+          border-left: 3px solid #2c7da0;
+        }
+        .metric-label {
+          font-weight: 700;
+          color: #1a3c5e;
+          font-size: 0.75rem;
+          text-transform: uppercase;
+        }
+        .metric-value {
+          font-size: 1.3rem;
+          font-weight: 800;
+          color: #2c7da0;
+        }
+
+        @media (max-width: 768px) {
+          .custom-tabs .nav-link {
+            padding: 6px 16px;
+            font-size: 0.8rem;
+          }
+          .chart-box canvas {
+            height: 200px !important;
+          }
+        }
+      </style>
+
+      <script>
+        // Datos de métricas individuales
+        const individualMetrics = {
+          enrique: {
+            name: "José Enrique Chávez Lucha",
+            role: "Marketing",
+            projectRole: "Estrategia digital y promoción",
+            semanas: 2,
+            tardanza: 0,
+            puntaje: 10,
+            actividades: "Storytime (1er lugar - 10 pts)",
+            asistencia: [
+              { semana: 1, fecha: "18-abr", hora: "12:40", tarde: 0 },
+              { semana: 2, fecha: "25-abr", hora: "12:40", tarde: 0 },
+            ],
+          },
+          kenia: {
+            name: "Kenia Marisol García García",
+            role: "Contadora",
+            projectRole: "Gestión financiera",
+            semanas: 2,
+            tardanza: 18,
+            puntaje: 0,
+            actividades: "Sin puntajes",
+            asistencia: [
+              { semana: 1, fecha: "18-abr", hora: "13:04", tarde: 4 },
+              { semana: 2, fecha: "25-abr", hora: "13:14", tarde: 14 },
+            ],
+          },
+          jonathan: {
+            name: "Jonathan Eduardo López Sánchez",
+            role: "Developer",
+            projectRole: "Desarrollo web",
+            semanas: 2,
+            tardanza: 0,
+            puntaje: 10,
+            actividades: "Storytime (10 pts)",
+            asistencia: [
+              { semana: 1, fecha: "18-abr", hora: "12:50", tarde: 0 },
+              { semana: 2, fecha: "25-abr", hora: "12:50", tarde: 0 },
+            ],
+          },
+          alejandro: {
+            name: "Luis Alejandro Ramos Ochoa",
+            role: "Team Leader",
+            projectRole: "Liderazgo y coordinación",
+            semanas: 2,
+            tardanza: 0,
+            puntaje: 10,
+            actividades: "Storytime (10 pts)",
+            asistencia: [
+              { semana: 1, fecha: "18-abr", hora: "12:50", tarde: 0 },
+              { semana: 2, fecha: "25-abr", hora: "13:00", tarde: 0 },
+            ],
+          },
+          carlos: {
+            name: "Carlos Armando Sandoval Medina",
+            role: "Administrador",
+            projectRole: "Gestión administrativa",
+            semanas: 2,
+            tardanza: 13,
+            puntaje: 0,
+            actividades: "Sin puntajes",
+            asistencia: [
+              { semana: 1, fecha: "18-abr", hora: "13:10", tarde: 10 },
+              { semana: 2, fecha: "25-abr", hora: "13:03", tarde: 3 },
+            ],
+          },
+        };
+
+        let currentIndividualChart = null;
+
+        function showIndividualMetrics(memberId) {
+          const m = individualMetrics[memberId];
+          if (!m) return;
+          const modal = document.getElementById("individualMetricsModal");
+          document.getElementById("modalName").innerHTML =
+            `<i class="fa-solid fa-user-astronaut me-2"></i>${m.name}`;
+          const body = document.getElementById("individualMetricsBody");
+          body.innerHTML = `
             <div class="row g-2">
                 <div class="col-6"><div class="metric-item"><div class="metric-label">Rol</div><div class="metric-value fs-6">${m.role}</div><small>${m.projectRole}</small></div></div>
                 <div class="col-6"><div class="metric-item"><div class="metric-label">Semanas Asistidas</div><div class="metric-value">${m.semanas}/3</div></div></div>
-                <div class="col-6"><div class="metric-item"><div class="metric-label">Minutos Tarde</div><div class="metric-value ${m.tardanza > 0 ? 'text-warning' : 'text-success'}">${m.tardanza} min</div></div></div>
+                <div class="col-6"><div class="metric-item"><div class="metric-label">Minutos Tarde</div><div class="metric-value ${m.tardanza > 0 ? "text-warning" : "text-success"}">${m.tardanza} min</div></div></div>
                 <div class="col-6"><div class="metric-item"><div class="metric-label">Puntaje</div><div class="metric-value">${m.puntaje} pts</div><small>${m.actividades}</small></div></div>
-                <div class="col-12"><div class="metric-item"><div class="metric-label">Detalle Asistencia</div><table class="table table-sm mt-2"><thead><tr><th>Semana</th><th>Fecha</th><th>Hora</th><th>Tardanza</th></tr></thead><tbody>${m.asistencia.map(a => `<tr class="${a.tarde > 0 ? 'table-warning' : ''}"><td>${a.semana}</td><td>${a.fecha}</td><td>${a.hora}</td><td>${a.tarde > 0 ? a.tarde + ' min' : '✓ A tiempo'}</td></tr>`).join('')}<tr class="table-secondary"><td colspan="4" class="text-center">Semana 3 - Por registrar</td></tr></tbody></table></div></div>
+                <div class="col-12"><div class="metric-item"><div class="metric-label">Detalle Asistencia</div><table class="table table-sm mt-2"><thead><tr><th>Semana</th><th>Fecha</th><th>Hora</th><th>Tardanza</th></tr></thead><tbody>${m.asistencia.map((a) => `<tr class="${a.tarde > 0 ? "table-warning" : ""}"><td>${a.semana}</td><td>${a.fecha}</td><td>${a.hora}</td><td>${a.tarde > 0 ? a.tarde + " min" : "✓ A tiempo"}</td></tr>`).join("")}<tr class="table-secondary"><td colspan="4" class="text-center">Semana 3 - Por registrar</td></tr></tbody></table></div></div>
                 <div class="col-12"><div class="metric-item"><canvas id="individualRendimientoChart" style="height: 180px;"></canvas></div></div>
             </div>
         `;
-        modal.style.display = 'flex';
-        setTimeout(() => {
-            const ctx = document.getElementById('individualRendimientoChart');
+          modal.style.display = "flex";
+          setTimeout(() => {
+            const ctx = document.getElementById("individualRendimientoChart");
             if (ctx) {
-                if (currentIndividualChart) currentIndividualChart.destroy();
-                currentIndividualChart = new Chart(ctx, {
-                    type: 'bar', data: { labels: ['Semana 1', 'Semana 2', 'Semana 3'], datasets: [{ label: 'Minutos tarde', data: [m.asistencia[0]?.tarde || 0, m.asistencia[1]?.tarde || 0, 0], backgroundColor: ['#ff6b6b', '#ff6b6b', '#4caf50'], borderRadius: 6 }] },
-                    options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { position: 'top' } } }
-                });
+              if (currentIndividualChart) currentIndividualChart.destroy();
+              currentIndividualChart = new Chart(ctx, {
+                type: "bar",
+                data: {
+                  labels: ["Semana 1", "Semana 2", "Semana 3"],
+                  datasets: [
+                    {
+                      label: "Minutos tarde",
+                      data: [
+                        m.asistencia[0]?.tarde || 0,
+                        m.asistencia[1]?.tarde || 0,
+                        0,
+                      ],
+                      backgroundColor: ["#ff6b6b", "#ff6b6b", "#4caf50"],
+                      borderRadius: 6,
+                    },
+                  ],
+                },
+                options: {
+                  responsive: true,
+                  maintainAspectRatio: true,
+                  plugins: { legend: { position: "top" } },
+                },
+              });
             }
-        }, 50);
-    }
+          }, 50);
+        }
 
-    function closeIndividualMetrics() { document.getElementById('individualMetricsModal').style.display = 'none'; if (currentIndividualChart) { currentIndividualChart.destroy(); currentIndividualChart = null; } }
-    window.onclick = function(e) { if (e.target === document.getElementById('individualMetricsModal')) closeIndividualMetrics(); }
+        function closeIndividualMetrics() {
+          document.getElementById("individualMetricsModal").style.display =
+            "none";
+          if (currentIndividualChart) {
+            currentIndividualChart.destroy();
+            currentIndividualChart = null;
+          }
+        }
+        window.onclick = function (e) {
+          if (e.target === document.getElementById("individualMetricsModal"))
+            closeIndividualMetrics();
+        };
 
-    // Datos del equipo
-    const teamData = [
-        { name: "José Enrique Chávez", role: "Marketing", asistencias: 2, minutosTarde: 0, puntaje: 10 },
-        { name: "Jonathan López", role: "Developer", asistencias: 2, minutosTarde: 0, puntaje: 10 },
-        { name: "Alejandro Ramos", role: "Team Leader", asistencias: 2, minutosTarde: 0, puntaje: 10 },
-        { name: "Kenia García", role: "Contadora", asistencias: 2, minutosTarde: 18, puntaje: 0 },
-        { name: "Carlos Sandoval", role: "Administrador", asistencias: 2, minutosTarde: 13, puntaje: 0 }
-    ];
-    const sorted = [...teamData].sort((a, b) => b.puntaje - a.puntaje);
-    
-    document.getElementById('compactRankingBody').innerHTML = sorted.map((m, i) => `<tr><td>${i+1}</td><td><strong>${m.name}</strong></td><td>${m.role}</td><td>${m.asistencias}/3</td><td class="${m.minutosTarde > 0 ? 'text-warning' : 'text-success'}">${m.minutosTarde} min</td><td class="fw-bold" style="color:#2c7da0">${m.puntaje}</td></tr>`).join('');
-    
-    document.getElementById('podiumCompact').innerHTML = sorted.slice(0,3).map((m, i) => `<div class="podium-item-compact"><div class="podium-medal-compact">${i===0?'🥇':i===1?'🥈':'🥉'}</div><div class="podium-name-compact">${m.name}</div><div class="podium-score-compact">${m.puntaje} pts</div></div>`).join('');
-    
-    const puntuales = teamData.filter(m => m.minutosTarde === 0).length;
-    const porcentaje = (puntuales / teamData.length) * 100;
-    document.getElementById('puntualidadPorcentaje').innerText = `${Math.round(porcentaje)}%`;
-    document.querySelector('#puntualidadCircle').style.background = `conic-gradient(#4caf50 ${porcentaje * 3.6}deg, #e0e0e0 0deg)`;
-    
-    document.getElementById('statIntegrantes').innerText = teamData.length;
-    document.getElementById('statAsistencias').innerText = teamData.reduce((s,m)=>s+m.asistencias,0);
-    document.getElementById('statTardanza').innerText = teamData.reduce((s,m)=>s+m.minutosTarde,0);
-    document.getElementById('statPuntos').innerText = teamData.reduce((s,m)=>s+m.puntaje,0);
-    
-    new Chart(document.getElementById('asistenciaChartCompact'), { type: 'bar', data: { labels: teamData.map(m => m.name.split(' ')[0]), datasets: [{ label: 'Semanas asistidas', data: teamData.map(m => m.asistencias), backgroundColor: '#2c7da0', borderRadius: 6 }] }, options: { responsive: true, maintainAspectRatio: true, scales: { y: { beginAtZero: true, max: 3 } }, plugins: { legend: { position: 'top' } } } });
-    new Chart(document.getElementById('tardanzaChartCompact'), { type: 'bar', data: { labels: teamData.map(m => m.name.split(' ')[0]), datasets: [{ label: 'Minutos tarde', data: teamData.map(m => m.minutosTarde), backgroundColor: '#ff9800', borderRadius: 6 }] }, options: { responsive: true, maintainAspectRatio: true, scales: { y: { beginAtZero: true } } } });
-    new Chart(document.getElementById('evolucionChartCompact'), { type: 'line', data: { labels: ['Semana 1', 'Semana 2', 'Semana 3'], datasets: [{ label: 'Minutos tarde equipo', data: [14, 31, 31], borderColor: '#6c5ce7', backgroundColor: 'rgba(108,92,231,0.1)', fill: true, tension: 0.3 }] }, options: { responsive: true, maintainAspectRatio: true } });
-</script>
+        // Datos del equipo
+        const teamData = [
+          {
+            name: "José Enrique Chávez",
+            role: "Marketing",
+            asistencias: 2,
+            minutosTarde: 0,
+            puntaje: 10,
+          },
+          {
+            name: "Jonathan López",
+            role: "Developer",
+            asistencias: 2,
+            minutosTarde: 0,
+            puntaje: 10,
+          },
+          {
+            name: "Alejandro Ramos",
+            role: "Team Leader",
+            asistencias: 2,
+            minutosTarde: 0,
+            puntaje: 10,
+          },
+          {
+            name: "Kenia García",
+            role: "Contadora",
+            asistencias: 2,
+            minutosTarde: 18,
+            puntaje: 0,
+          },
+          {
+            name: "Carlos Sandoval",
+            role: "Administrador",
+            asistencias: 2,
+            minutosTarde: 13,
+            puntaje: 0,
+          },
+        ];
+        const sorted = [...teamData].sort((a, b) => b.puntaje - a.puntaje);
+
+        document.getElementById("compactRankingBody").innerHTML = sorted
+          .map(
+            (m, i) =>
+              `<tr><td>${i + 1}</td><td><strong>${m.name}</strong></td><td>${m.role}</td><td>${m.asistencias}/3</td><td class="${m.minutosTarde > 0 ? "text-warning" : "text-success"}">${m.minutosTarde} min</td><td class="fw-bold" style="color:#2c7da0">${m.puntaje}</td></tr>`,
+          )
+          .join("");
+
+        document.getElementById("podiumCompact").innerHTML = sorted
+          .slice(0, 3)
+          .map(
+            (m, i) =>
+              `<div class="podium-item-compact"><div class="podium-medal-compact">${i === 0 ? "🥇" : i === 1 ? "🥈" : "🥉"}</div><div class="podium-name-compact">${m.name}</div><div class="podium-score-compact">${m.puntaje} pts</div></div>`,
+          )
+          .join("");
+
+        const puntuales = teamData.filter((m) => m.minutosTarde === 0).length;
+        const porcentaje = (puntuales / teamData.length) * 100;
+        document.getElementById("puntualidadPorcentaje").innerText =
+          `${Math.round(porcentaje)}%`;
+        document.querySelector("#puntualidadCircle").style.background =
+          `conic-gradient(#4caf50 ${porcentaje * 3.6}deg, #e0e0e0 0deg)`;
+
+        document.getElementById("statIntegrantes").innerText = teamData.length;
+        document.getElementById("statAsistencias").innerText = teamData.reduce(
+          (s, m) => s + m.asistencias,
+          0,
+        );
+        document.getElementById("statTardanza").innerText = teamData.reduce(
+          (s, m) => s + m.minutosTarde,
+          0,
+        );
+        document.getElementById("statPuntos").innerText = teamData.reduce(
+          (s, m) => s + m.puntaje,
+          0,
+        );
+
+        new Chart(document.getElementById("asistenciaChartCompact"), {
+          type: "bar",
+          data: {
+            labels: teamData.map((m) => m.name.split(" ")[0]),
+            datasets: [
+              {
+                label: "Semanas asistidas",
+                data: teamData.map((m) => m.asistencias),
+                backgroundColor: "#2c7da0",
+                borderRadius: 6,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            scales: { y: { beginAtZero: true, max: 3 } },
+            plugins: { legend: { position: "top" } },
+          },
+        });
+        new Chart(document.getElementById("tardanzaChartCompact"), {
+          type: "bar",
+          data: {
+            labels: teamData.map((m) => m.name.split(" ")[0]),
+            datasets: [
+              {
+                label: "Minutos tarde",
+                data: teamData.map((m) => m.minutosTarde),
+                backgroundColor: "#ff9800",
+                borderRadius: 6,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            scales: { y: { beginAtZero: true } },
+          },
+        });
+        new Chart(document.getElementById("evolucionChartCompact"), {
+          type: "line",
+          data: {
+            labels: ["Semana 1", "Semana 2", "Semana 3"],
+            datasets: [
+              {
+                label: "Minutos tarde equipo",
+                data: [14, 31, 31],
+                borderColor: "#6c5ce7",
+                backgroundColor: "rgba(108,92,231,0.1)",
+                fill: true,
+                tension: 0.3,
+              },
+            ],
+          },
+          options: { responsive: true, maintainAspectRatio: true },
+        });
+      </script>
     </div>
 
     <footer class="footer-glass pt-5 pb-4">
