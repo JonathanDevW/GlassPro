@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --theme-color: #eb0029;
+    --title-color: #161921;
+    --white-color: #fff;
+}
+
+.space{
+    margin: 80px 0;
+}
+.title{
+    margin-bottom: 60px;
+    text-align: center;
+}
+.title h2{
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.team-box{
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 80px;
+    transition: 0.4s ease-in-out;
+}
+.team-img img{
+    width: 100%;
+    border-radius: 20px;
+}
+.team-content{
+    background-color: var(--white-color);
+    box-shadow: 0px 10px 18px rgba(229, 229, 229, 0.8);
+    width: calc(100% - 60px);
+    border-radius: 20px;
+    padding: 25px;
+    position: absolute;
+    left: 30px;
+    bottom: -50px;
+    height: 95px;
+    right: 0;
+    overflow: hidden;
+    transition: 0.4s ease-in-out;
+    z-index: 9;
+    text-align: center;
+}
+.team-content h4{
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--title-color);
+    line-height: 25px;
+    margin-bottom: 10px;
+}
+.team-content span{
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 21px;
+    color: var(--theme-color);
+    margin-bottom: 0;
+}
+.social-media i{
+    font-size: 17px;
+    margin: 0 10px;
+    font-weight: 400;
+    transition: 0.4s ease-in-out;
+    line-height: 16px;
+    color: #525952;
+}
+.social-media{
+    transform: translateY(-50px);
+    transition: 0.4s ease-in-out;
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+}
+.social-media i:hover{
+    color: var(--theme-color);
+}
+.team-box:hover .team-content{
+    height: 130px;
+}
+.team-box:hover .team-content .social-media{
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    margin-top: 10px;
+}
+
+@media (max-width: 575px){
+    .team-box{
+        max-width: 340px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 1299px){
+    .team-box .team-content{
+        width: calc(100% - 40px);
+        left: 20px;
+    }
+}
