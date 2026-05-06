@@ -21,591 +21,434 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-
+    <!-- AOS Library para animaciones avanzadas -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <!-- Swiper JS para carruseles modernos -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     />
-    <!-- Google Fonts para mejor tipografía -->
+    <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap"
       rel="stylesheet"
     />
 
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./css/index.css" />
 
     <style>
-      /* RESET GLOBAL */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+      /* ========== ANIMACIONES Y MEJORAS PREMIUM ========== */
+      
+      /* Custom Cursor */
+      .custom-cursor {
+        width: 20px;
+        height: 20px;
+        background: rgba(44, 125, 160, 0.3);
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        transition: transform 0.1s ease;
+        backdrop-filter: blur(4px);
       }
-
-      body {
-        font-family: "Inter", sans-serif;
-        background: #eaeaea;
-        overflow-y: auto !important;
-        overflow-x: hidden;
+      
+      .custom-cursor.active {
+        transform: scale(1.5);
+        background: rgba(44, 125, 160, 0.5);
       }
-
-      /* ========== NAVBAR MODERNA Y RESPONSIVE ========== */
-      .navbar-glass {
-        background: rgba(10, 25, 47, 0.95);
-        backdrop-filter: blur(12px);
-        padding: 0.7rem 0;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        z-index: 1030;
-      }
-
-      .navbar-glass .navbar-brand {
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: white;
-        letter-spacing: -0.5px;
-      }
-
-      .navbar-glass .navbar-brand i {
-        color: #5bc0ff;
-        margin-right: 6px;
-      }
-
-      .navbar-glass .nav-link {
-        color: rgba(255, 255, 255, 0.85);
-        font-weight: 500;
-        margin: 0 0.3rem;
-        transition: 0.2s;
-        font-size: 0.95rem;
-      }
-
-      .navbar-glass .nav-link:hover {
-        color: #5bc0ff;
-        transform: translateY(-2px);
-      }
-
-      .navbar-glass .btn-outline-light {
-        border-radius: 40px;
-        padding: 0.35rem 1.2rem;
-        font-weight: 500;
-        transition: 0.2s;
-        font-size: 0.9rem;
-      }
-
-      @media (max-width: 992px) {
-        .navbar-glass .navbar-brand {
-          font-size: 1.3rem;
-        }
-        .navbar-glass .nav-link {
-          margin: 0.3rem 0;
-          text-align: center;
-        }
-        .navbar-glass .btn-outline-light {
-          display: inline-block;
-          width: fit-content;
-          margin: 0 auto;
-        }
-      }
-
-      /* ========== SLIDER HERO - FULL RESPONSIVE ========== */
-      .slider-hero {
-        position: relative;
+      
+      /* Particle Background */
+      #particles-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
         width: 100%;
+        height: 100%;
+        z-index: 0;
+        pointer-events: none;
+        opacity: 0.4;
+      }
+      
+      /* Video Background Section */
+      .video-hero {
+        position: relative;
         height: 100vh;
-        min-height: 550px;
-        background: #0a192f;
-        overflow: hidden;
-        margin-top: 0;
-      }
-
-      .slider-hero .container-slider {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        background: #0a192f;
-      }
-
-      .slider-hero .slide-wrapper {
-        position: relative;
-        width: 100%;
-        height: 100%;
         overflow: hidden;
       }
-
-      .slider-hero .slide {
-        position: relative;
-        width: 100%;
-        height: 100%;
-      }
-
-      .slider-hero .item {
+      
+      .video-bg {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-size: cover;
-        background-position: center 30%;
-        background-repeat: no-repeat;
-        opacity: 0;
-        transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        z-index: 1;
+        object-fit: cover;
+        z-index: 0;
       }
-
-      .slider-hero .item.active {
-        opacity: 1;
-        z-index: 2;
-      }
-
-      .slider-hero .item::before {
-        content: "";
+      
+      .video-overlay {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(
-          135deg,
-          rgba(0, 0, 0, 0.6) 0%,
-          rgba(0, 0, 0, 0.35) 100%
-        );
+        background: linear-gradient(135deg, rgba(10,25,47,0.85), rgba(0,0,0,0.7));
         z-index: 1;
       }
-
-      .slider-hero .content {
-        position: absolute;
-        bottom: 20%;
-        left: 5%;
-        right: 5%;
-        max-width: 600px;
-        z-index: 3;
-        color: white;
-        text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
-        animation: fadeInUp 0.9s ease-out;
+      
+      /* 3D Card Effect */
+      .card-3d {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transform-style: preserve-3d;
       }
-
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(40px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      
+      .card-3d:hover {
+        transform: translateY(-10px) rotateX(5deg);
+        box-shadow: 0 25px 40px rgba(0,0,0,0.2);
       }
-
-      .slider-hero .name {
-        font-size: clamp(2rem, 7vw, 4rem);
-        font-weight: 800;
-        letter-spacing: -0.02em;
-        margin-bottom: 0.75rem;
-        text-transform: uppercase;
-        background: linear-gradient(135deg, #fff, #c0e0ff);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        text-shadow: none;
-      }
-
-      .slider-hero .des {
-        font-size: clamp(0.85rem, 3.5vw, 1.2rem);
-        line-height: 1.4;
-        margin-bottom: 1.5rem;
-        font-weight: 400;
-        max-width: 500px;
-        color: rgba(255, 255, 255, 0.95);
-      }
-
-      .slider-hero button {
-        background: linear-gradient(95deg, #2c7da0, #1e5f7a);
-        border: none;
-        padding: 10px 24px;
-        font-size: clamp(0.85rem, 3vw, 1rem);
-        font-weight: 600;
-        border-radius: 50px;
-        color: white;
-        cursor: pointer;
+      
+      /* Neumorphism Cards */
+      .neumorph-card {
+        background: #e0e5ec;
+        border-radius: 30px;
+        box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255,0.5);
         transition: all 0.3s ease;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
       }
-
-      .slider-hero button i {
-        font-size: 0.9rem;
-        transition: transform 0.2s;
+      
+      .neumorph-card:hover {
+        box-shadow: 5px 5px 10px rgb(163,177,198,0.8), -5px -5px 10px rgba(255,255,255,0.6);
+        transform: scale(1.02);
       }
-
-      .slider-hero button:hover {
-        background: linear-gradient(95deg, #1e5f7a, #0e4158);
-        transform: scale(1.05);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-      }
-
-      .slider-hero button:hover i {
-        transform: translateX(6px);
-      }
-
-      .slider-hero .nav-buttons {
-        position: absolute;
-        bottom: 6%;
-        right: 5%;
-        z-index: 20;
-        display: flex;
-        gap: 0.8rem;
-      }
-
-      .slider-hero .nav-btn {
-        width: 44px;
-        height: 44px;
-        border-radius: 50px;
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(8px);
-        border: 1px solid rgba(255, 255, 255, 0.4);
-        color: white;
-        font-size: 1.3rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.25s ease;
-      }
-
-      .slider-hero .dots-container {
-        position: absolute;
-        bottom: 6%;
-        left: 5%;
-        z-index: 20;
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-      }
-
-      .slider-hero .dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 10px;
-        background: rgba(255, 255, 255, 0.5);
-        cursor: pointer;
-        transition: all 0.3s;
-      }
-
-      .slider-hero .dot.active {
-        width: 24px;
-        background: #2c7da0;
-        box-shadow: 0 0 8px #2c7da0;
-      }
-
-      /* Responsive slider específico para móviles */
-      @media (max-width: 768px) {
-        .slider-hero {
-          min-height: 500px;
-          height: 100vh;
-        }
-
-        .slider-hero .content {
-          bottom: 18%;
-          left: 4%;
-          right: 4%;
-        }
-
-        .slider-hero .name {
-          font-size: 1.8rem;
-          margin-bottom: 0.5rem;
-        }
-
-        .slider-hero .des {
-          font-size: 0.85rem;
-          margin-bottom: 1rem;
-          line-height: 1.4;
-        }
-
-        .slider-hero button {
-          padding: 8px 18px;
-          font-size: 0.8rem;
-        }
-
-        .slider-hero .nav-btn {
-          width: 38px;
-          height: 38px;
-          font-size: 1rem;
-        }
-
-        .slider-hero .dots-container {
-          bottom: 5%;
-          left: 4%;
-          gap: 6px;
-        }
-
-        .slider-hero .dot {
-          width: 6px;
-          height: 6px;
-        }
-
-        .slider-hero .dot.active {
-          width: 20px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .slider-hero {
-          min-height: 450px;
-        }
-
-        .slider-hero .content {
-          bottom: 15%;
-        }
-
-        .slider-hero .name {
-          font-size: 1.5rem;
-        }
-
-        .slider-hero .des {
-          font-size: 0.75rem;
-        }
-
-        .slider-hero button {
-          padding: 6px 14px;
-          font-size: 0.7rem;
-        }
-      }
-
-      /* ===== SECCIONES DE GLASS PRO RESPONSIVE ===== */
-      .glasspro-sections {
-        position: relative;
-        z-index: 20;
-        background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
-        width: 100%;
-      }
-
-      .section-title {
-        font-size: clamp(1.6rem, 6vw, 2.5rem);
-        font-weight: 800;
-        color: #1a3c5e;
-        position: relative;
-        display: inline-block;
-      }
-
-      .section-title:after {
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        left: 0;
-        width: 60px;
-        height: 3px;
-        background: #2c7da0;
-        border-radius: 4px;
-      }
-
-      .product-card {
+      
+      /* Testimonials Carousel */
+      .testimonial-card {
         background: white;
-        border-radius: 24px;
-        transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        border: 1px solid rgba(0, 0, 0, 0.04);
-        height: 100%;
+        border-radius: 20px;
+        padding: 2rem;
+        margin: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: all 0.4s ease;
       }
-
-      .product-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 35px rgba(0, 0, 0, 0.12);
+      
+      .testimonial-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
       }
-
-      .icon-circle {
+      
+      .testimonial-avatar {
         width: 70px;
         height: 70px;
-        background: #e6f3f8;
         border-radius: 50%;
+        background: linear-gradient(135deg, #2c7da0, #1e5f7a);
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 1.2rem;
-        transition: 0.3s;
+        margin: 0 auto 1rem;
       }
-
-      @media (max-width: 768px) {
-        .icon-circle {
-          width: 55px;
-          height: 55px;
-        }
-        .icon-circle i {
-          font-size: 1.5rem !important;
-        }
-      }
-
-      .btn-glass {
-        background: #2c7da0;
+      
+      .testimonial-avatar i {
+        font-size: 2rem;
         color: white;
-        border-radius: 50px;
-        padding: 10px 24px;
-        font-weight: 700;
-        transition: 0.25s;
-        border: none;
-        letter-spacing: 0.3px;
-        font-size: 0.9rem;
       }
-
-      .btn-glass:hover {
-        background: #1e5a77;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+      
+      .rating-stars {
+        color: #ffc107;
+        margin: 1rem 0;
       }
-
-      @media (max-width: 576px) {
-        .btn-glass {
-          padding: 8px 18px;
-          font-size: 0.8rem;
-        }
+      
+      /* CTA Flotante */
+      .floating-cta {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 1000;
+        animation: pulse 2s infinite;
       }
-
-      .stat-badge {
-        background: white;
-        border-radius: 20px;
-        padding: 1rem;
-        text-align: center;
-        transition: all 0.25s;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        height: 100%;
+      
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
       }
-
-      .stat-number {
-        font-size: clamp(1.5rem, 5vw, 2.2rem);
-        font-weight: 800;
-        color: #2c7da0;
-      }
-
-      .location-card {
-        background: white;
-        border-radius: 20px;
-        padding: 1.2rem;
-        transition: all 0.3s;
-        border: 1px solid #eef2f6;
-        height: 100%;
-      }
-
-      .location-card:hover {
-        transform: translateY(-5px);
-        border-color: #2c7da0;
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
-      }
-
-      @media (max-width: 768px) {
-        .location-card {
-          padding: 1rem;
-        }
-        .location-card i {
-          font-size: 2rem !important;
-        }
-        .location-card h4,
-        .location-card h5 {
-          font-size: 1rem;
-        }
-      }
-
-      .footer-glass {
-        background: #0a1a2a;
-        color: #cddfe7;
-      }
-
-      .social-icon {
-        width: 36px;
-        height: 36px;
-        background: rgba(255, 255, 255, 0.1);
+      
+      .floating-cta .cta-button {
+        width: 60px;
+        height: 60px;
         border-radius: 50%;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        transition: 0.25s;
-        color: white;
-        margin: 0 4px;
-        text-decoration: none;
-        font-size: 0.9rem;
-      }
-
-      .social-icon:hover {
-        background: #2c7da0;
-        transform: translateY(-4px);
-        color: white;
-      }
-
-      @media (max-width: 576px) {
-        .social-icon {
-          width: 32px;
-          height: 32px;
-          font-size: 0.8rem;
-        }
-      }
-
-      /* Scroll comportamiento suave */
-      html {
-        scroll-behavior: smooth;
-      }
-
-      /* Ajustes adicionales para móviles */
-      @media (max-width: 768px) {
-        .container {
-          padding-left: 16px;
-          padding-right: 16px;
-        }
-
-        h1.display-4,
-        h1.display-5 {
-          font-size: 1.8rem !important;
-        }
-
-        .lead {
-          font-size: 0.9rem !important;
-        }
-
-        .badge {
-          font-size: 0.7rem !important;
-        }
-      }
-
-      @media (max-width: 480px) {
-        h1.display-4,
-        h1.display-5 {
-          font-size: 1.5rem !important;
-        }
-
-        .lead {
-          font-size: 0.8rem !important;
-        }
-
-        .row.g-4 {
-          --bs-gutter-y: 1rem;
-        }
-      }
-    </style>
-
-    <style>
-      .custom-tabs {
-        border-bottom: 2px solid #e0e6ed;
-        justify-content: center;
-        gap: 1rem;
-        flex-wrap: wrap;
-      }
-      .custom-tabs .nav-link {
-        border: none;
-        padding: 10px 24px;
-        border-radius: 50px;
-        font-weight: 600;
-        color: #1a3c5e;
-        background: white;
-        transition: all 0.3s;
-      }
-      .custom-tabs .nav-link:hover {
-        background: #e6f3f8;
-        color: #2c7da0;
-      }
-      .custom-tabs .nav-link.active {
         background: linear-gradient(135deg, #2c7da0, #1e5f7a);
         color: white;
-        box-shadow: 0 4px 12px rgba(44, 125, 160, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        transition: all 0.3s ease;
+        cursor: pointer;
       }
-
+      
+      .floating-cta .cta-button:hover {
+        transform: scale(1.15);
+        box-shadow: 0 15px 35px rgba(44,125,160,0.4);
+      }
+      
+      /* Progress Bar */
+      .progress-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: transparent;
+        z-index: 10000;
+      }
+      
+      .progress-bar {
+        height: 3px;
+        background: linear-gradient(90deg, #2c7da0, #5bc0ff);
+        width: 0%;
+        transition: width 0.1s linear;
+      }
+      
+      /* Countdown Timer */
+      .countdown-timer {
+        background: linear-gradient(135deg, #1a3c5e, #2c7da0);
+        border-radius: 20px;
+        padding: 2rem;
+        text-align: center;
+        color: white;
+      }
+      
+      .countdown-box {
+        display: inline-block;
+        background: rgba(255,255,255,0.2);
+        padding: 1rem;
+        border-radius: 15px;
+        margin: 0 0.5rem;
+        min-width: 80px;
+      }
+      
+      .countdown-number {
+        font-size: 2rem;
+        font-weight: 800;
+      }
+      
+      /* Comparison Slider */
+      .comparison-slider {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        overflow: hidden;
+        border-radius: 20px;
+      }
+      
+      .comparison-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      
+      .comparison-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        overflow: hidden;
+      }
+      
+      .slider-handle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40px;
+        height: 40px;
+        background: white;
+        border-radius: 50%;
+        cursor: ew-resize;
+        z-index: 10;
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      /* Newsletter Section */
+      .newsletter-section {
+        background: linear-gradient(135deg, #0a192f, #1a3c5e);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .newsletter-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(91,192,255,0.1) 0%, transparent 70%);
+        animation: rotate 20s linear infinite;
+      }
+      
+      @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      
+      /* Spinner de carga */
+      .page-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #0a192f 0%, #1a3c5e 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+      }
+      
+      .page-loader.hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
+      
+      .spinner-content {
+        text-align: center;
+        animation: fadeInScale 0.6s ease-out;
+      }
+      
+      .spinner-spray {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 25px;
+      }
+      
+      .spinner-spray i {
+        font-size: 70px;
+        color: #5bc0ff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: sprayFloat 1.2s ease-in-out infinite;
+      }
+      
+      .spinner-spray .fa-spray-can {
+        animation: sprayRotate 1.5s ease-in-out infinite;
+      }
+      
+      .spinner-spray .fa-water {
+        font-size: 30px;
+        opacity: 0;
+        animation: sprayParticles 0.8s ease-in-out infinite;
+      }
+      
+      .spinner-spray .fa-water:nth-child(2) {
+        top: 60%;
+        left: 70%;
+        animation-delay: 0.2s;
+      }
+      
+      .spinner-spray .fa-water:nth-child(3) {
+        top: 55%;
+        left: 80%;
+        animation-delay: 0.4s;
+      }
+      
+      @keyframes sprayFloat {
+        0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+        50% { transform: translate(-50%, -50%) translateY(-10px); }
+      }
+      
+      @keyframes sprayRotate {
+        0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+        25% { transform: translate(-50%, -50%) rotate(-15deg); }
+        75% { transform: translate(-50%, -50%) rotate(15deg); }
+      }
+      
+      @keyframes sprayParticles {
+        0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+        50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+        100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8) translateX(20px); }
+      }
+      
+      @keyframes fadeInScale {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+      }
+      
+      .loader-text {
+        color: white;
+        font-size: 1.2rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+        margin-top: 20px;
+      }
+      
+      .loader-dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 15px;
+      }
+      
+      .loader-dots span {
+        width: 8px;
+        height: 8px;
+        background: #5bc0ff;
+        border-radius: 50%;
+        animation: loaderDot 1.4s ease-in-out infinite;
+      }
+      
+      .loader-dots span:nth-child(2) { animation-delay: 0.2s; }
+      .loader-dots span:nth-child(3) { animation-delay: 0.4s; }
+      
+      @keyframes loaderDot {
+        0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+        40% { transform: scale(1.2); opacity: 1; }
+      }
+      
+      /* Animaciones de entrada */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+      
+      .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      .fade-left {
+        opacity: 0;
+        transform: translateX(-40px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+      
+      .fade-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      
+      .fade-right {
+        opacity: 0;
+        transform: translateX(40px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+      
+      .fade-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      
+      /* Team Cards */
       .team-card {
         background: white;
         border-radius: 20px;
@@ -632,28 +475,6 @@
       .team-card:hover .team-card-img img {
         transform: scale(1.05);
       }
-      .team-card-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(44, 125, 160, 0.85);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        color: white;
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
-      .team-card:hover .team-card-overlay {
-        opacity: 1;
-      }
-      .team-card-overlay i {
-        font-size: 1.8rem;
-      }
       .team-card-content {
         padding: 1rem;
         text-align: center;
@@ -671,26 +492,233 @@
         font-size: 0.7rem;
         font-weight: 600;
       }
-      .role-badge.marketing {
-        background: #e3f2fd;
-        color: #1565c0;
+      .role-badge.marketing { background: #e3f2fd; color: #1565c0; }
+      .role-badge.finance { background: #e8f5e9; color: #2e7d32; }
+      .role-badge.dev { background: #f3e5f5; color: #7b1fa2; }
+      .role-badge.leader { background: #fff8e1; color: #f57c00; }
+      .role-badge.admin { background: #e0f7fa; color: #00838f; }
+      
+      .btn-glass {
+        background: #2c7da0;
+        color: white;
+        border-radius: 50px;
+        padding: 10px 24px;
+        font-weight: 700;
+        transition: 0.25s;
+        border: none;
+        letter-spacing: 0.3px;
+        font-size: 0.9rem;
+        position: relative;
+        overflow: hidden;
       }
-      .role-badge.finance {
-        background: #e8f5e9;
-        color: #2e7d32;
+      
+      .btn-glass:hover {
+        background: #1e5a77;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
       }
-      .role-badge.dev {
-        background: #f3e5f5;
-        color: #7b1fa2;
+      
+      .btn-glass::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.5s ease, height 0.5s ease;
       }
-      .role-badge.leader {
-        background: #fff8e1;
-        color: #f57c00;
+      
+      .btn-glass:active::after {
+        width: 200px;
+        height: 200px;
       }
-      .role-badge.admin {
-        background: #e0f7fa;
-        color: #00838f;
+      
+      .glass-card {
+        background: rgba(255,255,255,0.7);
+        backdrop-filter: blur(12px);
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       }
+      
+      .icon-circle {
+        width: 70px;
+        height: 70px;
+        background: #e6f3f8;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.2rem;
+        transition: 0.3s;
+      }
+      
+      .footer-glass {
+        background: #0a1a2a;
+        color: #cddfe7;
+      }
+      
+      .section-title {
+        font-size: clamp(1.6rem, 6vw, 2.5rem);
+        font-weight: 800;
+        color: #1a3c5e;
+        position: relative;
+        display: inline-block;
+      }
+      
+      .section-title:after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: #2c7da0;
+        border-radius: 4px;
+      }
+      
+      .navbar-glass {
+        background: rgba(10, 25, 47, 0.95);
+        backdrop-filter: blur(12px);
+        padding: 0.7rem 0;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        z-index: 1030;
+      }
+      
+      .navbar-glass.scrolled {
+        background: rgba(10, 25, 47, 0.98);
+        padding: 0.4rem 0;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      }
+      
+      .navbar-glass .navbar-brand {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: white;
+        letter-spacing: -0.5px;
+      }
+      
+      .navbar-glass .nav-link {
+        color: rgba(255, 255, 255, 0.85);
+        font-weight: 500;
+        margin: 0 0.3rem;
+        transition: 0.2s;
+        font-size: 0.95rem;
+      }
+      
+      .navbar-glass .nav-link:hover {
+        color: #5bc0ff;
+        transform: translateY(-2px);
+      }
+      
+      .product-card {
+        transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        position: relative;
+        overflow: hidden;
+        background: white;
+        border-radius: 24px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        height: 100%;
+      }
+      
+      .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 35px rgba(0, 0, 0, 0.12);
+      }
+      
+      .product-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.6s ease;
+        pointer-events: none;
+      }
+      
+      .product-card:hover::before {
+        left: 100%;
+      }
+      
+      .location-card {
+        background: white;
+        border-radius: 20px;
+        padding: 1.2rem;
+        transition: all 0.3s;
+        border: 1px solid #eef2f6;
+        height: 100%;
+      }
+      
+      .location-card:hover {
+        transform: translateY(-5px);
+        border-color: #2c7da0;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+      }
+      
+      .location-card i {
+        transition: all 0.3s ease;
+      }
+      
+      .location-card:hover i {
+        transform: scale(1.1);
+        color: #2c7da0;
+      }
+      
+      .stat-badge {
+        background: white;
+        border-radius: 20px;
+        padding: 1rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        height: 100%;
+      }
+      
+      .stat-badge:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      }
+      
+      .stat-number {
+        font-size: clamp(1.5rem, 5vw, 2.2rem);
+        font-weight: 800;
+        color: #2c7da0;
+        transition: all 0.3s ease;
+      }
+      
+      .btn-spinner {
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        border-top-color: transparent;
+        animation: btnSpin 0.6s linear infinite;
+        margin-right: 8px;
+      }
+      
+      @keyframes btnSpin {
+        to { transform: rotate(360deg); }
+      }
+      
+      .custom-input, .custom-textarea {
+        border-radius: 12px;
+        border: 1px solid #ddd;
+        padding: 12px;
+        transition: 0.3s;
+      }
+      .custom-input:focus, .custom-textarea:focus {
+        border-color: #2c7da0;
+        box-shadow: none;
+        outline: none;
+      }
+      
       .social-icons {
         display: flex;
         justify-content: center;
@@ -707,228 +735,234 @@
         justify-content: center;
         color: #2c7da0;
         font-size: 0.8rem;
+        text-decoration: none;
       }
       .social-icons a:hover {
         background: #2c7da0;
         color: white;
       }
-
-      .stat-card-mini {
-        background: white;
-        border-radius: 16px;
-        padding: 0.8rem;
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-      }
-      .stat-icon {
-        width: 45px;
-        height: 45px;
-        background: #e6f3f8;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
+      
+      .custom-tabs {
+        border-bottom: 2px solid #e0e6ed;
         justify-content: center;
-        font-size: 1.2rem;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .custom-tabs .nav-link {
+        border: none;
+        padding: 10px 24px;
+        border-radius: 50px;
+        font-weight: 600;
+        color: #1a3c5e;
+        background: white;
+        transition: all 0.3s;
+      }
+      .custom-tabs .nav-link:hover {
+        background: #e6f3f8;
         color: #2c7da0;
       }
-      .stat-number {
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: #1a3c5e;
-        display: block;
-        line-height: 1;
-      }
-      .stat-label {
-        font-size: 0.7rem;
-        color: #6c757d;
-      }
-
-      .chart-box {
-        background: white;
-        border-radius: 20px;
-        padding: 1.2rem;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-      }
-      .chart-box h5 {
-        font-size: 1rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
-        color: #1a3c5e;
-      }
-
-      .ranking-card {
-        background: white;
-        border-radius: 20px;
-        padding: 1.2rem;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        height: 100%;
-      }
-      .ranking-card h4 {
-        font-size: 1.1rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-        color: #1a3c5e;
-      }
-
-      .podium-ranking {
-        display: flex;
-        justify-content: space-around;
-        align-items: flex-end;
-        text-align: center;
-        padding: 0.5rem 0;
-      }
-      .podium-item-compact {
-        text-align: center;
-        flex: 1;
-      }
-      .podium-medal-compact {
-        font-size: 1.8rem;
-      }
-      .podium-name-compact {
-        font-weight: 700;
-        font-size: 0.8rem;
-        margin-top: 5px;
-      }
-      .podium-score-compact {
-        font-size: 1rem;
-        font-weight: 800;
-        color: #ffc107;
-      }
-
-      .compact-table th {
-        background: #1a3c5e;
+      .custom-tabs .nav-link.active {
+        background: linear-gradient(135deg, #2c7da0, #1e5f7a);
         color: white;
-        padding: 8px;
-        font-size: 0.75rem;
+        box-shadow: 0 4px 12px rgba(44, 125, 160, 0.3);
       }
-      .compact-table td {
-        padding: 8px;
-        font-size: 0.8rem;
-        vertical-align: middle;
+      
+      /* Slider Hero */
+      .slider-hero {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        min-height: 550px;
+        background: #0a192f;
+        overflow: hidden;
+        margin-top: 0;
       }
-
-      .activity-item-compact {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 10px 0;
-        border-bottom: 1px solid #eee;
-      }
-      .activity-badge {
-        width: 40px;
-        height: 40px;
-        background: #f0f4f8;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.2rem;
-      }
-
-      .puntualidad-circle {
-        width: 120px;
-        height: 120px;
-        margin: 0 auto;
-        background: conic-gradient(#4caf50 0deg, #e0e0e0 0deg);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .puntualidad-circle .percentage {
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: #1a3c5e;
-        background: white;
-        width: 90px;
-        height: 90px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .metrics-modal {
-        position: fixed;
+      
+      .slider-hero .item {
+        position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.7);
-        backdrop-filter: blur(5px);
-        z-index: 2000;
+        background-size: cover;
+        background-position: center 30%;
+        background-repeat: no-repeat;
+        opacity: 0;
+        transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        z-index: 1;
+      }
+      
+      .slider-hero .item.active {
+        opacity: 1;
+        z-index: 2;
+      }
+      
+      .slider-hero .item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.35) 100%);
+        z-index: 1;
+      }
+      
+      .slider-hero .content {
+        position: absolute;
+        bottom: 20%;
+        left: 5%;
+        right: 5%;
+        max-width: 600px;
+        z-index: 3;
+        color: white;
+        text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+        animation: fadeInUp 0.9s ease-out;
+      }
+      
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      
+      .slider-hero .name {
+        font-size: clamp(2rem, 7vw, 4rem);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin-bottom: 0.75rem;
+        text-transform: uppercase;
+        background: linear-gradient(135deg, #fff, #c0e0ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: none;
+      }
+      
+      .slider-hero .des {
+        font-size: clamp(0.85rem, 3.5vw, 1.2rem);
+        line-height: 1.4;
+        margin-bottom: 1.5rem;
+        font-weight: 400;
+        max-width: 500px;
+        color: rgba(255, 255, 255, 0.95);
+      }
+      
+      .slider-hero button {
+        background: linear-gradient(95deg, #2c7da0, #1e5f7a);
+        border: none;
+        padding: 10px 24px;
+        font-size: clamp(0.85rem, 3vw, 1rem);
+        font-weight: 600;
+        border-radius: 50px;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      
+      .slider-hero .nav-buttons {
+        position: absolute;
+        bottom: 6%;
+        right: 5%;
+        z-index: 20;
+        display: flex;
+        gap: 0.8rem;
+      }
+      
+      .slider-hero .nav-btn {
+        width: 44px;
+        height: 44px;
+        border-radius: 50px;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        color: white;
+        font-size: 1.3rem;
         display: flex;
         align-items: center;
         justify-content: center;
-      }
-      .metrics-modal-content {
-        background: white;
-        border-radius: 24px;
-        width: 90%;
-        max-width: 600px;
-        max-height: 85vh;
-        overflow-y: auto;
-      }
-      .metrics-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 1.5rem;
-        background: linear-gradient(135deg, #1a3c5e, #2c7da0);
-        color: white;
-        border-radius: 24px 24px 0 0;
-      }
-      .metrics-header h3 {
-        margin: 0;
-        font-size: 1.2rem;
-      }
-      .close-btn {
-        font-size: 1.8rem;
         cursor: pointer;
-        line-height: 1;
+        transition: all 0.25s ease;
       }
-      .close-btn:hover {
-        transform: scale(1.1);
-        color: #ffd700;
+      
+      .slider-hero .dots-container {
+        position: absolute;
+        bottom: 6%;
+        left: 5%;
+        z-index: 20;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
       }
-      .metrics-body {
-        padding: 1.5rem;
+      
+      .slider-hero .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: all 0.3s;
       }
-      .metric-item {
-        margin-bottom: 1rem;
-        padding: 0.8rem;
-        background: #f8fafc;
-        border-radius: 12px;
-        border-left: 3px solid #2c7da0;
+      
+      .slider-hero .dot.active {
+        width: 24px;
+        background: #2c7da0;
+        box-shadow: 0 0 8px #2c7da0;
       }
-      .metric-label {
-        font-weight: 700;
-        color: #1a3c5e;
-        font-size: 0.75rem;
-        text-transform: uppercase;
-      }
-      .metric-value {
-        font-size: 1.3rem;
-        font-weight: 800;
-        color: #2c7da0;
-      }
-
+      
       @media (max-width: 768px) {
-        .custom-tabs .nav-link {
-          padding: 6px 16px;
-          font-size: 0.8rem;
-        }
-        .chart-box canvas {
-          height: 200px !important;
-        }
+        .countdown-box { min-width: 60px; padding: 0.5rem; }
+        .countdown-number { font-size: 1.2rem; }
+        .floating-cta { bottom: 20px; right: 20px; }
+        .floating-cta .cta-button { width: 50px; height: 50px; font-size: 1.5rem; }
+        .comparison-slider { height: 250px; }
+        .spinner-spray { width: 90px; height: 90px; }
+        .spinner-spray i { font-size: 50px; }
       }
     </style>
   </head>
   <body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+      <div class="spinner-content">
+        <div class="spinner-spray">
+          <i class="fa-solid fa-spray-can"></i>
+          <i class="fa-solid fa-water"></i>
+          <i class="fa-solid fa-water"></i>
+          <i class="fa-regular fa-circle-dot"></i>
+        </div>
+        <div class="loader-text">Glass Pro</div>
+        <div class="loader-dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Floating CTA -->
+    <div class="floating-cta">
+      <div class="cta-button" onclick="document.getElementById('contacto').scrollIntoView({behavior: 'smooth'})">
+        <i class="fa-solid fa-cart-shopping"></i>
+      </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="customCursor"></div>
+
+    <!-- Particle Background -->
+    <canvas id="particles-bg"></canvas>
+
     <!-- ========== NAVBAR MODERNA ========== -->
-    <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-glass fixed-top" id="mainNavbar">
       <div class="container">
         <a class="navbar-brand" href="#">
           <i class="fa-solid fa-glasses"></i> Glass Pro
@@ -938,102 +972,60 @@
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarMain"
-          aria-controls="navbarMain"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon" style="filter: invert(1)"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarMain">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="#inicio">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#productos">Productos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#ubicaciones">Ubicaciones</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#quienes-somos">Nosotros</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#contacto">Contacto</a>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#ubicaciones">Ubicaciones</a></li>
+            <li class="nav-item"><a class="nav-link" href="#testimonios">Testimonios</a></li>
+            <li class="nav-item"><a class="nav-link" href="#equipo">Equipo</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
           </ul>
           <a href="#contacto" class="btn btn-outline-light">Comprar ahora</a>
         </div>
       </div>
     </nav>
 
-    <!-- ========== SLIDER REDISEÑADO (IMAGEN GRANDE, BOTONES CON ÍCONOS, TEXTO MEJOR) ========== -->
-    <div class="slider-hero" id="inicio">
-      <div class="container-slider">
-        <div class="slide-wrapper">
-          <div class="slide">
-            <div
-              class="item active"
-              style="background-image: url(./images/slide1.jpeg)"
-            >
-              <div class="content">
-                <div class="name">EXPLORA DONDE QUIERAS</div>
-                <div class="des">
-                  Claridad alpina, tecnología antempañante para tus aventuras
-                  extremas. Visión nítida siempre.
-                </div>
-                <button>
-                  <i class="fa-regular fa-eye"></i> Ver más
-                  <i class="fa-solid fa-arrow-right"></i>
-                </button>
-              </div>
-            </div>
-            <div
-              class="item"
-              style="background-image: url(./images/slide2.jpeg)"
-            >
-              <div class="content">
-                <div class="name">EN LA COMODIDAD DE TU HOGAR</div>
-                <div class="des">
-                  Cambios bruscos ya no empañarán tus lentes. Glass Pro.
-                </div>
-                <button>
-                  <i class="fa-regular fa-snowflake"></i> Descubrir
-                  <i class="fa-solid fa-arrow-right"></i>
-                </button>
-              </div>
-            </div>
-            <div
-              class="item"
-              style="background-image: url(./images/slide3.jpeg)"
-            >
-              <div class="content">
-                <div class="name">Siempre claro</div>
-                <div class="des">mantén tus gafas libres de molestias.</div>
-                <button>
-                  <i class="fa-solid fa-mountain"></i> Explorar
-                  <i class="fa-solid fa-arrow-right"></i>
-                </button>
-              </div>
-            </div>
-            <div
-              class="item"
-              style="background-image: url(./images/slide4.jpeg)"
-            >
-              <div class="content"></div>
-            </div>
-          </div>
+    <!-- Video Hero Section (Reemplaza el slider original como opción premium) -->
+<!-- Hero Section con Imagen de Fondo -->
+<div class="video-hero" id="inicio">
+  <div class="video-bg" style="background-image: url('./images/slide1.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
+  <div class="video-overlay"></div>
+  <div class="container" style="position: relative; z-index: 2; height: 100%; display: flex; align-items: center;">
+    <div class="row">
+      <div class="col-lg-8" data-aos="fade-up" data-aos-duration="1000">
+        <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill mb-3" style="background: rgba(91,192,255,0.2) !important; color: #5bc0ff !important;">
+          <i class="fa-solid fa-glasses me-1"></i> Innovación 2025
+        </span>
+        <h1 class="display-3 fw-bold text-white">Visión Perfecta<br>En Cualquier Momento</h1>
+        <p class="lead text-white-50 mt-3">Tecnología antempañante revolucionaria para lentes, gafas y visores.</p>
+        <div class="d-flex gap-3 mt-4">
+          <button class="btn-glass btn-lg px-4" onclick="document.getElementById('productos').scrollIntoView({behavior: 'smooth'})">
+            <i class="fa-solid fa-spray-can me-2"></i>Explorar Productos
+          </button>
+          <button class="btn btn-outline-light rounded-pill px-4">
+            <i class="fa-solid fa-play me-2"></i>Ver Demo
+          </button>
         </div>
-        <!-- Botones de navegación con íconos grandes y visibles -->
-        <div class="nav-buttons">
-          <div class="nav-btn prev-btn">
-            <i class="fa-solid fa-chevron-left"></i>
-          </div>
-          <div class="nav-btn next-btn">
-            <i class="fa-solid fa-chevron-right"></i>
-          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Countdown Timer Section -->
+    <div class="container py-5">
+      <div class="countdown-timer" data-aos="zoom-in">
+        <h3><i class="fa-regular fa-clock me-2"></i>Oferta Especial - Tiempo Limitado</h3>
+        <div class="mt-4">
+          <div class="countdown-box"><div class="countdown-number" id="days">00</div><div>Días</div></div>
+          <div class="countdown-box"><div class="countdown-number" id="hours">00</div><div>Horas</div></div>
+          <div class="countdown-box"><div class="countdown-number" id="minutes">00</div><div>Minutos</div></div>
+          <div class="countdown-box"><div class="countdown-number" id="seconds">00</div><div>Segundos</div></div>
         </div>
-        <div class="dots-container" id="dotsContainer"></div>
+        <p class="mt-3 mb-0">30% de descuento + Envío gratis</p>
       </div>
     </div>
 
@@ -1041,46 +1033,41 @@
     <div class="glasspro-sections">
       <div class="container pt-5 pb-4" id="productos">
         <div class="row align-items-center g-4">
-          <div class="col-lg-7">
+          <div class="col-lg-7" data-aos="fade-right">
             <span
               class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill mb-3"
               style="background: #e3f0f5 !important; color: #1e5a77 !important"
             >
-              <i class="fa-solid fa-glasses me-1"></i> Glass Pro · Innovación
-              óptica
+              <i class="fa-solid fa-glasses me-1"></i> Glass Pro · Innovación óptica
             </span>
             <h1 class="display-4 fw-bold" style="color: #1a3c5e">
               Adiós a los lentes empañados
             </h1>
             <p class="lead text-secondary mt-3">
-              Buscamos crear soluciones efectivas para mantener tu visión clara
-              en cualquier situación.
+              Buscamos crear soluciones efectivas para mantener tu visión clara en cualquier situación.
             </p>
             <div class="d-flex gap-3 mt-4 flex-wrap">
               <button class="btn-glass btn-lg px-4">
                 <i class="fa-solid fa-spray-can me-2"></i>Comprar Spray
               </button>
-              <button
-                class="btn btn-outline-secondary rounded-pill px-4"
-                style="border-color: #2c7da0; color: #2c7da0"
-              >
+              <button class="btn btn-outline-secondary rounded-pill px-4" style="border-color: #2c7da0; color: #2c7da0">
                 <i class="fa-solid fa-wipes me-2"></i>Toallitas Sport
               </button>
             </div>
           </div>
-          <div class="col-lg-5">
+          <div class="col-lg-5" data-aos="fade-left">
             <div class="bg-white p-4 rounded-4 shadow-sm">
               <div class="row text-center">
                 <div class="col-6 border-end">
-                  <div class="stat-number">80.6%</div>
+                  <div class="stat-number" data-target="80.6">0%</div>
                   <small>usan lentes a diario</small>
                 </div>
                 <div class="col-6">
-                  <div class="stat-number">81.4%</div>
+                  <div class="stat-number" data-target="81.4">0%</div>
                   <small>consideran necesario el producto</small>
                 </div>
                 <div class="col-12 mt-3">
-                  <div class="stat-number">77.8%</div>
+                  <div class="stat-number" data-target="77.8">0%</div>
                   <small>conoce a varias personas con el problema</small>
                 </div>
               </div>
@@ -1089,116 +1076,184 @@
         </div>
       </div>
 
+      <!-- Productos Estrella con Neumorphism -->
       <div class="container py-4">
-        <div class="text-center mb-5">
+        <div class="text-center mb-5" data-aos="fade-up">
           <h2 class="section-title">Nuestros productos estrella</h2>
-          <p class="text-secondary mt-3">
-            Diseñados para tu comodidad, rapidez y seguridad
-          </p>
+          <p class="text-secondary mt-3">Diseñados para tu comodidad, rapidez y seguridad</p>
         </div>
         <div class="row g-4">
-          <div class="col-md-6">
-            <div class="product-card p-4">
-              <div class="icon-circle">
-                <i
-                  class="fa-solid fa-spray-can-sparkles fa-2x"
-                  style="color: #2c7da0"
-                ></i>
+          <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-duration="1000">
+            <div class="neumorph-card p-4 text-center product-3d">
+              <div class="icon-circle mx-auto">
+                <i class="fa-solid fa-spray-can-sparkles fa-2x" style="color: #2c7da0"></i>
               </div>
-              <h3 class="h3 fw-bold">Spray Anti-empañe PRO</h3>
-              <p class="text-secondary">
-                Fórmula de secado instantáneo, efecto duradero hasta 48h.
-              </p>
-              <div class="d-flex gap-2 mb-3 flex-wrap">
-                <span class="badge bg-light text-dark border"
-                  ><i class="fa-regular fa-clock"></i> Secado 5s</span
-                ><span class="badge bg-light text-dark border"
-                  ><i class="fa-regular fa-eye"></i> Visión HD</span
-                >
-              </div>
-              <div class="d-flex justify-content-between align-items-center">
-                <span class="fs-3 fw-bold">$3.99</span
-                ><button class="btn-glass">
-                  Comprar <i class="fa-solid fa-arrow-right"></i>
-                </button>
+              <h3 class="h4 mt-3">Spray Anti-empañe PRO</h3>
+              <p class="text-muted small">Fórmula premium de secado instantáneo</p>
+              <div class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <span class="fs-3 fw-bold">$3.99</span>
+                <button class="btn-glass">Comprar <i class="fa-solid fa-arrow-right"></i></button>
               </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="product-card p-4">
-              <div class="icon-circle" style="background: #e8f3e8">
-                <i
-                  class="fa-solid fa-person-walking-arrow-right fa-2x"
-                  style="color: #2d6a4f"
-                ></i>
+          <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="200">
+            <div class="neumorph-card p-4 text-center product-3d">
+              <div class="icon-circle mx-auto" style="background: #e8f3e8">
+                <i class="fa-solid fa-wipes fa-2x" style="color: #2d6a4f"></i>
               </div>
-              <h3 class="h3 fw-bold">Toallitas Mini Action</h3>
-              <p class="text-secondary">
-                Pack 10 toallitas individuales, ideales para deporte, gym o
-                viajes.
-              </p>
-              <div class="d-flex gap-2 mb-3">
-                <span class="badge bg-light text-dark border"
-                  ><i class="fa-solid fa-person-running"></i> Antisudor</span
-                ><span class="badge bg-light text-dark border"
-                  ><i class="fa-regular fa-snowflake"></i> Frío/Calor</span
-                >
+              <h3 class="h4 mt-3">Toallitas Mini Action</h3>
+              <p class="text-muted small">Pack 10 toallitas individuales</p>
+              <div class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star-half-stroke"></i></div>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <span class="fs-3 fw-bold">$4.49</span>
+                <button class="btn-glass">Comprar <i class="fa-solid fa-arrow-right"></i></button>
               </div>
-              <div class="d-flex justify-content-between align-items-center">
-                <span class="fs-3 fw-bold">$4.49</span
-                ><button class="btn-glass">
-                  Lo quiero <i class="fa-solid fa-bag-shopping"></i>
-                </button>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="400">
+            <div class="neumorph-card p-4 text-center product-3d">
+              <div class="icon-circle mx-auto" style="background: #fff3e0">
+                <i class="fa-solid fa-kit-medical fa-2x" style="color: #e65100"></i>
+              </div>
+              <h3 class="h4 mt-3">Kit Profesional</h3>
+              <p class="text-muted small">Spray + 20 toallitas + Microfibra</p>
+              <div class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <span class="fs-3 fw-bold">$12.99</span>
+                <button class="btn-glass">Comprar <i class="fa-solid fa-arrow-right"></i></button>
               </div>
             </div>
           </div>
         </div>
       </div>
 
+      <!-- Estadísticas -->
       <div class="container py-4">
         <div class="row g-4">
-          <div class="col-md-6">
+          <div class="col-md-6" data-aos="fade-up">
             <div class="stat-badge">
               <i class="fa-regular fa-face-smile fa-2x"></i>
-              <div class="stat-number mt-2">72%</div>
+              <div class="stat-number mt-2" data-target="72">0%</div>
               <p>Se empañan por lluvia o clima</p>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="stat-badge">
               <i class="fa-regular fa-clock fa-2x"></i>
-              <div class="stat-number mt-2">40.7%</div>
+              <div class="stat-number mt-2" data-target="40.7">0%</div>
               <p>Lo vive como algo estresante</p>
             </div>
           </div>
         </div>
       </div>
 
+      <!-- Comparison Slider Section -->
+      <div class="container py-5">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <h2 class="section-title">Antes y Después</h2>
+          <p>Vea la diferencia con Glass Pro</p>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-8" data-aos="zoom-in">
+            <div class="comparison-slider" id="comparisonSlider">
+              <img src="./images/blur.jpg" class="comparison-img" alt="Antes">
+              <div class="comparison-overlay" style="width: 50%">
+                <img src="./images/nonblur.jpg" class="comparison-img" alt="Después" style="width: 200%; height: 100%; object-fit: cover; position: absolute; left: 0;">
+              </div>
+              <div class="slider-handle" id="sliderHandle">
+                <i class="fa-solid fa-arrows-left-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonials Section -->
+      <div class="container py-5" id="testimonios">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
+          <p>+10,000 clientes satisfechos</p>
+        </div>
+        <div class="swiper testimonial-swiper" data-aos="fade-up">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="testimonial-card text-center">
+                <div class="testimonial-avatar"><i class="fa-solid fa-user"></i></div>
+                <h5>María González</h5>
+                <div class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p>"Increíble producto, mis lentes ya no se empañan cuando uso mascarilla. 100% recomendado."</p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="testimonial-card text-center">
+                <div class="testimonial-avatar"><i class="fa-solid fa-user"></i></div>
+                <h5>Carlos Rodríguez</h5>
+                <div class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p>"Perfecto para mis entrenamientos. Las toallitas son prácticas y efectivas."</p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="testimonial-card text-center">
+                <div class="testimonial-avatar"><i class="fa-solid fa-user"></i></div>
+                <h5>Ana Martínez</h5>
+                <div class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+                <p>"El spray dura muchísimo, lo aplico cada 2 días y mis gafas se mantienen perfectas."</p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="testimonial-card text-center">
+                <div class="testimonial-avatar"><i class="fa-solid fa-user"></i></div>
+                <h5>Laura Pérez</h5>
+                <div class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p>"Solución definitiva para el empañamiento. Me cambió la vida."</p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+
+      <!-- Newsletter Section -->
+      <div class="newsletter-section py-5 my-5">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6" data-aos="fade-right">
+              <h3 class="text-white">Suscríbete y obtén 15% de descuento</h3>
+              <p class="text-white-50">Recibe ofertas exclusivas y novedades directo a tu correo</p>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+              <div class="input-group">
+                <input type="email" class="form-control form-control-lg" placeholder="Tu correo electrónico" style="border-radius: 50px 0 0 50px;">
+                <button class="btn-glass px-4" style="border-radius: 0 50px 50px 0;">Suscribirme</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ubicaciones y Mapa -->
       <div class="container py-5" id="ubicaciones">
-        <div class="text-center mb-5">
+        <div class="text-center mb-5" data-aos="fade-up">
           <h2 class="section-title">¿Dónde encontrarnos?</h2>
           <p>Canales disponibles en Santa Ana, El Salvador</p>
         </div>
         <div class="row g-4">
-          <div class="col-md-4">
+          <div class="col-md-4" data-aos="fade-up">
             <div class="location-card text-center">
               <i class="fa-solid fa-store fa-3x"></i>
               <h4 class="mt-3">Supermercados</h4>
-              <p class="text-muted small mt-2">
-                Super Selectos, Walmart, Despensa Familiar
-              </p>
+              <p class="text-muted small mt-2">Super Selectos, Walmart, Despensa Familiar</p>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="150">
             <div class="location-card text-center">
               <i class="fa-solid fa-capsules fa-3x"></i>
               <h4 class="mt-3">Farmacias</h4>
-              <p class="text-muted small mt-2">
-                Farmacias Simán, San Nicolás, Santa Lucía
-              </p>
+              <p class="text-muted small mt-2">Farmacias Simán, San Nicolás, Santa Lucía</p>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
             <div class="location-card text-center">
               <i class="fa-solid fa-laptop fa-3x"></i>
               <h4 class="mt-3">Tienda en línea</h4>
@@ -1207,29 +1262,14 @@
           </div>
         </div>
 
-        <!-- Mapa Leaflet -->
         <div class="row mt-5">
-          <div class="col-12">
+          <div class="col-12" data-aos="zoom-in">
             <div class="location-card p-3">
-              <h4 class="text-center mb-3">
-                <i class="fa-solid fa-map-location-dot me-2"></i>Nuestros puntos
-                en Santa Ana
-              </h4>
-              <div
-                id="map"
-                style="
-                  height: 450px;
-                  width: 100%;
-                  border-radius: 20px;
-                  overflow: hidden;
-                  z-index: 1;
-                "
-              ></div>
+              <h4 class="text-center mb-3"><i class="fa-solid fa-map-location-dot me-2"></i>Nuestros puntos en Santa Ana</h4>
+              <div id="map" style="height: 450px; width: 100%; border-radius: 20px; overflow: hidden; z-index: 1;"></div>
               <p class="text-muted small text-center mt-3">
-                <i class="fa-solid fa-location-dot text-danger me-1"></i>
-                Supermercados (rojo) |
-                <i class="fa-solid fa-location-dot text-success me-1"></i>
-                Farmacias (verde) |
+                <i class="fa-solid fa-location-dot text-danger me-1"></i> Supermercados |
+                <i class="fa-solid fa-location-dot text-success me-1"></i> Farmacias |
                 <i class="fa-solid fa-glasses text-primary me-1"></i> Glass Pro
               </p>
             </div>
@@ -1237,1038 +1277,277 @@
         </div>
       </div>
 
-      <!-- Leaflet CSS y JS -->
+      <!-- Team Section -->
+      <div class="container py-5" id="equipo">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <h2 class="section-title">Nuestro Equipo Glass Pro</h2>
+          <p class="text-secondary mt-2">Conoce a los colaboradores</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-lg-3 col-md-6" data-aos="flip-up">
+            <div class="team-card">
+              <div class="team-card-img"><img src="./images/enrique.jpeg" alt="Enrique" style="height: 260px; object-fit: cover;"></div>
+              <div class="team-card-content"><h4>Enrique Lucha</h4><span class="role-badge marketing">Marketing</span></div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6" data-aos="flip-up" data-aos-delay="100">
+            <div class="team-card">
+              <div class="team-card-img"><img src="./images/WhatsApp Image 2026-05-01 at 1.32.57 PM.jpeg" alt="Kenia" style="height: 260px; object-fit: cover;"></div>
+              <div class="team-card-content"><h4>Kenia García</h4><span class="role-badge finance">Contadora</span></div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6" data-aos="flip-up" data-aos-delay="200">
+            <div class="team-card">
+              <div class="team-card-img"><img src="./images/jonathan.png" alt="Jonathan" style="height: 260px; object-fit: cover;"></div>
+              <div class="team-card-content"><h4>Jonathan López</h4><span class="role-badge dev">Developer</span></div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6" data-aos="flip-up" data-aos-delay="300">
+            <div class="team-card leader">
+              <div class="team-card-img"><img src="./images/alejandro.jpeg" alt="Alejandro" style="height: 260px; object-fit: cover;"></div>
+              <div class="team-card-content"><h4>Alejandro Ramos <i class="fa-solid fa-crown" style="color: #ffc107;"></i></h4><span class="role-badge leader">Team Leader</span></div>
+            </div>
+          </div>
+                    <div class="col-lg-3 col-md-6" data-aos="flip-up">
+            <div class="team-card">
+              <div class="team-card-img"><img src="./images/carlos.jpeg" alt="Enrique" style="height: 260px; object-fit: cover;"></div>
+              <div class="team-card-content"><h4>Carlos Sandoval</h4><span class="role-badge marketing">Administrador</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-      <script>
-        // Inicializar el mapa centrado en Santa Ana, El Salvador
-        var map = L.map("map").setView([13.9945, -89.5567], 14);
-
-        // Cargar tiles (OpenStreetMap estándar)
-        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-          attribution:
-            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-          maxZoom: 19,
-        }).addTo(map);
-
-        // SUPERMERCADOS en Santa Ana (coordenadas reales)
-        var supermercados = [
-          {
-            name: "Super Selectos - Centro",
-            lat: 13.9951,
-            lon: -89.5572,
-            address: "2a Calle Poniente, Santa Ana",
-          },
-          {
-            name: "Super Selectos - Colonia Santa Lucía",
-            lat: 13.9866,
-            lon: -89.5633,
-            address: "Boulevard Los Libertadores",
-          },
-          {
-            name: "Walmart Santa Ana",
-            lat: 13.9832,
-            lon: -89.5489,
-            address: "Carretera a Metapán, Santa Ana",
-          },
-          {
-            name: "Despensa Familiar - Metrocentro",
-            lat: 13.9918,
-            lon: -89.5635,
-            address: "Metrocentro Santa Ana",
-          },
-        ];
-
-        // FARMACIAS en Santa Ana (coordenadas reales)
-        var farmacias = [
-          {
-            name: "Farmacias Simán",
-            lat: 13.9941,
-            lon: -89.5558,
-            address: "1a Calle Poniente, Santa Ana",
-          },
-          {
-            name: "Farmacia San Nicolás",
-            lat: 13.9962,
-            lon: -89.5593,
-            address: "3a Calle Oriente, Santa Ana",
-          },
-          {
-            name: "Farmacia Santa Lucía",
-            lat: 13.9882,
-            lon: -89.5611,
-            address: "Boulevard Los Libertadores",
-          },
-          {
-            name: "Farmacia La Bomba",
-            lat: 13.9806,
-            lon: -89.5558,
-            address: "Final 10a Avenida Sur",
-          },
-          {
-            name: "Farmacias San Francisco",
-            lat: 13.9926,
-            lon: -89.5503,
-            address: "Colonia San Francisco",
-          },
-        ];
-
-        // Icono rojo para supermercados (usando icono estándar de Leaflet)
-        var redIcon = L.icon({
-          iconUrl:
-            "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-          shadowUrl:
-            "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-          iconSize: [25, 41],
-          iconAnchor: [12, 41],
-          popupAnchor: [1, -34],
-          shadowSize: [41, 41],
-        });
-
-        // Icono verde personalizado usando canvas (más compatible)
-        var greenIcon = L.divIcon({
-          className: "custom-green-marker",
-          html: '<div style="background-color: #2e7d32; width: 22px; height: 22px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.3);"></div>',
-          iconSize: [28, 28],
-          popupAnchor: [0, -14],
-        });
-
-        // Icono azul para Glass Pro
-        var blueIcon = L.divIcon({
-          className: "custom-blue-marker",
-          html: '<div style="background-color: #2c7da0; width: 22px; height: 22px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.3);"></div>',
-          iconSize: [28, 28],
-          popupAnchor: [0, -14],
-        });
-
-        // Agregar marcadores de supermercados (rojo)
-        supermercados.forEach(function (store) {
-          var marker = L.marker([store.lat, store.lon], {
-            icon: redIcon,
-          }).addTo(map);
-          marker.bindPopup(`
-            <b>🏪 ${store.name}</b><br>
-            📍 ${store.address}<br>
-            <small>🎯 Supermercado - Encuentra Glass Pro</small>
-        `);
-        });
-
-        // Agregar marcadores de farmacias (verde)
-        farmacias.forEach(function (pharmacy) {
-          var marker = L.marker([pharmacy.lat, pharmacy.lon], {
-            icon: greenIcon,
-          }).addTo(map);
-          marker.bindPopup(`
-            <b>💊 ${pharmacy.name}</b><br>
-            📍 ${pharmacy.address}<br>
-            <small>🎯 Farmacia - Producto antiempañante disponible</small>
-        `);
-        });
-
-        // Agregar marcador central de Glass Pro
-        var centerMarker = L.marker([13.9945, -89.5567], {
-          icon: blueIcon,
-        }).addTo(map);
-        centerMarker.bindPopup(`
-        <b>👓 Glass Pro Santa Ana</b><br>
-        📍 Centro de distribución oficial<br>
-        📍 Parque Libertad, Santa Ana<br>
-        <small>🚚 Envíos a toda la ciudad</small>
-    `);
-
-        // Ajustar el mapa para mostrar todos los marcadores
-        var bounds = L.latLngBounds([]);
-        supermercados.forEach(function (store) {
-          bounds.extend([store.lat, store.lon]);
-        });
-        farmacias.forEach(function (pharmacy) {
-          bounds.extend([pharmacy.lat, pharmacy.lon]);
-        });
-        bounds.extend([13.9945, -89.5567]);
-        map.fitBounds(bounds);
-      </script>
-
-      <style>
-        .location-card {
-          transition: transform 0.3s ease;
-          background: white;
-          border-radius: 24px;
-          padding: 1.8rem;
-          border: 1px solid #eef2f6;
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        .location-card:hover {
-          transform: translateY(-5px);
-          border-color: #2c7da0;
-          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
-        }
-        .custom-green-marker,
-        .custom-blue-marker {
-          background: transparent;
-          border: none;
-        }
-        .leaflet-popup-content {
-          font-family: "Inter", sans-serif;
-          min-width: 200px;
-        }
-        .leaflet-popup-content b {
-          color: #1a3c5e;
-        }
-      </style>
-
+      <!-- Contact Section -->
       <div class="container py-5" id="contacto">
         <div class="row g-4">
-          <div class="col-lg-5">
-            <div class="bg-white p-4 rounded-4">
+          <div class="col-lg-5" data-aos="fade-right">
+            <div class="glass-card p-4 h-100">
               <i class="fa-regular fa-message fa-2x"></i>
               <h3 class="mt-3">Contáctanos</h3>
+              <p class="text-muted">¿Tienes dudas o quieres cotizar? Escríbenos.</p>
               <ul class="list-unstyled mt-3">
-                <li>
-                  <i class="fa-regular fa-envelope me-2"></i> hola@glasspro.com
-                </li>
-                <li>
-                  <i class="fa-brands fa-whatsapp me-2"></i> +503 2131-0000
-                </li>
+                <li><i class="fa-regular fa-envelope me-2"></i> hola@glasspro.com</li>
+                <li><i class="fa-brands fa-whatsapp me-2"></i> +503 2131-0000</li>
               </ul>
-              <div class="mt-3">
-                <a href="#" class="social-icon"
-                  ><i class="fa-brands fa-instagram"></i></a
-                ><a href="#" class="social-icon"
-                  ><i class="fa-brands fa-facebook-f"></i></a
-                ><a href="#" class="social-icon"
-                  ><i class="fa-brands fa-tiktok"></i
-                ></a>
+              <div class="mt-4 d-flex gap-3">
+                <i class="fa-brands fa-instagram fs-4"></i>
+                <i class="fa-brands fa-facebook fs-4"></i>
+                <i class="fa-brands fa-tiktok fs-4"></i>
               </div>
             </div>
           </div>
-          <div class="col-lg-7">
-            <div class="bg-white p-4 rounded-4">
-              <h4>Envíanos un mensaje</h4>
-              <form>
+          <div class="col-lg-7" data-aos="fade-left">
+            <div class="glass-card p-4 h-100">
+              <h4 class="mb-3">Envíanos un mensaje</h4>
+              <form id="contact-form">
                 <div class="row g-3">
-                  <div class="col-md-6">
-                    <input
-                      type="text"
-                      class="form-control rounded-pill"
-                      placeholder="Nombre"
-                    />
-                  </div>
-                  <div class="col-md-6">
-                    <input
-                      type="email"
-                      class="form-control rounded-pill"
-                      placeholder="Email"
-                    />
-                  </div>
-                  <div class="col-12">
-                    <textarea
-                      rows="3"
-                      class="form-control rounded-4"
-                      placeholder="Mensaje"
-                    ></textarea>
-                  </div>
-                  <div class="col-12">
-                    <button class="btn-glass px-4">
-                      Enviar <i class="fa-regular fa-paper-plane"></i>
-                    </button>
-                  </div>
+                  <div class="col-md-6"><input type="text" name="user_name" class="form-control custom-input" placeholder="Nombre" required></div>
+                  <div class="col-md-6"><input type="email" name="user_email" class="form-control custom-input" placeholder="Email" required></div>
+                  <div class="col-12"><textarea name="message" rows="4" class="form-control custom-textarea" placeholder="Mensaje" required></textarea></div>
+                  <div class="col-12"><button id="btnEnviar" type="submit" class="btn-glass w-100">Enviar mensaje</button></div>
+                  <div class="col-12"><p id="statusMsg" class="text-center mt-2"></p></div>
                 </div>
               </form>
             </div>
           </div>
         </div>
       </div>
-
-      <section
-        class="space"
-        id="team-metrics-section"
-        style="
-          background: linear-gradient(135deg, #f0f4f8 0%, #ffffff 100%);
-          padding: 60px 0;
-        "
-      >
-        <div class="container">
-          <!-- Encabezado principal -->
-          <div class="text-center mb-5">
-            <div class="title">
-              <h2 style="font-size: 2.5rem; font-weight: 800; color: #1a3c5e">
-                <i class="fa-solid fa-users me-3" style="color: #2c7da0"></i>
-                Nuestro Equipo Glass Pro
-              </h2>
-              <p class="text-secondary mt-2">
-                Conoce a los integrantes y el rendimiento del equipo
-              </p>
-            </div>
-          </div>
-
-          <!-- Sistema de pestañas principal -->
-          <ul class="nav nav-tabs custom-tabs mb-4" id="teamTab" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link active"
-                id="team-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#teamMembers"
-                type="button"
-                role="tab"
-              >
-                <i class="fa-solid fa-users me-2"></i> Integrantes
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link"
-                id="metrics-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#teamMetrics"
-                type="button"
-                role="tab"
-              >
-                <i class="fa-solid fa-chart-line me-2"></i> Métricas del Equipo
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link"
-                id="ranking-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#teamRanking"
-                type="button"
-                role="tab"
-              >
-                <i class="fa-solid fa-trophy me-2"></i> Ranking y Logros
-              </button>
-            </li>
-          </ul>
-
-          <!-- Contenido de pestañas -->
-          <div class="tab-content">
-            <!-- PESTAÑA 1: INTEGRANTES -->
-            <div
-              class="tab-pane fade show active"
-              id="teamMembers"
-              role="tabpanel"
-            >
-              <div class="row g-4">
-                <div class="col-lg-4 col-xl-3 col-md-6">
-                  <div
-                    class="team-card"
-                    onclick="showIndividualMetrics('enrique')"
-                  >
-                    <div class="team-card-img">
-                      <img
-                        src="./images/enrique.jpeg"
-                        alt="Enrique Lucha"
-                        style="height: 450px"
-                      />
-                      <div class="team-card-overlay">
-                        <i class="fa-solid fa-chart-simple"></i>
-                        <span>Ver métricas</span>
-                      </div>
-                    </div>
-                    <div class="team-card-content">
-                      <h4>Enrique Lucha</h4>
-                      <span class="role-badge marketing">Marketing</span>
-                      <div
-                        class="social-icons"
-                        onclick="event.stopPropagation()"
-                      >
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4 col-xl-3 col-md-6">
-                  <div
-                    class="team-card"
-                    onclick="showIndividualMetrics('kenia')"
-                  >
-                    <div class="team-card-img">
-                      <img
-                        src="./images/WhatsApp Image 2026-05-01 at 1.32.57 PM.jpeg"
-                        alt="Kenia García"
-                      />
-                      <div class="team-card-overlay">
-                        <i class="fa-solid fa-chart-simple"></i>
-                        <span>Ver métricas</span>
-                      </div>
-                    </div>
-                    <div class="team-card-content">
-                      <h4>Kenia García</h4>
-                      <span class="role-badge finance">Contadora</span>
-                      <div
-                        class="social-icons"
-                        onclick="event.stopPropagation()"
-                      >
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4 col-xl-3 col-md-6">
-                  <div
-                    class="team-card"
-                    onclick="showIndividualMetrics('jonathan')"
-                  >
-                    <div class="team-card-img">
-                      <img src="./images/jonathan.png" alt="Jonathan López" />
-                      <div class="team-card-overlay">
-                        <i class="fa-solid fa-chart-simple"></i>
-                        <span>Ver métricas</span>
-                      </div>
-                    </div>
-                    <div class="team-card-content">
-                      <h4>Jonathan López</h4>
-                      <span class="role-badge dev">Developer</span>
-                      <div
-                        class="social-icons"
-                        onclick="event.stopPropagation()"
-                      >
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4 col-xl-3 col-md-6">
-                  <div
-                    class="team-card leader"
-                    onclick="showIndividualMetrics('alejandro')"
-                  >
-                    <div class="team-card-img">
-                      <img
-                        src="./images/alejandro.jpeg"
-                        alt="Alejandro Ramos"
-                      />
-                      <div class="team-card-overlay">
-                        <i class="fa-solid fa-chart-simple"></i>
-                        <span>Ver métricas</span>
-                      </div>
-                    </div>
-                    <div class="team-card-content">
-                      <h4>
-                        Alejandro Ramos
-                        <i
-                          class="fa-solid fa-crown"
-                          style="color: #ffc107; font-size: 0.9rem"
-                        ></i>
-                      </h4>
-                      <span class="role-badge leader">Team Leader</span>
-                      <div
-                        class="social-icons"
-                        onclick="event.stopPropagation()"
-                      >
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4 col-xl-3 col-md-6">
-                  <div
-                    class="team-card"
-                    onclick="showIndividualMetrics('carlos')"
-                  >
-                    <div class="team-card-img">
-                      <img src="./images/carlos.jpeg" alt="Carlos Sandoval" />
-                      <div class="team-card-overlay">
-                        <i class="fa-solid fa-chart-simple"></i>
-                        <span>Ver métricas</span>
-                      </div>
-                    </div>
-                    <div class="team-card-content">
-                      <h4>Carlos Sandoval</h4>
-                      <span class="role-badge admin">Administrador</span>
-                      <div
-                        class="social-icons"
-                        onclick="event.stopPropagation()"
-                      >
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- PESTAÑA 2: MÉTRICAS DEL EQUIPO -->
-            <div class="tab-pane fade" id="teamMetrics" role="tabpanel">
-              <div class="row g-4 mb-4">
-                <div class="col-md-3 col-sm-6">
-                  <div class="stat-card-mini">
-                    <div class="stat-icon">
-                      <i class="fa-solid fa-users"></i>
-                    </div>
-                    <div class="stat-info">
-                      <span class="stat-number" id="statIntegrantes">5</span
-                      ><span class="stat-label">Integrantes</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="stat-card-mini">
-                    <div class="stat-icon">
-                      <i class="fa-regular fa-calendar-check"></i>
-                    </div>
-                    <div class="stat-info">
-                      <span class="stat-number" id="statAsistencias">10</span
-                      ><span class="stat-label">Asistencias</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="stat-card-mini">
-                    <div class="stat-icon">
-                      <i class="fa-regular fa-clock"></i>
-                    </div>
-                    <div class="stat-info">
-                      <span class="stat-number" id="statTardanza">31</span
-                      ><span class="stat-label">Minutos tarde</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="stat-card-mini">
-                    <div class="stat-icon">
-                      <i class="fa-solid fa-trophy"></i>
-                    </div>
-                    <div class="stat-info">
-                      <span class="stat-number" id="statPuntos">10</span
-                      ><span class="stat-label">Puntos totales</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Gráficos en grid con tamaño controlado -->
-              <div class="row g-4">
-                <div class="col-md-6">
-                  <div class="chart-box">
-                    <h5>
-                      <i
-                        class="fa-solid fa-chart-simple me-2"
-                        style="color: #2c7da0"
-                      ></i>
-                      Asistencia por Integrante
-                    </h5>
-                    <canvas
-                      id="asistenciaChartCompact"
-                      style="height: 250px; width: 100%"
-                    ></canvas>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="chart-box">
-                    <h5>
-                      <i
-                        class="fa-solid fa-hourglass-half me-2"
-                        style="color: #ff9800"
-                      ></i>
-                      Minutos Tarde por Integrante
-                    </h5>
-                    <canvas
-                      id="tardanzaChartCompact"
-                      style="height: 250px; width: 100%"
-                    ></canvas>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="chart-box">
-                    <h5>
-                      <i
-                        class="fa-solid fa-chart-line me-2"
-                        style="color: #6c5ce7"
-                      ></i>
-                      Evolución Semanal de Tardanzas
-                    </h5>
-                    <canvas
-                      id="evolucionChartCompact"
-                      style="height: 250px; width: 100%"
-                    ></canvas>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- PESTAÑA 3: RANKING Y LOGROS -->
-            <div class="tab-pane fade" id="teamRanking" role="tabpanel">
-              <div class="row g-4">
-                <div class="col-lg-5">
-                  <div class="ranking-card">
-                    <h4>
-                      <i class="fa-solid fa-podium me-2"></i> Top 3 del Equipo
-                    </h4>
-                    <div class="podium-ranking" id="podiumCompact"></div>
-                  </div>
-                </div>
-                <div class="col-lg-7">
-                  <div class="ranking-card">
-                    <h4>
-                      <i class="fa-solid fa-table-list me-2"></i> Tabla de
-                      Rendimiento
-                    </h4>
-                    <div class="table-responsive">
-                      <table class="table compact-table">
-                        <thead>
-                          <tr>
-                            <th>#</th>
-                            <th>Integrante</th>
-                            <th>Rol</th>
-                            <th>Asist.</th>
-                            <th>Tardanza</th>
-                            <th>Pts</th>
-                          </tr>
-                        </thead>
-                        <tbody id="compactRankingBody"></tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="ranking-card">
-                    <h4>
-                      <i class="fa-solid fa-list-check me-2"></i> Actividades
-                      Realizadas
-                    </h4>
-                    <div class="activity-item-compact">
-                      <div class="activity-badge winner">🥇</div>
-                      <div>
-                        <strong>Storytime</strong><br /><small
-                          >1er Lugar - 10 puntos</small
-                        >
-                      </div>
-                    </div>
-                    <div class="activity-item-compact">
-                      <div class="activity-badge pending">⏳</div>
-                      <div>
-                        <strong>Buyer Person</strong><br /><small
-                          >Sin puntaje - Pendiente</small
-                        >
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="ranking-card">
-                    <h4>
-                      <i class="fa-solid fa-stopwatch me-2"></i> Puntualidad del
-                      Equipo
-                    </h4>
-                    <div class="puntualidad-circle" id="puntualidadCircle">
-                      <span class="percentage" id="puntualidadPorcentaje"
-                        >0%</span
-                      >
-                    </div>
-                    <p class="text-center mt-2 text-muted">
-                      Integrantes sin minutos de tardanza
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Modal para métricas individuales -->
-      <div
-        id="individualMetricsModal"
-        class="metrics-modal"
-        style="display: none"
-      >
-        <div class="metrics-modal-content">
-          <div class="metrics-header">
-            <h3 id="modalName">
-              <i class="fa-solid fa-chart-simple me-2"></i>Métricas del
-              Integrante
-            </h3>
-            <span class="close-btn" onclick="closeIndividualMetrics()"
-              >&times;</span
-            >
-          </div>
-          <div class="metrics-body" id="individualMetricsBody"></div>
-        </div>
-      </div>
-
-      <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
-      <script>
-        // Datos de métricas individuales
-        const individualMetrics = {
-          enrique: {
-            name: "José Enrique Chávez Lucha",
-            role: "Marketing",
-            projectRole: "Estrategia digital y promoción",
-            semanas: 2,
-            tardanza: 0,
-            puntaje: 10,
-            actividades: "Storytime (1er lugar - 10 pts)",
-            asistencia: [
-              { semana: 1, fecha: "18-abr", hora: "12:40", tarde: 0 },
-              { semana: 2, fecha: "25-abr", hora: "12:40", tarde: 0 },
-            ],
-          },
-          kenia: {
-            name: "Kenia Marisol García García",
-            role: "Contadora",
-            projectRole: "Gestión financiera",
-            semanas: 2,
-            tardanza: 18,
-            puntaje: 0,
-            actividades: "Sin puntajes",
-            asistencia: [
-              { semana: 1, fecha: "18-abr", hora: "13:04", tarde: 4 },
-              { semana: 2, fecha: "25-abr", hora: "13:14", tarde: 14 },
-            ],
-          },
-          jonathan: {
-            name: "Jonathan Eduardo López Sánchez",
-            role: "Developer",
-            projectRole: "Desarrollo web",
-            semanas: 2,
-            tardanza: 0,
-            puntaje: 10,
-            actividades: "Storytime (10 pts)",
-            asistencia: [
-              { semana: 1, fecha: "18-abr", hora: "12:50", tarde: 0 },
-              { semana: 2, fecha: "25-abr", hora: "12:50", tarde: 0 },
-            ],
-          },
-          alejandro: {
-            name: "Luis Alejandro Ramos Ochoa",
-            role: "Team Leader",
-            projectRole: "Liderazgo y coordinación",
-            semanas: 2,
-            tardanza: 0,
-            puntaje: 10,
-            actividades: "Storytime (10 pts)",
-            asistencia: [
-              { semana: 1, fecha: "18-abr", hora: "12:50", tarde: 0 },
-              { semana: 2, fecha: "25-abr", hora: "13:00", tarde: 0 },
-            ],
-          },
-          carlos: {
-            name: "Carlos Armando Sandoval Medina",
-            role: "Administrador",
-            projectRole: "Gestión administrativa",
-            semanas: 2,
-            tardanza: 13,
-            puntaje: 0,
-            actividades: "Sin puntajes",
-            asistencia: [
-              { semana: 1, fecha: "18-abr", hora: "13:10", tarde: 10 },
-              { semana: 2, fecha: "25-abr", hora: "13:03", tarde: 3 },
-            ],
-          },
-        };
-
-        let currentIndividualChart = null;
-
-        function showIndividualMetrics(memberId) {
-          const m = individualMetrics[memberId];
-          if (!m) return;
-          const modal = document.getElementById("individualMetricsModal");
-          document.getElementById("modalName").innerHTML =
-            `<i class="fa-solid fa-user-astronaut me-2"></i>${m.name}`;
-          const body = document.getElementById("individualMetricsBody");
-          body.innerHTML = `
-            <div class="row g-2">
-                <div class="col-6"><div class="metric-item"><div class="metric-label">Rol</div><div class="metric-value fs-6">${m.role}</div><small>${m.projectRole}</small></div></div>
-                <div class="col-6"><div class="metric-item"><div class="metric-label">Semanas Asistidas</div><div class="metric-value">${m.semanas}/3</div></div></div>
-                <div class="col-6"><div class="metric-item"><div class="metric-label">Minutos Tarde</div><div class="metric-value ${m.tardanza > 0 ? "text-warning" : "text-success"}">${m.tardanza} min</div></div></div>
-                <div class="col-6"><div class="metric-item"><div class="metric-label">Puntaje</div><div class="metric-value">${m.puntaje} pts</div><small>${m.actividades}</small></div></div>
-                <div class="col-12"><div class="metric-item"><div class="metric-label">Detalle Asistencia</div><table class="table table-sm mt-2"><thead><tr><th>Semana</th><th>Fecha</th><th>Hora</th><th>Tardanza</th></tr></thead><tbody>${m.asistencia.map((a) => `<tr class="${a.tarde > 0 ? "table-warning" : ""}"><td>${a.semana}</td><td>${a.fecha}</td><td>${a.hora}</td><td>${a.tarde > 0 ? a.tarde + " min" : "✓ A tiempo"}</td></tr>`).join("")}<tr class="table-secondary"><td colspan="4" class="text-center">Semana 3 - Por registrar</td></tr></tbody></table></div></div>
-                <div class="col-12"><div class="metric-item"><canvas id="individualRendimientoChart" style="height: 180px;"></canvas></div></div>
-            </div>
-        `;
-          modal.style.display = "flex";
-          setTimeout(() => {
-            const ctx = document.getElementById("individualRendimientoChart");
-            if (ctx) {
-              if (currentIndividualChart) currentIndividualChart.destroy();
-              currentIndividualChart = new Chart(ctx, {
-                type: "bar",
-                data: {
-                  labels: ["Semana 1", "Semana 2", "Semana 3"],
-                  datasets: [
-                    {
-                      label: "Minutos tarde",
-                      data: [
-                        m.asistencia[0]?.tarde || 0,
-                        m.asistencia[1]?.tarde || 0,
-                        0,
-                      ],
-                      backgroundColor: ["#ff6b6b", "#ff6b6b", "#4caf50"],
-                      borderRadius: 6,
-                    },
-                  ],
-                },
-                options: {
-                  responsive: true,
-                  maintainAspectRatio: true,
-                  plugins: { legend: { position: "top" } },
-                },
-              });
-            }
-          }, 50);
-        }
-
-        function closeIndividualMetrics() {
-          document.getElementById("individualMetricsModal").style.display =
-            "none";
-          if (currentIndividualChart) {
-            currentIndividualChart.destroy();
-            currentIndividualChart = null;
-          }
-        }
-        window.onclick = function (e) {
-          if (e.target === document.getElementById("individualMetricsModal"))
-            closeIndividualMetrics();
-        };
-
-        // Datos del equipo
-        const teamData = [
-          {
-            name: "José Enrique Chávez",
-            role: "Marketing",
-            asistencias: 2,
-            minutosTarde: 0,
-            puntaje: 10,
-          },
-          {
-            name: "Jonathan López",
-            role: "Developer",
-            asistencias: 2,
-            minutosTarde: 0,
-            puntaje: 10,
-          },
-          {
-            name: "Alejandro Ramos",
-            role: "Team Leader",
-            asistencias: 2,
-            minutosTarde: 0,
-            puntaje: 10,
-          },
-          {
-            name: "Kenia García",
-            role: "Contadora",
-            asistencias: 2,
-            minutosTarde: 18,
-            puntaje: 0,
-          },
-          {
-            name: "Carlos Sandoval",
-            role: "Administrador",
-            asistencias: 2,
-            minutosTarde: 13,
-            puntaje: 0,
-          },
-        ];
-        const sorted = [...teamData].sort((a, b) => b.puntaje - a.puntaje);
-
-        document.getElementById("compactRankingBody").innerHTML = sorted
-          .map(
-            (m, i) =>
-              `<tr><td>${i + 1}</td><td><strong>${m.name}</strong></td><td>${m.role}</td><td>${m.asistencias}/3</td><td class="${m.minutosTarde > 0 ? "text-warning" : "text-success"}">${m.minutosTarde} min</td><td class="fw-bold" style="color:#2c7da0">${m.puntaje}</td></tr>`,
-          )
-          .join("");
-
-        document.getElementById("podiumCompact").innerHTML = sorted
-          .slice(0, 3)
-          .map(
-            (m, i) =>
-              `<div class="podium-item-compact"><div class="podium-medal-compact">${i === 0 ? "🥇" : i === 1 ? "🥈" : "🥉"}</div><div class="podium-name-compact">${m.name}</div><div class="podium-score-compact">${m.puntaje} pts</div></div>`,
-          )
-          .join("");
-
-        const puntuales = teamData.filter((m) => m.minutosTarde === 0).length;
-        const porcentaje = (puntuales / teamData.length) * 100;
-        document.getElementById("puntualidadPorcentaje").innerText =
-          `${Math.round(porcentaje)}%`;
-        document.querySelector("#puntualidadCircle").style.background =
-          `conic-gradient(#4caf50 ${porcentaje * 3.6}deg, #e0e0e0 0deg)`;
-
-        document.getElementById("statIntegrantes").innerText = teamData.length;
-        document.getElementById("statAsistencias").innerText = teamData.reduce(
-          (s, m) => s + m.asistencias,
-          0,
-        );
-        document.getElementById("statTardanza").innerText = teamData.reduce(
-          (s, m) => s + m.minutosTarde,
-          0,
-        );
-        document.getElementById("statPuntos").innerText = teamData.reduce(
-          (s, m) => s + m.puntaje,
-          0,
-        );
-
-        new Chart(document.getElementById("asistenciaChartCompact"), {
-          type: "bar",
-          data: {
-            labels: teamData.map((m) => m.name.split(" ")[0]),
-            datasets: [
-              {
-                label: "Semanas asistidas",
-                data: teamData.map((m) => m.asistencias),
-                backgroundColor: "#2c7da0",
-                borderRadius: 6,
-              },
-            ],
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: true,
-            scales: { y: { beginAtZero: true, max: 3 } },
-            plugins: { legend: { position: "top" } },
-          },
-        });
-        new Chart(document.getElementById("tardanzaChartCompact"), {
-          type: "bar",
-          data: {
-            labels: teamData.map((m) => m.name.split(" ")[0]),
-            datasets: [
-              {
-                label: "Minutos tarde",
-                data: teamData.map((m) => m.minutosTarde),
-                backgroundColor: "#ff9800",
-                borderRadius: 6,
-              },
-            ],
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: true,
-            scales: { y: { beginAtZero: true } },
-          },
-        });
-        new Chart(document.getElementById("evolucionChartCompact"), {
-          type: "line",
-          data: {
-            labels: ["Semana 1", "Semana 2", "Semana 3"],
-            datasets: [
-              {
-                label: "Minutos tarde equipo",
-                data: [14, 31, 31],
-                borderColor: "#6c5ce7",
-                backgroundColor: "rgba(108,92,231,0.1)",
-                fill: true,
-                tension: 0.3,
-              },
-            ],
-          },
-          options: { responsive: true, maintainAspectRatio: true },
-        });
-      </script>
     </div>
 
     <footer class="footer-glass pt-5 pb-4">
       <div class="container">
         <div class="row">
-          <div class="col-md-4">
-            <h5><i class="fa-solid fa-glasses"></i> Glass Pro</h5>
-            <p class="small">Soluciones antiempañantes para todos.</p>
-          </div>
-          <div class="col-md-2">
-            <h6>Productos</h6>
-            <ul class="list-unstyled small">
-              <li>Spray PRO</li>
-              <li>Toallitas Action</li>
-            </ul>
-          </div>
-          <div class="col-md-3">
-            <h6>Ubicaciones</h6>
-            <ul class="list-unstyled small">
-              <li>Supermercados</li>
-              <li>Farmacias</li>
-            </ul>
-          </div>
-          <div class="col-md-3">
-            <h6>Soporte</h6>
-            <ul class="list-unstyled small">
-              <li>Políticas</li>
-            </ul>
-          </div>
+          <div class="col-md-4"><h5><i class="fa-solid fa-glasses"></i> Glass Pro</h5><p class="small">Soluciones antiempañantes para todos.</p></div>
+          <div class="col-md-2"><h6>Productos</h6><ul class="list-unstyled small"><li>Spray PRO</li><li>Toallitas Action</li><li>Kit Profesional</li></ul></div>
+          <div class="col-md-3"><h6>Ubicaciones</h6><ul class="list-unstyled small"><li>Supermercados</li><li>Farmacias</li><li>Tienda Online</li></ul></div>
+          <div class="col-md-3"><h6>Soporte</h6><ul class="list-unstyled small"><li>Políticas de garantía</li><li>Términos y condiciones</li></ul></div>
         </div>
-        <hr />
-        <div class="text-center small">
-          &copy; 2025 Glass Pro - Claridad en movimiento
-        </div>
+        <hr /><div class="text-center small">&copy; 2025 Glass Pro - Claridad en movimiento</div>
       </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
     <script>
-      // SLIDER MANUAL CON BOTONES DE FLECHA, ÍCONOS VISIBLES, Y DOTS
-      const items = document.querySelectorAll(".slider-hero .item");
-      const prevBtn = document.querySelector(".prev-btn");
-      const nextBtn = document.querySelector(".next-btn");
-      const dotsContainer = document.getElementById("dotsContainer");
-      let currentIndex = 0;
-      const totalItems = items.length;
-
-      function updateSlider(index) {
-        items.forEach((item, i) => {
-          item.classList.toggle("active", i === index);
-        });
-        // actualizar dots
-        document.querySelectorAll(".dot").forEach((dot, i) => {
-          dot.classList.toggle("active", i === index);
-        });
-      }
-
-      function nextSlide() {
-        currentIndex = (currentIndex + 1) % totalItems;
-        updateSlider(currentIndex);
-      }
-
-      function prevSlide() {
-        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-        updateSlider(currentIndex);
-      }
-
-      // Crear dots
-      items.forEach((_, idx) => {
-        const dot = document.createElement("div");
-        dot.classList.add("dot");
-        if (idx === currentIndex) dot.classList.add("active");
-        dot.addEventListener("click", () => {
-          currentIndex = idx;
-          updateSlider(currentIndex);
-        });
-        dotsContainer.appendChild(dot);
+      // Initialize AOS
+      AOS.init({ duration: 800, once: true });
+      
+      // Hide loader
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          document.getElementById('pageLoader').classList.add('hidden');
+        }, 1000);
       });
 
-      nextBtn.addEventListener("click", nextSlide);
-      prevBtn.addEventListener("click", prevSlide);
-
-      // Auto slide opcional cada 6 segundos (pero no interfiere)
-      let autoInterval = setInterval(nextSlide, 6000);
-      const sliderContainer = document.querySelector(".slider-hero");
-      sliderContainer.addEventListener("mouseenter", () =>
-        clearInterval(autoInterval),
-      );
-      sliderContainer.addEventListener("mouseleave", () => {
-        autoInterval = setInterval(nextSlide, 6000);
+      // Progress bar
+      window.addEventListener('scroll', () => {
+        const winScroll = document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById('progressBar').style.width = scrolled + '%';
       });
-
-      // Cerrar el intervalo cuando se destruye (navegación segura)
-      window.addEventListener("beforeunload", () =>
-        clearInterval(autoInterval),
-      );
+      
+      // Custom cursor
+      const cursor = document.getElementById('customCursor');
+      document.addEventListener('mousemove', e => {
+        cursor.style.left = e.clientX - 10 + 'px';
+        cursor.style.top = e.clientY - 10 + 'px';
+      });
+      document.addEventListener('mouseover', e => {
+        if (e.target.closest('button, a, .team-card, .neumorph-card')) cursor.classList.add('active');
+        else cursor.classList.remove('active');
+      });
+      
+      // Countdown timer
+      function updateCountdown() {
+        const target = new Date();
+        target.setDate(target.getDate() + 3);
+        target.setHours(23, 59, 59);
+        const now = new Date();
+        const diff = target - now;
+        if (diff <= 0) return;
+        document.getElementById('days').innerHTML = Math.floor(diff / (1000 * 60 * 60 * 24));
+        document.getElementById('hours').innerHTML = Math.floor((diff % (86400000)) / 3600000);
+        document.getElementById('minutes').innerHTML = Math.floor((diff % 3600000) / 60000);
+        document.getElementById('seconds').innerHTML = Math.floor((diff % 60000) / 1000);
+      }
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+      
+      // Comparison slider
+      const slider = document.getElementById('sliderHandle');
+      const overlay = document.querySelector('.comparison-overlay');
+      if (slider && overlay) {
+        let isDragging = false;
+        slider.addEventListener('mousedown', () => isDragging = true);
+        window.addEventListener('mouseup', () => isDragging = false);
+        window.addEventListener('mousemove', (e) => {
+          if (!isDragging) return;
+          const rect = document.querySelector('.comparison-slider').getBoundingClientRect();
+          let x = (e.clientX - rect.left) / rect.width;
+          x = Math.max(0, Math.min(1, x));
+          overlay.style.width = (x * 100) + '%';
+          slider.style.left = (x * 100) + '%';
+        });
+      }
+      
+      // Swiper testimonials
+      new Swiper('.testimonial-swiper', {
+        loop: true,
+        autoplay: { delay: 3000, disableOnInteraction: false },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        slidesPerView: 1,
+        breakpoints: { 768: { slidesPerView: 2 }, 992: { slidesPerView: 3 } }
+      });
+      
+      // Particle background
+      const canvas = document.getElementById('particles-bg');
+      if (canvas) {
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        let particles = [];
+        for (let i = 0; i < 50; i++) {
+          particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: Math.random() * 2 + 1, alpha: Math.random() });
+        }
+        function drawParticles() {
+          if (!ctx) return;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          particles.forEach(p => {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(91, 192, 255, ${p.alpha * 0.3})`;
+            ctx.fill();
+          });
+          requestAnimationFrame(drawParticles);
+        }
+        drawParticles();
+        window.addEventListener('resize', () => {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        });
+      }
+      
+      // Animated counter
+      function animateNumbers() {
+        const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+        statNumbers.forEach(el => {
+          const target = parseFloat(el.getAttribute('data-target'));
+          if (!el.hasAttribute('data-animated')) {
+            el.setAttribute('data-animated', 'true');
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+              current += increment;
+              if (current >= target) {
+                el.innerText = target + '%';
+                clearInterval(timer);
+              } else {
+                el.innerText = Math.floor(current) + '%';
+              }
+            }, 20);
+          }
+        });
+      }
+      
+      const observerOptions = { threshold: 0.3 };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateNumbers();
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      
+      document.querySelectorAll('.stat-number[data-target]').forEach(el => {
+        observer.observe(el.closest('.bg-white, .stat-badge') || el);
+      });
+      
+      // EmailJS
+      emailjs.init("paf7FPTk7vuhToyxX");
+      const form = document.getElementById("contact-form");
+      const btn = document.getElementById("btnEnviar");
+      const status = document.getElementById("statusMsg");
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          btn.disabled = true;
+          btn.innerHTML = '<span class="btn-spinner"></span> Enviando...';
+          emailjs.sendForm("service_xru296e", "template_k43eadc", form)
+            .then(() => { status.style.color = "green"; status.innerHTML = "Mensaje enviado correctamente ✅"; form.reset(); })
+            .catch(() => { status.style.color = "red"; status.innerHTML = "Error al enviar el mensaje ❌"; })
+            .finally(() => { btn.disabled = false; btn.innerHTML = "Enviar mensaje"; });
+        });
+      }
+      
+      // Map
+      const mapElement = document.getElementById('map');
+      if (mapElement) {
+        const map = L.map('map').setView([13.9943, -89.5572], 13);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { 
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>',
+          subdomains: 'abcd',
+          maxZoom: 19
+        }).addTo(map);
+        
+        L.marker([13.987, -89.556]).addTo(map).bindPopup('<b>Super Selectos</b><br>Centro Santa Ana');
+        L.marker([13.995, -89.558]).addTo(map).bindPopup('<b>Walmart</b><br>Santa Ana');
+        L.marker([13.990, -89.560]).addTo(map).bindPopup('<b>Farmacia Simán</b><br>Santa Ana');
+        L.marker([13.9943, -89.5572]).addTo(map).bindPopup('<b>Glass Pro</b><br>Oficina Central').openPopup();
+      }
+      
+      // Navbar scroll effect
+      window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('mainNavbar');
+        if (window.scrollY > 50) navbar.classList.add('scrolled');
+        else navbar.classList.remove('scrolled');
+      });
     </script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
-    ></script>
   </body>
 </html>
