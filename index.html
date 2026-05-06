@@ -24,7 +24,10 @@
     <!-- AOS Library para animaciones avanzadas -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <!-- Swiper JS para carruseles modernos -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -40,7 +43,7 @@
 
     <style>
       /* ========== ANIMACIONES Y MEJORAS PREMIUM ========== */
-      
+
       /* Custom Cursor */
       .custom-cursor {
         width: 20px;
@@ -53,12 +56,12 @@
         transition: transform 0.1s ease;
         backdrop-filter: blur(4px);
       }
-      
+
       .custom-cursor.active {
         transform: scale(1.5);
         background: rgba(44, 125, 160, 0.5);
       }
-      
+
       /* Particle Background */
       #particles-bg {
         position: fixed;
@@ -70,14 +73,14 @@
         pointer-events: none;
         opacity: 0.4;
       }
-      
+
       /* Video Background Section */
       .video-hero {
         position: relative;
         height: 100vh;
         overflow: hidden;
       }
-      
+
       .video-bg {
         position: absolute;
         top: 0;
@@ -87,56 +90,66 @@
         object-fit: cover;
         z-index: 0;
       }
-      
+
       .video-overlay {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, rgba(10,25,47,0.85), rgba(0,0,0,0.7));
+        background: linear-gradient(
+          135deg,
+          rgba(10, 25, 47, 0.85),
+          rgba(0, 0, 0, 0.7)
+        );
         z-index: 1;
       }
-      
+
       /* 3D Card Effect */
       .card-3d {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
         transform-style: preserve-3d;
       }
-      
+
       .card-3d:hover {
         transform: translateY(-10px) rotateX(5deg);
-        box-shadow: 0 25px 40px rgba(0,0,0,0.2);
+        box-shadow: 0 25px 40px rgba(0, 0, 0, 0.2);
       }
-      
+
       /* Neumorphism Cards */
       .neumorph-card {
         background: #e0e5ec;
         border-radius: 30px;
-        box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255,0.5);
+        box-shadow:
+          9px 9px 16px rgb(163, 177, 198, 0.6),
+          -9px -9px 16px rgba(255, 255, 255, 0.5);
         transition: all 0.3s ease;
       }
-      
+
       .neumorph-card:hover {
-        box-shadow: 5px 5px 10px rgb(163,177,198,0.8), -5px -5px 10px rgba(255,255,255,0.6);
+        box-shadow:
+          5px 5px 10px rgb(163, 177, 198, 0.8),
+          -5px -5px 10px rgba(255, 255, 255, 0.6);
         transform: scale(1.02);
       }
-      
+
       /* Testimonials Carousel */
       .testimonial-card {
         background: white;
         border-radius: 20px;
         padding: 2rem;
         margin: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         transition: all 0.4s ease;
       }
-      
+
       .testimonial-card:hover {
         transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
       }
-      
+
       .testimonial-avatar {
         width: 70px;
         height: 70px;
@@ -147,17 +160,17 @@
         justify-content: center;
         margin: 0 auto 1rem;
       }
-      
+
       .testimonial-avatar i {
         font-size: 2rem;
         color: white;
       }
-      
+
       .rating-stars {
         color: #ffc107;
         margin: 1rem 0;
       }
-      
+
       /* CTA Flotante */
       .floating-cta {
         position: fixed;
@@ -166,12 +179,17 @@
         z-index: 1000;
         animation: pulse 2s infinite;
       }
-      
+
       @keyframes pulse {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.1); }
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
       }
-      
+
       .floating-cta .cta-button {
         width: 60px;
         height: 60px;
@@ -182,16 +200,16 @@
         align-items: center;
         justify-content: center;
         font-size: 1.8rem;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         transition: all 0.3s ease;
         cursor: pointer;
       }
-      
+
       .floating-cta .cta-button:hover {
         transform: scale(1.15);
-        box-shadow: 0 15px 35px rgba(44,125,160,0.4);
+        box-shadow: 0 15px 35px rgba(44, 125, 160, 0.4);
       }
-      
+
       /* Progress Bar */
       .progress-container {
         position: fixed;
@@ -202,14 +220,14 @@
         background: transparent;
         z-index: 10000;
       }
-      
+
       .progress-bar {
         height: 3px;
         background: linear-gradient(90deg, #2c7da0, #5bc0ff);
         width: 0%;
         transition: width 0.1s linear;
       }
-      
+
       /* Countdown Timer */
       .countdown-timer {
         background: linear-gradient(135deg, #1a3c5e, #2c7da0);
@@ -218,21 +236,21 @@
         text-align: center;
         color: white;
       }
-      
+
       .countdown-box {
         display: inline-block;
-        background: rgba(255,255,255,0.2);
+        background: rgba(255, 255, 255, 0.2);
         padding: 1rem;
         border-radius: 15px;
         margin: 0 0.5rem;
         min-width: 80px;
       }
-      
+
       .countdown-number {
         font-size: 2rem;
         font-weight: 800;
       }
-      
+
       /* Comparison Slider */
       .comparison-slider {
         position: relative;
@@ -241,13 +259,13 @@
         overflow: hidden;
         border-radius: 20px;
       }
-      
+
       .comparison-img {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
-      
+
       .comparison-overlay {
         position: absolute;
         top: 0;
@@ -256,7 +274,7 @@
         height: 100%;
         overflow: hidden;
       }
-      
+
       .slider-handle {
         position: absolute;
         top: 50%;
@@ -268,35 +286,43 @@
         border-radius: 50%;
         cursor: ew-resize;
         z-index: 10;
-        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         display: flex;
         align-items: center;
         justify-content: center;
       }
-      
+
       /* Newsletter Section */
       .newsletter-section {
         background: linear-gradient(135deg, #0a192f, #1a3c5e);
         position: relative;
         overflow: hidden;
       }
-      
+
       .newsletter-section::before {
-        content: '';
+        content: "";
         position: absolute;
         top: -50%;
         left: -50%;
         width: 200%;
         height: 200%;
-        background: radial-gradient(circle, rgba(91,192,255,0.1) 0%, transparent 70%);
+        background: radial-gradient(
+          circle,
+          rgba(91, 192, 255, 0.1) 0%,
+          transparent 70%
+        );
         animation: rotate 20s linear infinite;
       }
-      
+
       @keyframes rotate {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
       }
-      
+
       /* Spinner de carga */
       .page-loader {
         position: fixed;
@@ -309,26 +335,28 @@
         justify-content: center;
         align-items: center;
         z-index: 9999;
-        transition: opacity 0.5s ease, visibility 0.5s ease;
+        transition:
+          opacity 0.5s ease,
+          visibility 0.5s ease;
       }
-      
+
       .page-loader.hidden {
         opacity: 0;
         visibility: hidden;
       }
-      
+
       .spinner-content {
         text-align: center;
         animation: fadeInScale 0.6s ease-out;
       }
-      
+
       .spinner-spray {
         position: relative;
         width: 120px;
         height: 120px;
         margin: 0 auto 25px;
       }
-      
+
       .spinner-spray i {
         font-size: 70px;
         color: #5bc0ff;
@@ -338,51 +366,78 @@
         transform: translate(-50%, -50%);
         animation: sprayFloat 1.2s ease-in-out infinite;
       }
-      
+
       .spinner-spray .fa-spray-can {
         animation: sprayRotate 1.5s ease-in-out infinite;
       }
-      
+
       .spinner-spray .fa-water {
         font-size: 30px;
         opacity: 0;
         animation: sprayParticles 0.8s ease-in-out infinite;
       }
-      
+
       .spinner-spray .fa-water:nth-child(2) {
         top: 60%;
         left: 70%;
         animation-delay: 0.2s;
       }
-      
+
       .spinner-spray .fa-water:nth-child(3) {
         top: 55%;
         left: 80%;
         animation-delay: 0.4s;
       }
-      
+
       @keyframes sprayFloat {
-        0%, 100% { transform: translate(-50%, -50%) translateY(0); }
-        50% { transform: translate(-50%, -50%) translateY(-10px); }
+        0%,
+        100% {
+          transform: translate(-50%, -50%) translateY(0);
+        }
+        50% {
+          transform: translate(-50%, -50%) translateY(-10px);
+        }
       }
-      
+
       @keyframes sprayRotate {
-        0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
-        25% { transform: translate(-50%, -50%) rotate(-15deg); }
-        75% { transform: translate(-50%, -50%) rotate(15deg); }
+        0%,
+        100% {
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+        25% {
+          transform: translate(-50%, -50%) rotate(-15deg);
+        }
+        75% {
+          transform: translate(-50%, -50%) rotate(15deg);
+        }
       }
-      
+
       @keyframes sprayParticles {
-        0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-        50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
-        100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8) translateX(20px); }
+        0% {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(0.5);
+        }
+        50% {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1.2);
+        }
+        100% {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(0.8) translateX(20px);
+        }
       }
-      
+
       @keyframes fadeInScale {
-        from { opacity: 0; transform: scale(0.9); }
-        to { opacity: 1; transform: scale(1); }
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
       }
-      
+
       .loader-text {
         color: white;
         font-size: 1.2rem;
@@ -390,14 +445,14 @@
         letter-spacing: 2px;
         margin-top: 20px;
       }
-      
+
       .loader-dots {
         display: flex;
         justify-content: center;
         gap: 8px;
         margin-top: 15px;
       }
-      
+
       .loader-dots span {
         width: 8px;
         height: 8px;
@@ -405,49 +460,67 @@
         border-radius: 50%;
         animation: loaderDot 1.4s ease-in-out infinite;
       }
-      
-      .loader-dots span:nth-child(2) { animation-delay: 0.2s; }
-      .loader-dots span:nth-child(3) { animation-delay: 0.4s; }
-      
-      @keyframes loaderDot {
-        0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
-        40% { transform: scale(1.2); opacity: 1; }
+
+      .loader-dots span:nth-child(2) {
+        animation-delay: 0.2s;
       }
-      
+      .loader-dots span:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+
+      @keyframes loaderDot {
+        0%,
+        80%,
+        100% {
+          transform: scale(0.6);
+          opacity: 0.4;
+        }
+        40% {
+          transform: scale(1.2);
+          opacity: 1;
+        }
+      }
+
       /* Animaciones de entrada */
       .fade-up {
         opacity: 0;
         transform: translateY(40px);
-        transition: opacity 0.8s ease, transform 0.8s ease;
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
       }
-      
+
       .fade-up.visible {
         opacity: 1;
         transform: translateY(0);
       }
-      
+
       .fade-left {
         opacity: 0;
         transform: translateX(-40px);
-        transition: opacity 0.8s ease, transform 0.8s ease;
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
       }
-      
+
       .fade-left.visible {
         opacity: 1;
         transform: translateX(0);
       }
-      
+
       .fade-right {
         opacity: 0;
         transform: translateX(40px);
-        transition: opacity 0.8s ease, transform 0.8s ease;
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
       }
-      
+
       .fade-right.visible {
         opacity: 1;
         transform: translateX(0);
       }
-      
+
       /* Team Cards */
       .team-card {
         background: white;
@@ -492,12 +565,27 @@
         font-size: 0.7rem;
         font-weight: 600;
       }
-      .role-badge.marketing { background: #e3f2fd; color: #1565c0; }
-      .role-badge.finance { background: #e8f5e9; color: #2e7d32; }
-      .role-badge.dev { background: #f3e5f5; color: #7b1fa2; }
-      .role-badge.leader { background: #fff8e1; color: #f57c00; }
-      .role-badge.admin { background: #e0f7fa; color: #00838f; }
-      
+      .role-badge.marketing {
+        background: #e3f2fd;
+        color: #1565c0;
+      }
+      .role-badge.finance {
+        background: #e8f5e9;
+        color: #2e7d32;
+      }
+      .role-badge.dev {
+        background: #f3e5f5;
+        color: #7b1fa2;
+      }
+      .role-badge.leader {
+        background: #fff8e1;
+        color: #f57c00;
+      }
+      .role-badge.admin {
+        background: #e0f7fa;
+        color: #00838f;
+      }
+
       .btn-glass {
         background: #2c7da0;
         color: white;
@@ -511,38 +599,40 @@
         position: relative;
         overflow: hidden;
       }
-      
+
       .btn-glass:hover {
         background: #1e5a77;
         transform: translateY(-2px);
         box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
       }
-      
+
       .btn-glass::after {
-        content: '';
+        content: "";
         position: absolute;
         top: 50%;
         left: 50%;
         width: 0;
         height: 0;
         border-radius: 50%;
-        background: rgba(255,255,255,0.3);
+        background: rgba(255, 255, 255, 0.3);
         transform: translate(-50%, -50%);
-        transition: width 0.5s ease, height 0.5s ease;
+        transition:
+          width 0.5s ease,
+          height 0.5s ease;
       }
-      
+
       .btn-glass:active::after {
         width: 200px;
         height: 200px;
       }
-      
+
       .glass-card {
-        background: rgba(255,255,255,0.7);
+        background: rgba(255, 255, 255, 0.7);
         backdrop-filter: blur(12px);
         border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       }
-      
+
       .icon-circle {
         width: 70px;
         height: 70px;
@@ -554,12 +644,12 @@
         margin-bottom: 1.2rem;
         transition: 0.3s;
       }
-      
+
       .footer-glass {
         background: #0a1a2a;
         color: #cddfe7;
       }
-      
+
       .section-title {
         font-size: clamp(1.6rem, 6vw, 2.5rem);
         font-weight: 800;
@@ -567,7 +657,7 @@
         position: relative;
         display: inline-block;
       }
-      
+
       .section-title:after {
         content: "";
         position: absolute;
@@ -578,7 +668,7 @@
         background: #2c7da0;
         border-radius: 4px;
       }
-      
+
       .navbar-glass {
         background: rgba(10, 25, 47, 0.95);
         backdrop-filter: blur(12px);
@@ -587,20 +677,20 @@
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         z-index: 1030;
       }
-      
+
       .navbar-glass.scrolled {
         background: rgba(10, 25, 47, 0.98);
         padding: 0.4rem 0;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
       }
-      
+
       .navbar-glass .navbar-brand {
         font-size: 1.5rem;
         font-weight: 800;
         color: white;
         letter-spacing: -0.5px;
       }
-      
+
       .navbar-glass .nav-link {
         color: rgba(255, 255, 255, 0.85);
         font-weight: 500;
@@ -608,12 +698,12 @@
         transition: 0.2s;
         font-size: 0.95rem;
       }
-      
+
       .navbar-glass .nav-link:hover {
         color: #5bc0ff;
         transform: translateY(-2px);
       }
-      
+
       .product-card {
         transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         position: relative;
@@ -624,28 +714,33 @@
         border: 1px solid rgba(0, 0, 0, 0.04);
         height: 100%;
       }
-      
+
       .product-card:hover {
         transform: translateY(-8px);
         box-shadow: 0 20px 35px rgba(0, 0, 0, 0.12);
       }
-      
+
       .product-card::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         left: -100%;
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
         transition: left 0.6s ease;
         pointer-events: none;
       }
-      
+
       .product-card:hover::before {
         left: 100%;
       }
-      
+
       .location-card {
         background: white;
         border-radius: 20px;
@@ -654,22 +749,22 @@
         border: 1px solid #eef2f6;
         height: 100%;
       }
-      
+
       .location-card:hover {
         transform: translateY(-5px);
         border-color: #2c7da0;
         box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
       }
-      
+
       .location-card i {
         transition: all 0.3s ease;
       }
-      
+
       .location-card:hover i {
         transform: scale(1.1);
         color: #2c7da0;
       }
-      
+
       .stat-badge {
         background: white;
         border-radius: 20px;
@@ -679,19 +774,19 @@
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         height: 100%;
       }
-      
+
       .stat-badge:hover {
         transform: translateY(-5px) scale(1.02);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
       }
-      
+
       .stat-number {
         font-size: clamp(1.5rem, 5vw, 2.2rem);
         font-weight: 800;
         color: #2c7da0;
         transition: all 0.3s ease;
       }
-      
+
       .btn-spinner {
         display: inline-block;
         width: 18px;
@@ -702,23 +797,27 @@
         animation: btnSpin 0.6s linear infinite;
         margin-right: 8px;
       }
-      
+
       @keyframes btnSpin {
-        to { transform: rotate(360deg); }
+        to {
+          transform: rotate(360deg);
+        }
       }
-      
-      .custom-input, .custom-textarea {
+
+      .custom-input,
+      .custom-textarea {
         border-radius: 12px;
         border: 1px solid #ddd;
         padding: 12px;
         transition: 0.3s;
       }
-      .custom-input:focus, .custom-textarea:focus {
+      .custom-input:focus,
+      .custom-textarea:focus {
         border-color: #2c7da0;
         box-shadow: none;
         outline: none;
       }
-      
+
       .social-icons {
         display: flex;
         justify-content: center;
@@ -741,7 +840,7 @@
         background: #2c7da0;
         color: white;
       }
-      
+
       .custom-tabs {
         border-bottom: 2px solid #e0e6ed;
         justify-content: center;
@@ -766,7 +865,7 @@
         color: white;
         box-shadow: 0 4px 12px rgba(44, 125, 160, 0.3);
       }
-      
+
       /* Slider Hero */
       .slider-hero {
         position: relative;
@@ -777,7 +876,7 @@
         overflow: hidden;
         margin-top: 0;
       }
-      
+
       .slider-hero .item {
         position: absolute;
         top: 0;
@@ -791,12 +890,12 @@
         transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         z-index: 1;
       }
-      
+
       .slider-hero .item.active {
         opacity: 1;
         z-index: 2;
       }
-      
+
       .slider-hero .item::before {
         content: "";
         position: absolute;
@@ -804,10 +903,14 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.35) 100%);
+        background: linear-gradient(
+          135deg,
+          rgba(0, 0, 0, 0.6) 0%,
+          rgba(0, 0, 0, 0.35) 100%
+        );
         z-index: 1;
       }
-      
+
       .slider-hero .content {
         position: absolute;
         bottom: 20%;
@@ -819,12 +922,18 @@
         text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
         animation: fadeInUp 0.9s ease-out;
       }
-      
+
       @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(40px); }
-        to { opacity: 1; transform: translateY(0); }
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
-      
+
       .slider-hero .name {
         font-size: clamp(2rem, 7vw, 4rem);
         font-weight: 800;
@@ -837,7 +946,7 @@
         color: transparent;
         text-shadow: none;
       }
-      
+
       .slider-hero .des {
         font-size: clamp(0.85rem, 3.5vw, 1.2rem);
         line-height: 1.4;
@@ -846,7 +955,7 @@
         max-width: 500px;
         color: rgba(255, 255, 255, 0.95);
       }
-      
+
       .slider-hero button {
         background: linear-gradient(95deg, #2c7da0, #1e5f7a);
         border: none;
@@ -862,7 +971,7 @@
         align-items: center;
         gap: 8px;
       }
-      
+
       .slider-hero .nav-buttons {
         position: absolute;
         bottom: 6%;
@@ -871,7 +980,7 @@
         display: flex;
         gap: 0.8rem;
       }
-      
+
       .slider-hero .nav-btn {
         width: 44px;
         height: 44px;
@@ -887,7 +996,7 @@
         cursor: pointer;
         transition: all 0.25s ease;
       }
-      
+
       .slider-hero .dots-container {
         position: absolute;
         bottom: 6%;
@@ -897,7 +1006,7 @@
         gap: 10px;
         flex-wrap: wrap;
       }
-      
+
       .slider-hero .dot {
         width: 8px;
         height: 8px;
@@ -906,21 +1015,40 @@
         cursor: pointer;
         transition: all 0.3s;
       }
-      
+
       .slider-hero .dot.active {
         width: 24px;
         background: #2c7da0;
         box-shadow: 0 0 8px #2c7da0;
       }
-      
+
       @media (max-width: 768px) {
-        .countdown-box { min-width: 60px; padding: 0.5rem; }
-        .countdown-number { font-size: 1.2rem; }
-        .floating-cta { bottom: 20px; right: 20px; }
-        .floating-cta .cta-button { width: 50px; height: 50px; font-size: 1.5rem; }
-        .comparison-slider { height: 250px; }
-        .spinner-spray { width: 90px; height: 90px; }
-        .spinner-spray i { font-size: 50px; }
+        .countdown-box {
+          min-width: 60px;
+          padding: 0.5rem;
+        }
+        .countdown-number {
+          font-size: 1.2rem;
+        }
+        .floating-cta {
+          bottom: 20px;
+          right: 20px;
+        }
+        .floating-cta .cta-button {
+          width: 50px;
+          height: 50px;
+          font-size: 1.5rem;
+        }
+        .comparison-slider {
+          height: 250px;
+        }
+        .spinner-spray {
+          width: 90px;
+          height: 90px;
+        }
+        .spinner-spray i {
+          font-size: 50px;
+        }
       }
     </style>
   </head>
@@ -950,7 +1078,14 @@
 
     <!-- Floating CTA -->
     <div class="floating-cta">
-      <div class="cta-button" onclick="document.getElementById('contacto').scrollIntoView({behavior: 'smooth'})">
+      <div
+        class="cta-button"
+        onclick="
+          document
+            .getElementById('contacto')
+            .scrollIntoView({ behavior: 'smooth' })
+        "
+      >
         <i class="fa-solid fa-cart-shopping"></i>
       </div>
     </div>
@@ -977,12 +1112,24 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarMain">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
-            <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
-            <li class="nav-item"><a class="nav-link" href="#ubicaciones">Ubicaciones</a></li>
-            <li class="nav-item"><a class="nav-link" href="#testimonios">Testimonios</a></li>
-            <li class="nav-item"><a class="nav-link" href="#equipo">Equipo</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#inicio">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#productos">Productos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#ubicaciones">Ubicaciones</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#testimonios">Testimonios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#equipo">Equipo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contacto">Contacto</a>
+            </li>
           </ul>
           <a href="#contacto" class="btn btn-outline-light">Comprar ahora</a>
         </div>
@@ -990,40 +1137,90 @@
     </nav>
 
     <!-- Video Hero Section (Reemplaza el slider original como opción premium) -->
-<!-- Hero Section con Imagen de Fondo -->
-<div class="video-hero" id="inicio">
-  <div class="video-bg" style="background-image: url('./images/slide1.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
-  <div class="video-overlay"></div>
-  <div class="container" style="position: relative; z-index: 2; height: 100%; display: flex; align-items: center;">
-    <div class="row">
-      <div class="col-lg-8" data-aos="fade-up" data-aos-duration="1000">
-        <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill mb-3" style="background: rgba(91,192,255,0.2) !important; color: #5bc0ff !important;">
-          <i class="fa-solid fa-glasses me-1"></i> Innovación 2025
-        </span>
-        <h1 class="display-3 fw-bold text-white">Visión Perfecta<br>En Cualquier Momento</h1>
-        <p class="lead text-white-50 mt-3">Tecnología antempañante revolucionaria para lentes, gafas y visores.</p>
-        <div class="d-flex gap-3 mt-4">
-          <button class="btn-glass btn-lg px-4" onclick="document.getElementById('productos').scrollIntoView({behavior: 'smooth'})">
-            <i class="fa-solid fa-spray-can me-2"></i>Explorar Productos
-          </button>
-          <button class="btn btn-outline-light rounded-pill px-4">
-            <i class="fa-solid fa-play me-2"></i>Ver Demo
-          </button>
+    <!-- Hero Section con Imagen de Fondo -->
+    <div class="video-hero" id="inicio">
+      <div
+        class="video-bg"
+        style="
+          background-image: url(&quot;./images/slide1.jpeg&quot;);
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+        "
+      ></div>
+      <div class="video-overlay"></div>
+      <div
+        class="container"
+        style="
+          position: relative;
+          z-index: 2;
+          height: 100%;
+          display: flex;
+          align-items: center;
+        "
+      >
+        <div class="row">
+          <div class="col-lg-8" data-aos="fade-up" data-aos-duration="1000">
+            <span
+              class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill mb-3"
+              style="
+                background: rgba(91, 192, 255, 0.2) !important;
+                color: #5bc0ff !important;
+              "
+            >
+              <i class="fa-solid fa-glasses me-1"></i> Innovación 2025
+            </span>
+            <h1 class="display-3 fw-bold text-white">
+              Visión Perfecta<br />En Cualquier Momento
+            </h1>
+            <p class="lead text-white-50 mt-3">
+              Tecnología antempañante revolucionaria para lentes, gafas y
+              visores.
+            </p>
+            <div class="d-flex gap-3 mt-4">
+              <button
+                class="btn-glass btn-lg px-4"
+                onclick="
+                  document
+                    .getElementById('productos')
+                    .scrollIntoView({ behavior: 'smooth' })
+                "
+              >
+                <i class="fa-solid fa-spray-can me-2"></i>Explorar Productos
+              </button>
+              <button class="btn btn-outline-light rounded-pill px-4">
+                <i class="fa-solid fa-play me-2"></i>Ver Demo
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
     <!-- Countdown Timer Section -->
     <div class="container py-5">
       <div class="countdown-timer" data-aos="zoom-in">
-        <h3><i class="fa-regular fa-clock me-2"></i>Oferta Especial - Tiempo Limitado</h3>
+        <h3>
+          <i class="fa-regular fa-clock me-2"></i>Oferta Especial - Tiempo
+          Limitado
+        </h3>
         <div class="mt-4">
-          <div class="countdown-box"><div class="countdown-number" id="days">00</div><div>Días</div></div>
-          <div class="countdown-box"><div class="countdown-number" id="hours">00</div><div>Horas</div></div>
-          <div class="countdown-box"><div class="countdown-number" id="minutes">00</div><div>Minutos</div></div>
-          <div class="countdown-box"><div class="countdown-number" id="seconds">00</div><div>Segundos</div></div>
+          <div class="countdown-box">
+            <div class="countdown-number" id="days">00</div>
+            <div>Días</div>
+          </div>
+          <div class="countdown-box">
+            <div class="countdown-number" id="hours">00</div>
+            <div>Horas</div>
+          </div>
+          <div class="countdown-box">
+            <div class="countdown-number" id="minutes">00</div>
+            <div>Minutos</div>
+          </div>
+          <div class="countdown-box">
+            <div class="countdown-number" id="seconds">00</div>
+            <div>Segundos</div>
+          </div>
         </div>
         <p class="mt-3 mb-0">30% de descuento + Envío gratis</p>
       </div>
@@ -1038,19 +1235,24 @@
               class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill mb-3"
               style="background: #e3f0f5 !important; color: #1e5a77 !important"
             >
-              <i class="fa-solid fa-glasses me-1"></i> Glass Pro · Innovación óptica
+              <i class="fa-solid fa-glasses me-1"></i> Glass Pro · Innovación
+              óptica
             </span>
             <h1 class="display-4 fw-bold" style="color: #1a3c5e">
               Adiós a los lentes empañados
             </h1>
             <p class="lead text-secondary mt-3">
-              Buscamos crear soluciones efectivas para mantener tu visión clara en cualquier situación.
+              Buscamos crear soluciones efectivas para mantener tu visión clara
+              en cualquier situación.
             </p>
             <div class="d-flex gap-3 mt-4 flex-wrap">
               <button class="btn-glass btn-lg px-4">
                 <i class="fa-solid fa-spray-can me-2"></i>Comprar Spray
               </button>
-              <button class="btn btn-outline-secondary rounded-pill px-4" style="border-color: #2c7da0; color: #2c7da0">
+              <button
+                class="btn btn-outline-secondary rounded-pill px-4"
+                style="border-color: #2c7da0; color: #2c7da0"
+              >
                 <i class="fa-solid fa-wipes me-2"></i>Toallitas Sport
               </button>
             </div>
@@ -1080,48 +1282,96 @@
       <div class="container py-4">
         <div class="text-center mb-5" data-aos="fade-up">
           <h2 class="section-title">Nuestros productos estrella</h2>
-          <p class="text-secondary mt-3">Diseñados para tu comodidad, rapidez y seguridad</p>
+          <p class="text-secondary mt-3">
+            Diseñados para tu comodidad, rapidez y seguridad
+          </p>
         </div>
         <div class="row g-4">
-          <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-duration="1000">
+          <div
+            class="col-md-6 col-lg-4"
+            data-aos="flip-left"
+            data-aos-duration="1000"
+          >
             <div class="neumorph-card p-4 text-center product-3d">
               <div class="icon-circle mx-auto">
-                <i class="fa-solid fa-spray-can-sparkles fa-2x" style="color: #2c7da0"></i>
+                <i
+                  class="fa-solid fa-spray-can-sparkles fa-2x"
+                  style="color: #2c7da0"
+                ></i>
               </div>
               <h3 class="h4 mt-3">Spray Anti-empañe PRO</h3>
-              <p class="text-muted small">Fórmula premium de secado instantáneo</p>
-              <div class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-              <div class="d-flex justify-content-between align-items-center mt-3">
+              <p class="text-muted small">
+                Fórmula premium de secado instantáneo
+              </p>
+              <div class="rating-stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i>
+              </div>
+              <div
+                class="d-flex justify-content-between align-items-center mt-3"
+              >
                 <span class="fs-3 fw-bold">$3.99</span>
-                <button class="btn-glass">Comprar <i class="fa-solid fa-arrow-right"></i></button>
+                <button class="btn-glass">
+                  Comprar <i class="fa-solid fa-arrow-right"></i>
+                </button>
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="200">
+          <div
+            class="col-md-6 col-lg-4"
+            data-aos="flip-left"
+            data-aos-duration="1000"
+            data-aos-delay="200"
+          >
             <div class="neumorph-card p-4 text-center product-3d">
               <div class="icon-circle mx-auto" style="background: #e8f3e8">
                 <i class="fa-solid fa-wipes fa-2x" style="color: #2d6a4f"></i>
               </div>
               <h3 class="h4 mt-3">Toallitas Mini Action</h3>
               <p class="text-muted small">Pack 10 toallitas individuales</p>
-              <div class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star-half-stroke"></i></div>
-              <div class="d-flex justify-content-between align-items-center mt-3">
+              <div class="rating-stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-regular fa-star-half-stroke"></i>
+              </div>
+              <div
+                class="d-flex justify-content-between align-items-center mt-3"
+              >
                 <span class="fs-3 fw-bold">$4.49</span>
-                <button class="btn-glass">Comprar <i class="fa-solid fa-arrow-right"></i></button>
+                <button class="btn-glass">
+                  Comprar <i class="fa-solid fa-arrow-right"></i>
+                </button>
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="400">
+          <div
+            class="col-md-6 col-lg-4"
+            data-aos="flip-left"
+            data-aos-duration="1000"
+            data-aos-delay="400"
+          >
             <div class="neumorph-card p-4 text-center product-3d">
               <div class="icon-circle mx-auto" style="background: #fff3e0">
-                <i class="fa-solid fa-kit-medical fa-2x" style="color: #e65100"></i>
+                <i
+                  class="fa-solid fa-kit-medical fa-2x"
+                  style="color: #e65100"
+                ></i>
               </div>
               <h3 class="h4 mt-3">Kit Profesional</h3>
               <p class="text-muted small">Spray + 20 toallitas + Microfibra</p>
-              <div class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-              <div class="d-flex justify-content-between align-items-center mt-3">
+              <div class="rating-stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+                ><i class="fa-solid fa-star"></i>
+              </div>
+              <div
+                class="d-flex justify-content-between align-items-center mt-3"
+              >
                 <span class="fs-3 fw-bold">$12.99</span>
-                <button class="btn-glass">Comprar <i class="fa-solid fa-arrow-right"></i></button>
+                <button class="btn-glass">
+                  Comprar <i class="fa-solid fa-arrow-right"></i>
+                </button>
               </div>
             </div>
           </div>
@@ -1157,9 +1407,20 @@
         <div class="row justify-content-center">
           <div class="col-lg-8" data-aos="zoom-in">
             <div class="comparison-slider" id="comparisonSlider">
-              <img src="./images/blur.jpg" class="comparison-img" alt="Antes">
+              <img src="./images/nonblur.jpg" class="comparison-img" alt="Antes" />
               <div class="comparison-overlay" style="width: 50%">
-                <img src="./images/nonblur.jpg" class="comparison-img" alt="Después" style="width: 200%; height: 100%; object-fit: cover; position: absolute; left: 0;">
+                <img
+                  src="./images/blur.jpg"
+                  class="comparison-img"
+                  alt="Después"
+                  style="
+                    width: 200%;
+                    height: 100%;
+                    object-fit: cover;
+                    position: absolute;
+                    left: 0;
+                  "
+                />
               </div>
               <div class="slider-handle" id="sliderHandle">
                 <i class="fa-solid fa-arrows-left-right"></i>
@@ -1179,34 +1440,77 @@
           <div class="swiper-wrapper">
             <div class="swiper-slide">
               <div class="testimonial-card text-center">
-                <div class="testimonial-avatar"><i class="fa-solid fa-user"></i></div>
+                <div class="testimonial-avatar">
+                  <i class="fa-solid fa-user"></i>
+                </div>
                 <h5>María González</h5>
-                <div class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                <p>"Increíble producto, mis lentes ya no se empañan cuando uso mascarilla. 100% recomendado."</p>
+                <div class="rating-stars">
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                </div>
+                <p>
+                  "Increíble producto, mis lentes ya no se empañan cuando uso
+                  mascarilla. 100% recomendado."
+                </p>
               </div>
             </div>
             <div class="swiper-slide">
               <div class="testimonial-card text-center">
-                <div class="testimonial-avatar"><i class="fa-solid fa-user"></i></div>
+                <div class="testimonial-avatar">
+                  <i class="fa-solid fa-user"></i>
+                </div>
                 <h5>Carlos Rodríguez</h5>
-                <div class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                <p>"Perfecto para mis entrenamientos. Las toallitas son prácticas y efectivas."</p>
+                <div class="rating-stars">
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                </div>
+                <p>
+                  "Perfecto para mis entrenamientos. Las toallitas son prácticas
+                  y efectivas."
+                </p>
               </div>
             </div>
             <div class="swiper-slide">
               <div class="testimonial-card text-center">
-                <div class="testimonial-avatar"><i class="fa-solid fa-user"></i></div>
+                <div class="testimonial-avatar">
+                  <i class="fa-solid fa-user"></i>
+                </div>
                 <h5>Ana Martínez</h5>
-                <div class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
-                <p>"El spray dura muchísimo, lo aplico cada 2 días y mis gafas se mantienen perfectas."</p>
+                <div class="rating-stars">
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-regular fa-star"></i>
+                </div>
+                <p>
+                  "El spray dura muchísimo, lo aplico cada 2 días y mis gafas se
+                  mantienen perfectas."
+                </p>
               </div>
             </div>
             <div class="swiper-slide">
               <div class="testimonial-card text-center">
-                <div class="testimonial-avatar"><i class="fa-solid fa-user"></i></div>
+                <div class="testimonial-avatar">
+                  <i class="fa-solid fa-user"></i>
+                </div>
                 <h5>Laura Pérez</h5>
-                <div class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                <p>"Solución definitiva para el empañamiento. Me cambió la vida."</p>
+                <div class="rating-stars">
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                </div>
+                <p>
+                  "Solución definitiva para el empañamiento. Me cambió la vida."
+                </p>
               </div>
             </div>
           </div>
@@ -1220,12 +1524,24 @@
           <div class="row align-items-center">
             <div class="col-lg-6" data-aos="fade-right">
               <h3 class="text-white">Suscríbete y obtén 15% de descuento</h3>
-              <p class="text-white-50">Recibe ofertas exclusivas y novedades directo a tu correo</p>
+              <p class="text-white-50">
+                Recibe ofertas exclusivas y novedades directo a tu correo
+              </p>
             </div>
             <div class="col-lg-6" data-aos="fade-left">
               <div class="input-group">
-                <input type="email" class="form-control form-control-lg" placeholder="Tu correo electrónico" style="border-radius: 50px 0 0 50px;">
-                <button class="btn-glass px-4" style="border-radius: 0 50px 50px 0;">Suscribirme</button>
+                <input
+                  type="email"
+                  class="form-control form-control-lg"
+                  placeholder="Tu correo electrónico"
+                  style="border-radius: 50px 0 0 50px"
+                />
+                <button
+                  class="btn-glass px-4"
+                  style="border-radius: 0 50px 50px 0"
+                >
+                  Suscribirme
+                </button>
               </div>
             </div>
           </div>
@@ -1243,14 +1559,18 @@
             <div class="location-card text-center">
               <i class="fa-solid fa-store fa-3x"></i>
               <h4 class="mt-3">Supermercados</h4>
-              <p class="text-muted small mt-2">Super Selectos, Walmart, Despensa Familiar</p>
+              <p class="text-muted small mt-2">
+                Super Selectos, Walmart, Despensa Familiar
+              </p>
             </div>
           </div>
           <div class="col-md-4" data-aos="fade-up" data-aos-delay="150">
             <div class="location-card text-center">
               <i class="fa-solid fa-capsules fa-3x"></i>
               <h4 class="mt-3">Farmacias</h4>
-              <p class="text-muted small mt-2">Farmacias Simán, San Nicolás, Santa Lucía</p>
+              <p class="text-muted small mt-2">
+                Farmacias Simán, San Nicolás, Santa Lucía
+              </p>
             </div>
           </div>
           <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
@@ -1265,11 +1585,25 @@
         <div class="row mt-5">
           <div class="col-12" data-aos="zoom-in">
             <div class="location-card p-3">
-              <h4 class="text-center mb-3"><i class="fa-solid fa-map-location-dot me-2"></i>Nuestros puntos en Santa Ana</h4>
-              <div id="map" style="height: 450px; width: 100%; border-radius: 20px; overflow: hidden; z-index: 1;"></div>
+              <h4 class="text-center mb-3">
+                <i class="fa-solid fa-map-location-dot me-2"></i>Nuestros puntos
+                en Santa Ana
+              </h4>
+              <div
+                id="map"
+                style="
+                  height: 450px;
+                  width: 100%;
+                  border-radius: 20px;
+                  overflow: hidden;
+                  z-index: 1;
+                "
+              ></div>
               <p class="text-muted small text-center mt-3">
-                <i class="fa-solid fa-location-dot text-danger me-1"></i> Supermercados |
-                <i class="fa-solid fa-location-dot text-success me-1"></i> Farmacias |
+                <i class="fa-solid fa-location-dot text-danger me-1"></i>
+                Supermercados |
+                <i class="fa-solid fa-location-dot text-success me-1"></i>
+                Farmacias |
                 <i class="fa-solid fa-glasses text-primary me-1"></i> Glass Pro
               </p>
             </div>
@@ -1286,32 +1620,92 @@
         <div class="row g-4">
           <div class="col-lg-3 col-md-6" data-aos="flip-up">
             <div class="team-card">
-              <div class="team-card-img"><img src="./images/enrique.jpeg" alt="Enrique" style="height: 260px; object-fit: cover;"></div>
-              <div class="team-card-content"><h4>Enrique Lucha</h4><span class="role-badge marketing">Marketing</span></div>
+              <div class="team-card-img">
+                <img
+                  src="./images/enrique.jpeg"
+                  alt="Enrique"
+                  style="height: 260px; object-fit: cover"
+                />
+              </div>
+              <div class="team-card-content">
+                <h4>Enrique Lucha</h4>
+                <span class="role-badge marketing">Marketing</span>
+              </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6" data-aos="flip-up" data-aos-delay="100">
+          <div
+            class="col-lg-3 col-md-6"
+            data-aos="flip-up"
+            data-aos-delay="100"
+          >
             <div class="team-card">
-              <div class="team-card-img"><img src="./images/WhatsApp Image 2026-05-01 at 1.32.57 PM.jpeg" alt="Kenia" style="height: 260px; object-fit: cover;"></div>
-              <div class="team-card-content"><h4>Kenia García</h4><span class="role-badge finance">Contadora</span></div>
+              <div class="team-card-img">
+                <img
+                  src="./images/WhatsApp Image 2026-05-01 at 1.32.57 PM.jpeg"
+                  alt="Kenia"
+                  style="height: 260px; object-fit: cover"
+                />
+              </div>
+              <div class="team-card-content">
+                <h4>Kenia García</h4>
+                <span class="role-badge finance">Contadora</span>
+              </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6" data-aos="flip-up" data-aos-delay="200">
+          <div
+            class="col-lg-3 col-md-6"
+            data-aos="flip-up"
+            data-aos-delay="200"
+          >
             <div class="team-card">
-              <div class="team-card-img"><img src="./images/jonathan.png" alt="Jonathan" style="height: 260px; object-fit: cover;"></div>
-              <div class="team-card-content"><h4>Jonathan López</h4><span class="role-badge dev">Developer</span></div>
+              <div class="team-card-img">
+                <img
+                  src="./images/jonathan.png"
+                  alt="Jonathan"
+                  style="height: 260px; object-fit: cover"
+                />
+              </div>
+              <div class="team-card-content">
+                <h4>Jonathan López</h4>
+                <span class="role-badge dev">Developer</span>
+              </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6" data-aos="flip-up" data-aos-delay="300">
+          <div
+            class="col-lg-3 col-md-6"
+            data-aos="flip-up"
+            data-aos-delay="300"
+          >
             <div class="team-card leader">
-              <div class="team-card-img"><img src="./images/alejandro.jpeg" alt="Alejandro" style="height: 260px; object-fit: cover;"></div>
-              <div class="team-card-content"><h4>Alejandro Ramos <i class="fa-solid fa-crown" style="color: #ffc107;"></i></h4><span class="role-badge leader">Team Leader</span></div>
+              <div class="team-card-img">
+                <img
+                  src="./images/alejandro.jpeg"
+                  alt="Alejandro"
+                  style="height: 260px; object-fit: cover"
+                />
+              </div>
+              <div class="team-card-content">
+                <h4>
+                  Alejandro Ramos
+                  <i class="fa-solid fa-crown" style="color: #ffc107"></i>
+                </h4>
+                <span class="role-badge leader">Team Leader</span>
+              </div>
             </div>
           </div>
-                    <div class="col-lg-3 col-md-6" data-aos="flip-up">
+          <div class="col-lg-3 col-md-6" data-aos="flip-up">
             <div class="team-card">
-              <div class="team-card-img"><img src="./images/carlos.jpeg" alt="Enrique" style="height: 260px; object-fit: cover;"></div>
-              <div class="team-card-content"><h4>Carlos Sandoval</h4><span class="role-badge marketing">Administrador</span></div>
+              <div class="team-card-img">
+                <img
+                  src="./images/carlos.jpeg"
+                  alt="Enrique"
+                  style="height: 260px; object-fit: cover"
+                />
+              </div>
+              <div class="team-card-content">
+                <h4>Carlos Sandoval</h4>
+                <span class="role-badge marketing">Administrador</span>
+              </div>
             </div>
           </div>
         </div>
@@ -1324,10 +1718,16 @@
             <div class="glass-card p-4 h-100">
               <i class="fa-regular fa-message fa-2x"></i>
               <h3 class="mt-3">Contáctanos</h3>
-              <p class="text-muted">¿Tienes dudas o quieres cotizar? Escríbenos.</p>
+              <p class="text-muted">
+                ¿Tienes dudas o quieres cotizar? Escríbenos.
+              </p>
               <ul class="list-unstyled mt-3">
-                <li><i class="fa-regular fa-envelope me-2"></i> hola@glasspro.com</li>
-                <li><i class="fa-brands fa-whatsapp me-2"></i> +503 2131-0000</li>
+                <li>
+                  <i class="fa-regular fa-envelope me-2"></i> hola@glasspro.com
+                </li>
+                <li>
+                  <i class="fa-brands fa-whatsapp me-2"></i> +503 2131-0000
+                </li>
               </ul>
               <div class="mt-4 d-flex gap-3">
                 <i class="fa-brands fa-instagram fs-4"></i>
@@ -1341,11 +1741,45 @@
               <h4 class="mb-3">Envíanos un mensaje</h4>
               <form id="contact-form">
                 <div class="row g-3">
-                  <div class="col-md-6"><input type="text" name="user_name" class="form-control custom-input" placeholder="Nombre" required></div>
-                  <div class="col-md-6"><input type="email" name="user_email" class="form-control custom-input" placeholder="Email" required></div>
-                  <div class="col-12"><textarea name="message" rows="4" class="form-control custom-textarea" placeholder="Mensaje" required></textarea></div>
-                  <div class="col-12"><button id="btnEnviar" type="submit" class="btn-glass w-100">Enviar mensaje</button></div>
-                  <div class="col-12"><p id="statusMsg" class="text-center mt-2"></p></div>
+                  <div class="col-md-6">
+                    <input
+                      type="text"
+                      name="user_name"
+                      class="form-control custom-input"
+                      placeholder="Nombre"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <input
+                      type="email"
+                      name="user_email"
+                      class="form-control custom-input"
+                      placeholder="Email"
+                      required
+                    />
+                  </div>
+                  <div class="col-12">
+                    <textarea
+                      name="message"
+                      rows="4"
+                      class="form-control custom-textarea"
+                      placeholder="Mensaje"
+                      required
+                    ></textarea>
+                  </div>
+                  <div class="col-12">
+                    <button
+                      id="btnEnviar"
+                      type="submit"
+                      class="btn-glass w-100"
+                    >
+                      Enviar mensaje
+                    </button>
+                  </div>
+                  <div class="col-12">
+                    <p id="statusMsg" class="text-center mt-2"></p>
+                  </div>
                 </div>
               </form>
             </div>
@@ -1357,12 +1791,38 @@
     <footer class="footer-glass pt-5 pb-4">
       <div class="container">
         <div class="row">
-          <div class="col-md-4"><h5><i class="fa-solid fa-glasses"></i> Glass Pro</h5><p class="small">Soluciones antiempañantes para todos.</p></div>
-          <div class="col-md-2"><h6>Productos</h6><ul class="list-unstyled small"><li>Spray PRO</li><li>Toallitas Action</li><li>Kit Profesional</li></ul></div>
-          <div class="col-md-3"><h6>Ubicaciones</h6><ul class="list-unstyled small"><li>Supermercados</li><li>Farmacias</li><li>Tienda Online</li></ul></div>
-          <div class="col-md-3"><h6>Soporte</h6><ul class="list-unstyled small"><li>Políticas de garantía</li><li>Términos y condiciones</li></ul></div>
+          <div class="col-md-4">
+            <h5><i class="fa-solid fa-glasses"></i> Glass Pro</h5>
+            <p class="small">Soluciones antiempañantes para todos.</p>
+          </div>
+          <div class="col-md-2">
+            <h6>Productos</h6>
+            <ul class="list-unstyled small">
+              <li>Spray PRO</li>
+              <li>Toallitas Action</li>
+              <li>Kit Profesional</li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h6>Ubicaciones</h6>
+            <ul class="list-unstyled small">
+              <li>Supermercados</li>
+              <li>Farmacias</li>
+              <li>Tienda Online</li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h6>Soporte</h6>
+            <ul class="list-unstyled small">
+              <li>Políticas de garantía</li>
+              <li>Términos y condiciones</li>
+            </ul>
+          </div>
         </div>
-        <hr /><div class="text-center small">&copy; 2025 Glass Pro - Claridad en movimiento</div>
+        <hr />
+        <div class="text-center small">
+          &copy; 2025 Glass Pro - Claridad en movimiento
+        </div>
       </div>
     </footer>
 
@@ -1376,33 +1836,36 @@
     <script>
       // Initialize AOS
       AOS.init({ duration: 800, once: true });
-      
+
       // Hide loader
-      window.addEventListener('load', function() {
-        setTimeout(function() {
-          document.getElementById('pageLoader').classList.add('hidden');
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          document.getElementById("pageLoader").classList.add("hidden");
         }, 1000);
       });
 
       // Progress bar
-      window.addEventListener('scroll', () => {
+      window.addEventListener("scroll", () => {
         const winScroll = document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const height =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
         const scrolled = (winScroll / height) * 100;
-        document.getElementById('progressBar').style.width = scrolled + '%';
+        document.getElementById("progressBar").style.width = scrolled + "%";
       });
-      
+
       // Custom cursor
-      const cursor = document.getElementById('customCursor');
-      document.addEventListener('mousemove', e => {
-        cursor.style.left = e.clientX - 10 + 'px';
-        cursor.style.top = e.clientY - 10 + 'px';
+      const cursor = document.getElementById("customCursor");
+      document.addEventListener("mousemove", (e) => {
+        cursor.style.left = e.clientX - 10 + "px";
+        cursor.style.top = e.clientY - 10 + "px";
       });
-      document.addEventListener('mouseover', e => {
-        if (e.target.closest('button, a, .team-card, .neumorph-card')) cursor.classList.add('active');
-        else cursor.classList.remove('active');
+      document.addEventListener("mouseover", (e) => {
+        if (e.target.closest("button, a, .team-card, .neumorph-card"))
+          cursor.classList.add("active");
+        else cursor.classList.remove("active");
       });
-      
+
       // Countdown timer
       function updateCountdown() {
         const target = new Date();
@@ -1411,54 +1874,69 @@
         const now = new Date();
         const diff = target - now;
         if (diff <= 0) return;
-        document.getElementById('days').innerHTML = Math.floor(diff / (1000 * 60 * 60 * 24));
-        document.getElementById('hours').innerHTML = Math.floor((diff % (86400000)) / 3600000);
-        document.getElementById('minutes').innerHTML = Math.floor((diff % 3600000) / 60000);
-        document.getElementById('seconds').innerHTML = Math.floor((diff % 60000) / 1000);
+        document.getElementById("days").innerHTML = Math.floor(
+          diff / (1000 * 60 * 60 * 24),
+        );
+        document.getElementById("hours").innerHTML = Math.floor(
+          (diff % 86400000) / 3600000,
+        );
+        document.getElementById("minutes").innerHTML = Math.floor(
+          (diff % 3600000) / 60000,
+        );
+        document.getElementById("seconds").innerHTML = Math.floor(
+          (diff % 60000) / 1000,
+        );
       }
       setInterval(updateCountdown, 1000);
       updateCountdown();
-      
+
       // Comparison slider
-      const slider = document.getElementById('sliderHandle');
-      const overlay = document.querySelector('.comparison-overlay');
+      const slider = document.getElementById("sliderHandle");
+      const overlay = document.querySelector(".comparison-overlay");
       if (slider && overlay) {
         let isDragging = false;
-        slider.addEventListener('mousedown', () => isDragging = true);
-        window.addEventListener('mouseup', () => isDragging = false);
-        window.addEventListener('mousemove', (e) => {
+        slider.addEventListener("mousedown", () => (isDragging = true));
+        window.addEventListener("mouseup", () => (isDragging = false));
+        window.addEventListener("mousemove", (e) => {
           if (!isDragging) return;
-          const rect = document.querySelector('.comparison-slider').getBoundingClientRect();
+          const rect = document
+            .querySelector(".comparison-slider")
+            .getBoundingClientRect();
           let x = (e.clientX - rect.left) / rect.width;
           x = Math.max(0, Math.min(1, x));
-          overlay.style.width = (x * 100) + '%';
-          slider.style.left = (x * 100) + '%';
+          overlay.style.width = x * 100 + "%";
+          slider.style.left = x * 100 + "%";
         });
       }
-      
+
       // Swiper testimonials
-      new Swiper('.testimonial-swiper', {
+      new Swiper(".testimonial-swiper", {
         loop: true,
         autoplay: { delay: 3000, disableOnInteraction: false },
-        pagination: { el: '.swiper-pagination', clickable: true },
+        pagination: { el: ".swiper-pagination", clickable: true },
         slidesPerView: 1,
-        breakpoints: { 768: { slidesPerView: 2 }, 992: { slidesPerView: 3 } }
+        breakpoints: { 768: { slidesPerView: 2 }, 992: { slidesPerView: 3 } },
       });
-      
+
       // Particle background
-      const canvas = document.getElementById('particles-bg');
+      const canvas = document.getElementById("particles-bg");
       if (canvas) {
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext("2d");
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         let particles = [];
         for (let i = 0; i < 50; i++) {
-          particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: Math.random() * 2 + 1, alpha: Math.random() });
+          particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: Math.random() * 2 + 1,
+            alpha: Math.random(),
+          });
         }
         function drawParticles() {
           if (!ctx) return;
           ctx.clearRect(0, 0, canvas.width, canvas.height);
-          particles.forEach(p => {
+          particles.forEach((p) => {
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
             ctx.fillStyle = `rgba(91, 192, 255, ${p.alpha * 0.3})`;
@@ -1467,48 +1945,50 @@
           requestAnimationFrame(drawParticles);
         }
         drawParticles();
-        window.addEventListener('resize', () => {
+        window.addEventListener("resize", () => {
           canvas.width = window.innerWidth;
           canvas.height = window.innerHeight;
         });
       }
-      
+
       // Animated counter
       function animateNumbers() {
-        const statNumbers = document.querySelectorAll('.stat-number[data-target]');
-        statNumbers.forEach(el => {
-          const target = parseFloat(el.getAttribute('data-target'));
-          if (!el.hasAttribute('data-animated')) {
-            el.setAttribute('data-animated', 'true');
+        const statNumbers = document.querySelectorAll(
+          ".stat-number[data-target]",
+        );
+        statNumbers.forEach((el) => {
+          const target = parseFloat(el.getAttribute("data-target"));
+          if (!el.hasAttribute("data-animated")) {
+            el.setAttribute("data-animated", "true");
             let current = 0;
             const increment = target / 50;
             const timer = setInterval(() => {
               current += increment;
               if (current >= target) {
-                el.innerText = target + '%';
+                el.innerText = target + "%";
                 clearInterval(timer);
               } else {
-                el.innerText = Math.floor(current) + '%';
+                el.innerText = Math.floor(current) + "%";
               }
             }, 20);
           }
         });
       }
-      
+
       const observerOptions = { threshold: 0.3 };
       const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
             animateNumbers();
             observer.unobserve(entry.target);
           }
         });
       }, observerOptions);
-      
-      document.querySelectorAll('.stat-number[data-target]').forEach(el => {
-        observer.observe(el.closest('.bg-white, .stat-badge') || el);
+
+      document.querySelectorAll(".stat-number[data-target]").forEach((el) => {
+        observer.observe(el.closest(".bg-white, .stat-badge") || el);
       });
-      
+
       // EmailJS
       emailjs.init("paf7FPTk7vuhToyxX");
       const form = document.getElementById("contact-form");
@@ -1519,34 +1999,58 @@
           e.preventDefault();
           btn.disabled = true;
           btn.innerHTML = '<span class="btn-spinner"></span> Enviando...';
-          emailjs.sendForm("service_xru296e", "template_k43eadc", form)
-            .then(() => { status.style.color = "green"; status.innerHTML = "Mensaje enviado correctamente ✅"; form.reset(); })
-            .catch(() => { status.style.color = "red"; status.innerHTML = "Error al enviar el mensaje ❌"; })
-            .finally(() => { btn.disabled = false; btn.innerHTML = "Enviar mensaje"; });
+          emailjs
+            .sendForm("service_xru296e", "template_k43eadc", form)
+            .then(() => {
+              status.style.color = "green";
+              status.innerHTML = "Mensaje enviado correctamente ✅";
+              form.reset();
+            })
+            .catch(() => {
+              status.style.color = "red";
+              status.innerHTML = "Error al enviar el mensaje ❌";
+            })
+            .finally(() => {
+              btn.disabled = false;
+              btn.innerHTML = "Enviar mensaje";
+            });
         });
       }
-      
+
       // Map
-      const mapElement = document.getElementById('map');
+      const mapElement = document.getElementById("map");
       if (mapElement) {
-        const map = L.map('map').setView([13.9943, -89.5572], 13);
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { 
-          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>',
-          subdomains: 'abcd',
-          maxZoom: 19
-        }).addTo(map);
-        
-        L.marker([13.987, -89.556]).addTo(map).bindPopup('<b>Super Selectos</b><br>Centro Santa Ana');
-        L.marker([13.995, -89.558]).addTo(map).bindPopup('<b>Walmart</b><br>Santa Ana');
-        L.marker([13.990, -89.560]).addTo(map).bindPopup('<b>Farmacia Simán</b><br>Santa Ana');
-        L.marker([13.9943, -89.5572]).addTo(map).bindPopup('<b>Glass Pro</b><br>Oficina Central').openPopup();
+        const map = L.map("map").setView([13.9943, -89.5572], 13);
+        L.tileLayer(
+          "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+          {
+            attribution:
+              '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>',
+            subdomains: "abcd",
+            maxZoom: 19,
+          },
+        ).addTo(map);
+
+        L.marker([13.987, -89.556])
+          .addTo(map)
+          .bindPopup("<b>Super Selectos</b><br>Centro Santa Ana");
+        L.marker([13.995, -89.558])
+          .addTo(map)
+          .bindPopup("<b>Walmart</b><br>Santa Ana");
+        L.marker([13.99, -89.56])
+          .addTo(map)
+          .bindPopup("<b>Farmacia Simán</b><br>Santa Ana");
+        L.marker([13.9943, -89.5572])
+          .addTo(map)
+          .bindPopup("<b>Glass Pro</b><br>Oficina Central")
+          .openPopup();
       }
-      
+
       // Navbar scroll effect
-      window.addEventListener('scroll', () => {
-        const navbar = document.getElementById('mainNavbar');
-        if (window.scrollY > 50) navbar.classList.add('scrolled');
-        else navbar.classList.remove('scrolled');
+      window.addEventListener("scroll", () => {
+        const navbar = document.getElementById("mainNavbar");
+        if (window.scrollY > 50) navbar.classList.add("scrolled");
+        else navbar.classList.remove("scrolled");
       });
     </script>
   </body>
