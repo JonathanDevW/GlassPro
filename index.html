@@ -41,1016 +41,9 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="stylesheet" href="./css/index.css" />
 
-    <style>
-      /* ========== ANIMACIONES Y MEJORAS PREMIUM ========== */
+    <link rel="stylesheet" href="./css/mejoras.css">
 
-      /* Custom Cursor */
-      .custom-cursor {
-        width: 20px;
-        height: 20px;
-        background: rgba(44, 125, 160, 0.3);
-        border-radius: 50%;
-        position: fixed;
-        pointer-events: none;
-        z-index: 9999;
-        transition: transform 0.1s ease;
-        backdrop-filter: blur(4px);
-      }
-
-      .custom-cursor.active {
-        transform: scale(1.5);
-        background: rgba(44, 125, 160, 0.5);
-      }
-
-      /* Particle Background */
-      #particles-bg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 0;
-        pointer-events: none;
-        opacity: 0.4;
-      }
-
-      /* Video Background Section */
-      .video-hero {
-        position: relative;
-        height: 100vh;
-        overflow: hidden;
-      }
-
-      .video-bg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: 0;
-      }
-
-      .video-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          135deg,
-          rgba(10, 25, 47, 0.85),
-          rgba(0, 0, 0, 0.7)
-        );
-        z-index: 1;
-      }
-
-      /* 3D Card Effect */
-      .card-3d {
-        transition:
-          transform 0.3s ease,
-          box-shadow 0.3s ease;
-        transform-style: preserve-3d;
-      }
-
-      .card-3d:hover {
-        transform: translateY(-10px) rotateX(5deg);
-        box-shadow: 0 25px 40px rgba(0, 0, 0, 0.2);
-      }
-
-      /* Neumorphism Cards */
-      .neumorph-card {
-        background: #e0e5ec;
-        border-radius: 30px;
-        box-shadow:
-          9px 9px 16px rgb(163, 177, 198, 0.6),
-          -9px -9px 16px rgba(255, 255, 255, 0.5);
-        transition: all 0.3s ease;
-      }
-
-      .neumorph-card:hover {
-        box-shadow:
-          5px 5px 10px rgb(163, 177, 198, 0.8),
-          -5px -5px 10px rgba(255, 255, 255, 0.6);
-        transform: scale(1.02);
-      }
-
-      /* Testimonials Carousel */
-      .testimonial-card {
-        background: white;
-        border-radius: 20px;
-        padding: 2rem;
-        margin: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        transition: all 0.4s ease;
-      }
-
-      .testimonial-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-      }
-
-      .testimonial-avatar {
-        width: 70px;
-        height: 70px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #2c7da0, #1e5f7a);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 1rem;
-      }
-
-      .testimonial-avatar i {
-        font-size: 2rem;
-        color: white;
-      }
-
-      .rating-stars {
-        color: #ffc107;
-        margin: 1rem 0;
-      }
-
-      /* CTA Flotante */
-      .floating-cta {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        z-index: 1000;
-        animation: pulse 2s infinite;
-      }
-
-      @keyframes pulse {
-        0%,
-        100% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.1);
-        }
-      }
-
-      .floating-cta .cta-button {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #2c7da0, #1e5f7a);
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.8rem;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s ease;
-        cursor: pointer;
-      }
-
-      .floating-cta .cta-button:hover {
-        transform: scale(1.15);
-        box-shadow: 0 15px 35px rgba(44, 125, 160, 0.4);
-      }
-
-      /* Progress Bar */
-      .progress-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        background: transparent;
-        z-index: 10000;
-      }
-
-      .progress-bar {
-        height: 3px;
-        background: linear-gradient(90deg, #2c7da0, #5bc0ff);
-        width: 0%;
-        transition: width 0.1s linear;
-      }
-
-      /* Countdown Timer */
-      .countdown-timer {
-        background: linear-gradient(135deg, #1a3c5e, #2c7da0);
-        border-radius: 20px;
-        padding: 2rem;
-        text-align: center;
-        color: white;
-      }
-
-      .countdown-box {
-        display: inline-block;
-        background: rgba(255, 255, 255, 0.2);
-        padding: 1rem;
-        border-radius: 15px;
-        margin: 0 0.5rem;
-        min-width: 80px;
-      }
-
-      .countdown-number {
-        font-size: 2rem;
-        font-weight: 800;
-      }
-
-      /* Comparison Slider */
-      .comparison-slider {
-        position: relative;
-        width: 100%;
-        height: 400px;
-        overflow: hidden;
-        border-radius: 20px;
-      }
-
-      .comparison-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .comparison-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 50%;
-        height: 100%;
-        overflow: hidden;
-      }
-
-      .slider-handle {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 40px;
-        height: 40px;
-        background: white;
-        border-radius: 50%;
-        cursor: ew-resize;
-        z-index: 10;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      /* Newsletter Section */
-      .newsletter-section {
-        background: linear-gradient(135deg, #0a192f, #1a3c5e);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .newsletter-section::before {
-        content: "";
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(
-          circle,
-          rgba(91, 192, 255, 0.1) 0%,
-          transparent 70%
-        );
-        animation: rotate 20s linear infinite;
-      }
-
-      @keyframes rotate {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      /* Spinner de carga */
-      .page-loader {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, #0a192f 0%, #1a3c5e 100%);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        transition:
-          opacity 0.5s ease,
-          visibility 0.5s ease;
-      }
-
-      .page-loader.hidden {
-        opacity: 0;
-        visibility: hidden;
-      }
-
-      .spinner-content {
-        text-align: center;
-        animation: fadeInScale 0.6s ease-out;
-      }
-
-      .spinner-spray {
-        position: relative;
-        width: 120px;
-        height: 120px;
-        margin: 0 auto 25px;
-      }
-
-      .spinner-spray i {
-        font-size: 70px;
-        color: #5bc0ff;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        animation: sprayFloat 1.2s ease-in-out infinite;
-      }
-
-      .spinner-spray .fa-spray-can {
-        animation: sprayRotate 1.5s ease-in-out infinite;
-      }
-
-      .spinner-spray .fa-water {
-        font-size: 30px;
-        opacity: 0;
-        animation: sprayParticles 0.8s ease-in-out infinite;
-      }
-
-      .spinner-spray .fa-water:nth-child(2) {
-        top: 60%;
-        left: 70%;
-        animation-delay: 0.2s;
-      }
-
-      .spinner-spray .fa-water:nth-child(3) {
-        top: 55%;
-        left: 80%;
-        animation-delay: 0.4s;
-      }
-
-      @keyframes sprayFloat {
-        0%,
-        100% {
-          transform: translate(-50%, -50%) translateY(0);
-        }
-        50% {
-          transform: translate(-50%, -50%) translateY(-10px);
-        }
-      }
-
-      @keyframes sprayRotate {
-        0%,
-        100% {
-          transform: translate(-50%, -50%) rotate(0deg);
-        }
-        25% {
-          transform: translate(-50%, -50%) rotate(-15deg);
-        }
-        75% {
-          transform: translate(-50%, -50%) rotate(15deg);
-        }
-      }
-
-      @keyframes sprayParticles {
-        0% {
-          opacity: 0;
-          transform: translate(-50%, -50%) scale(0.5);
-        }
-        50% {
-          opacity: 1;
-          transform: translate(-50%, -50%) scale(1.2);
-        }
-        100% {
-          opacity: 0;
-          transform: translate(-50%, -50%) scale(0.8) translateX(20px);
-        }
-      }
-
-      @keyframes fadeInScale {
-        from {
-          opacity: 0;
-          transform: scale(0.9);
-        }
-        to {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
-
-      .loader-text {
-        color: white;
-        font-size: 1.2rem;
-        font-weight: 600;
-        letter-spacing: 2px;
-        margin-top: 20px;
-      }
-
-      .loader-dots {
-        display: flex;
-        justify-content: center;
-        gap: 8px;
-        margin-top: 15px;
-      }
-
-      .loader-dots span {
-        width: 8px;
-        height: 8px;
-        background: #5bc0ff;
-        border-radius: 50%;
-        animation: loaderDot 1.4s ease-in-out infinite;
-      }
-
-      .loader-dots span:nth-child(2) {
-        animation-delay: 0.2s;
-      }
-      .loader-dots span:nth-child(3) {
-        animation-delay: 0.4s;
-      }
-
-      @keyframes loaderDot {
-        0%,
-        80%,
-        100% {
-          transform: scale(0.6);
-          opacity: 0.4;
-        }
-        40% {
-          transform: scale(1.2);
-          opacity: 1;
-        }
-      }
-
-      /* Animaciones de entrada */
-      .fade-up {
-        opacity: 0;
-        transform: translateY(40px);
-        transition:
-          opacity 0.8s ease,
-          transform 0.8s ease;
-      }
-
-      .fade-up.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .fade-left {
-        opacity: 0;
-        transform: translateX(-40px);
-        transition:
-          opacity 0.8s ease,
-          transform 0.8s ease;
-      }
-
-      .fade-left.visible {
-        opacity: 1;
-        transform: translateX(0);
-      }
-
-      .fade-right {
-        opacity: 0;
-        transform: translateX(40px);
-        transition:
-          opacity 0.8s ease,
-          transform 0.8s ease;
-      }
-
-      .fade-right.visible {
-        opacity: 1;
-        transform: translateX(0);
-      }
-
-      /* Team Cards */
-      .team-card {
-        background: white;
-        border-radius: 20px;
-        overflow: hidden;
-        transition: all 0.3s ease;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-        cursor: pointer;
-      }
-      .team-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(44, 125, 160, 0.15);
-      }
-      .team-card-img {
-        position: relative;
-        overflow: hidden;
-        height: 260px;
-      }
-      .team-card-img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.3s;
-      }
-      .team-card:hover .team-card-img img {
-        transform: scale(1.05);
-      }
-      .team-card-content {
-        padding: 1rem;
-        text-align: center;
-      }
-      .team-card-content h4 {
-        font-size: 1rem;
-        font-weight: 700;
-        margin-bottom: 0.3rem;
-        color: #1a3c5e;
-      }
-      .role-badge {
-        display: inline-block;
-        padding: 3px 10px;
-        border-radius: 30px;
-        font-size: 0.7rem;
-        font-weight: 600;
-      }
-      .role-badge.marketing {
-        background: #e3f2fd;
-        color: #1565c0;
-      }
-      .role-badge.finance {
-        background: #e8f5e9;
-        color: #2e7d32;
-      }
-      .role-badge.dev {
-        background: #f3e5f5;
-        color: #7b1fa2;
-      }
-      .role-badge.leader {
-        background: #fff8e1;
-        color: #f57c00;
-      }
-      .role-badge.admin {
-        background: #e0f7fa;
-        color: #00838f;
-      }
-
-      .btn-glass {
-        background: #2c7da0;
-        color: white;
-        border-radius: 50px;
-        padding: 10px 24px;
-        font-weight: 700;
-        transition: 0.25s;
-        border: none;
-        letter-spacing: 0.3px;
-        font-size: 0.9rem;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .btn-glass:hover {
-        background: #1e5a77;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
-      }
-
-      .btn-glass::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.3);
-        transform: translate(-50%, -50%);
-        transition:
-          width 0.5s ease,
-          height 0.5s ease;
-      }
-
-      .btn-glass:active::after {
-        width: 200px;
-        height: 200px;
-      }
-
-      .glass-card {
-        background: rgba(255, 255, 255, 0.7);
-        backdrop-filter: blur(12px);
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      }
-
-      .icon-circle {
-        width: 70px;
-        height: 70px;
-        background: #e6f3f8;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1.2rem;
-        transition: 0.3s;
-      }
-
-      .footer-glass {
-        background: #0a1a2a;
-        color: #cddfe7;
-      }
-
-      .section-title {
-        font-size: clamp(1.6rem, 6vw, 2.5rem);
-        font-weight: 800;
-        color: #1a3c5e;
-        position: relative;
-        display: inline-block;
-      }
-
-      .section-title:after {
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        left: 0;
-        width: 60px;
-        height: 3px;
-        background: #2c7da0;
-        border-radius: 4px;
-      }
-
-      .navbar-glass {
-        background: rgba(10, 25, 47, 0.95);
-        backdrop-filter: blur(12px);
-        padding: 0.7rem 0;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        z-index: 1030;
-      }
-
-      .navbar-glass.scrolled {
-        background: rgba(10, 25, 47, 0.98);
-        padding: 0.4rem 0;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-      }
-
-      .navbar-glass .navbar-brand {
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: white;
-        letter-spacing: -0.5px;
-      }
-
-      .navbar-glass .nav-link {
-        color: rgba(255, 255, 255, 0.85);
-        font-weight: 500;
-        margin: 0 0.3rem;
-        transition: 0.2s;
-        font-size: 0.95rem;
-      }
-
-      .navbar-glass .nav-link:hover {
-        color: #5bc0ff;
-        transform: translateY(-2px);
-      }
-
-      .product-card {
-        transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        position: relative;
-        overflow: hidden;
-        background: white;
-        border-radius: 24px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        border: 1px solid rgba(0, 0, 0, 0.04);
-        height: 100%;
-      }
-
-      .product-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 35px rgba(0, 0, 0, 0.12);
-      }
-
-      .product-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.2),
-          transparent
-        );
-        transition: left 0.6s ease;
-        pointer-events: none;
-      }
-
-      .product-card:hover::before {
-        left: 100%;
-      }
-
-      .location-card {
-        background: white;
-        border-radius: 20px;
-        padding: 1.2rem;
-        transition: all 0.3s;
-        border: 1px solid #eef2f6;
-        height: 100%;
-      }
-
-      .location-card:hover {
-        transform: translateY(-5px);
-        border-color: #2c7da0;
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
-      }
-
-      .location-card i {
-        transition: all 0.3s ease;
-      }
-
-      .location-card:hover i {
-        transform: scale(1.1);
-        color: #2c7da0;
-      }
-
-      .stat-badge {
-        background: white;
-        border-radius: 20px;
-        padding: 1rem;
-        text-align: center;
-        transition: all 0.3s ease;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        height: 100%;
-      }
-
-      .stat-badge:hover {
-        transform: translateY(-5px) scale(1.02);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-      }
-
-      .stat-number {
-        font-size: clamp(1.5rem, 5vw, 2.2rem);
-        font-weight: 800;
-        color: #2c7da0;
-        transition: all 0.3s ease;
-      }
-
-      .btn-spinner {
-        display: inline-block;
-        width: 18px;
-        height: 18px;
-        border: 2px solid #fff;
-        border-radius: 50%;
-        border-top-color: transparent;
-        animation: btnSpin 0.6s linear infinite;
-        margin-right: 8px;
-      }
-
-      @keyframes btnSpin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      .custom-input,
-      .custom-textarea {
-        border-radius: 12px;
-        border: 1px solid #ddd;
-        padding: 12px;
-        transition: 0.3s;
-      }
-      .custom-input:focus,
-      .custom-textarea:focus {
-        border-color: #2c7da0;
-        box-shadow: none;
-        outline: none;
-      }
-
-      .social-icons {
-        display: flex;
-        justify-content: center;
-        gap: 8px;
-        margin-top: 8px;
-      }
-      .social-icons a {
-        width: 28px;
-        height: 28px;
-        background: #f0f4f8;
-        border-radius: 50%;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        color: #2c7da0;
-        font-size: 0.8rem;
-        text-decoration: none;
-      }
-      .social-icons a:hover {
-        background: #2c7da0;
-        color: white;
-      }
-
-      .custom-tabs {
-        border-bottom: 2px solid #e0e6ed;
-        justify-content: center;
-        gap: 1rem;
-        flex-wrap: wrap;
-      }
-      .custom-tabs .nav-link {
-        border: none;
-        padding: 10px 24px;
-        border-radius: 50px;
-        font-weight: 600;
-        color: #1a3c5e;
-        background: white;
-        transition: all 0.3s;
-      }
-      .custom-tabs .nav-link:hover {
-        background: #e6f3f8;
-        color: #2c7da0;
-      }
-      .custom-tabs .nav-link.active {
-        background: linear-gradient(135deg, #2c7da0, #1e5f7a);
-        color: white;
-        box-shadow: 0 4px 12px rgba(44, 125, 160, 0.3);
-      }
-
-      /* Slider Hero */
-      .slider-hero {
-        position: relative;
-        width: 100%;
-        height: 100vh;
-        min-height: 550px;
-        background: #0a192f;
-        overflow: hidden;
-        margin-top: 0;
-      }
-
-      .slider-hero .item {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-size: cover;
-        background-position: center 30%;
-        background-repeat: no-repeat;
-        opacity: 0;
-        transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        z-index: 1;
-      }
-
-      .slider-hero .item.active {
-        opacity: 1;
-        z-index: 2;
-      }
-
-      .slider-hero .item::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          135deg,
-          rgba(0, 0, 0, 0.6) 0%,
-          rgba(0, 0, 0, 0.35) 100%
-        );
-        z-index: 1;
-      }
-
-      .slider-hero .content {
-        position: absolute;
-        bottom: 20%;
-        left: 5%;
-        right: 5%;
-        max-width: 600px;
-        z-index: 3;
-        color: white;
-        text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
-        animation: fadeInUp 0.9s ease-out;
-      }
-
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(40px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .slider-hero .name {
-        font-size: clamp(2rem, 7vw, 4rem);
-        font-weight: 800;
-        letter-spacing: -0.02em;
-        margin-bottom: 0.75rem;
-        text-transform: uppercase;
-        background: linear-gradient(135deg, #fff, #c0e0ff);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        text-shadow: none;
-      }
-
-      .slider-hero .des {
-        font-size: clamp(0.85rem, 3.5vw, 1.2rem);
-        line-height: 1.4;
-        margin-bottom: 1.5rem;
-        font-weight: 400;
-        max-width: 500px;
-        color: rgba(255, 255, 255, 0.95);
-      }
-
-      .slider-hero button {
-        background: linear-gradient(95deg, #2c7da0, #1e5f7a);
-        border: none;
-        padding: 10px 24px;
-        font-size: clamp(0.85rem, 3vw, 1rem);
-        font-weight: 600;
-        border-radius: 50px;
-        color: white;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .slider-hero .nav-buttons {
-        position: absolute;
-        bottom: 6%;
-        right: 5%;
-        z-index: 20;
-        display: flex;
-        gap: 0.8rem;
-      }
-
-      .slider-hero .nav-btn {
-        width: 44px;
-        height: 44px;
-        border-radius: 50px;
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(8px);
-        border: 1px solid rgba(255, 255, 255, 0.4);
-        color: white;
-        font-size: 1.3rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.25s ease;
-      }
-
-      .slider-hero .dots-container {
-        position: absolute;
-        bottom: 6%;
-        left: 5%;
-        z-index: 20;
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-      }
-
-      .slider-hero .dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 10px;
-        background: rgba(255, 255, 255, 0.5);
-        cursor: pointer;
-        transition: all 0.3s;
-      }
-
-      .slider-hero .dot.active {
-        width: 24px;
-        background: #2c7da0;
-        box-shadow: 0 0 8px #2c7da0;
-      }
-
-      @media (max-width: 768px) {
-        .countdown-box {
-          min-width: 60px;
-          padding: 0.5rem;
-        }
-        .countdown-number {
-          font-size: 1.2rem;
-        }
-        .floating-cta {
-          bottom: 20px;
-          right: 20px;
-        }
-        .floating-cta .cta-button {
-          width: 50px;
-          height: 50px;
-          font-size: 1.5rem;
-        }
-        .comparison-slider {
-          height: 250px;
-        }
-        .spinner-spray {
-          width: 90px;
-          height: 90px;
-        }
-        .spinner-spray i {
-          font-size: 50px;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="./css/chatbot.css">
   </head>
   <body>
     <!-- Page Loader -->
@@ -1378,46 +371,86 @@
         </div>
       </div>
 
-<!-- Sección de Video Comercial / Promocional -->
-<section class="commercial-section py-5" id="comercial">
-  <div class="container">
-    <div class="text-center mb-5" data-aos="fade-up">
-      <span class="badge bg-danger bg-opacity-10 text-danger px-3 py-2 rounded-pill mb-3" style="background: rgba(220,53,69,0.1) !important; color: #dc3545 !important;">
-        <i class="fa-solid fa-video me-1"></i> Video Comercial
-      </span>
-      <h2 class="section-title">Descubre Glass Pro en Acción</h2>
-      <p class="text-secondary mt-3">Mira cómo nuestra tecnología antempañante cambia tu día a día</p>
-    </div>
+      <!-- Sección de Video Comercial / Promocional -->
+      <section class="commercial-section py-5" id="comercial">
+        <div class="container">
+          <div class="text-center mb-5" data-aos="fade-up">
+            <span
+              class="badge bg-danger bg-opacity-10 text-danger px-3 py-2 rounded-pill mb-3"
+              style="
+                background: rgba(220, 53, 69, 0.1) !important;
+                color: #dc3545 !important;
+              "
+            >
+              <i class="fa-solid fa-video me-1"></i> Video Comercial
+            </span>
+            <h2 class="section-title">Descubre Glass Pro en Acción</h2>
+            <p class="text-secondary mt-3">
+              Mira cómo nuestra tecnología antempañante cambia tu día a día
+            </p>
+          </div>
 
-    <div class="row justify-content-center">
-      <div class="col-lg-10" data-aos="zoom-in" data-aos-duration="1000">
-        <!-- Contenedor del video responsivo (16:9) -->
-        <div class="video-wrapper" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
-          <iframe 
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
-            src="https://www.youtube.com/embed/m0cU7nvdSEg?autoplay=0&rel=0&modestbranding=1" 
-            title="Glass Pro - Video Comercial" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" 
-            allowfullscreen>
-          </iframe>
+          <div class="row justify-content-center">
+            <div class="col-lg-10" data-aos="zoom-in" data-aos-duration="1000">
+              <!-- Contenedor del video responsivo (16:9) -->
+              <div
+                class="video-wrapper"
+                style="
+                  position: relative;
+                  padding-bottom: 56.25%;
+                  height: 0;
+                  overflow: hidden;
+                  border-radius: 24px;
+                  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+                "
+              >
+                <iframe
+                  style="
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    border: 0;
+                  "
+                  src="https://www.youtube.com/embed/m0cU7nvdSEg?autoplay=0&rel=0&modestbranding=1"
+                  title="Glass Pro - Video Comercial"
+                  frameborder="0"
+                  allow="
+                    accelerometer;
+                    autoplay;
+                    clipboard-write;
+                    encrypted-media;
+                    gyroscope;
+                    picture-in-picture;
+                    web-share;
+                  "
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                >
+                </iframe>
+              </div>
+
+              <!-- Subtítulo y llamado a la acción -->
+              <div class="text-center mt-4">
+                <p class="lead fw-semibold" style="color: #1a3c5e">
+                  <i
+                    class="fa-regular fa-circle-check me-2"
+                    style="color: #2c7da0"
+                  ></i>
+                  Tecnología probada. Resultados instantáneos.
+                </p>
+                <a
+                  href="#contacto"
+                  class="btn-glass mt-2 d-inline-flex align-items-center gap-2"
+                >
+                  ¡Quiero mi Glass Pro! <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-        
-        <!-- Subtítulo y llamado a la acción -->
-        <div class="text-center mt-4">
-          <p class="lead fw-semibold" style="color: #1a3c5e;">
-            <i class="fa-regular fa-circle-check me-2" style="color: #2c7da0;"></i> 
-            Tecnología probada. Resultados instantáneos.
-          </p>
-          <a href="#contacto" class="btn-glass mt-2 d-inline-flex align-items-center gap-2">
-            ¡Quiero mi Glass Pro! <i class="fa-solid fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
       <!-- Estadísticas -->
       <div class="container py-4">
@@ -1448,7 +481,11 @@
         <div class="row justify-content-center">
           <div class="col-lg-8" data-aos="zoom-in">
             <div class="comparison-slider" id="comparisonSlider">
-              <img src="./images/nonblur.jpg" class="comparison-img" alt="Antes" />
+              <img
+                src="./images/nonblur.jpg"
+                class="comparison-img"
+                alt="Antes"
+              />
               <div class="comparison-overlay" style="width: 50%">
                 <img
                   src="./images/blur.jpg"
@@ -1867,232 +904,81 @@
       </div>
     </footer>
 
+    <div class="chatbot-widget">
+      <div class="chatbot-toggle" id="chatbotToggle">
+        <i class="fa-regular fa-message"></i>
+      </div>
+
+      <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+          <h4>
+            <i class="fa-regular fa-comment-dots"></i> Glass Pro Assistant
+          </h4>
+          <div style="display: flex; gap: 10px">
+            <button class="reset-chat" id="resetChatBtn">
+              <i class="fa-regular fa-trash-alt"></i> Reiniciar
+            </button>
+            <i class="fa-regular fa-xmark" id="closeChat"></i>
+          </div>
+        </div>
+
+        <div class="chatbot-messages" id="chatMessages">
+          <div class="message bot">
+            <div class="message-content">
+              👋 ¡Hola! Soy el asistente de <strong>Glass Pro</strong>.<br />
+              ¿En qué puedo ayudarte hoy?
+            </div>
+          </div>
+        </div>
+
+        <div class="quick-replies" id="quickReplies">
+          <button
+            class="quick-reply-btn"
+            data-question="¿Cuánto cuestan los productos?"
+          >
+            💰 Precios
+          </button>
+          <button class="quick-reply-btn" data-question="¿Dónde puedo comprar?">
+            📍 Ubicaciones
+          </button>
+          <button
+            class="quick-reply-btn"
+            data-question="¿Cómo aplico el producto?"
+          >
+            📖 Cómo usar
+          </button>
+          <button class="quick-reply-btn" data-question="¿Tienen garantía?">
+            ✅ Garantía
+          </button>
+          <button
+            class="quick-reply-btn"
+            data-question="¿Hacen envíos a domicilio?"
+          >
+            🚚 Envíos
+          </button>
+        </div>
+
+        <div class="chatbot-input">
+          <input
+            type="text"
+            id="chatInput"
+            placeholder="Escribe tu mensaje..."
+            autocomplete="off"
+          />
+          <button id="sendMessageBtn">
+            <i class="fa-regular fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/chatbot.js"></script>
     <!-- Scripts -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
-    <script>
-      // Initialize AOS
-      AOS.init({ duration: 800, once: true });
-
-      // Hide loader
-      window.addEventListener("load", function () {
-        setTimeout(function () {
-          document.getElementById("pageLoader").classList.add("hidden");
-        }, 1000);
-      });
-
-      // Progress bar
-      window.addEventListener("scroll", () => {
-        const winScroll = document.documentElement.scrollTop;
-        const height =
-          document.documentElement.scrollHeight -
-          document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-        document.getElementById("progressBar").style.width = scrolled + "%";
-      });
-
-      // Custom cursor
-      const cursor = document.getElementById("customCursor");
-      document.addEventListener("mousemove", (e) => {
-        cursor.style.left = e.clientX - 10 + "px";
-        cursor.style.top = e.clientY - 10 + "px";
-      });
-      document.addEventListener("mouseover", (e) => {
-        if (e.target.closest("button, a, .team-card, .neumorph-card"))
-          cursor.classList.add("active");
-        else cursor.classList.remove("active");
-      });
-
-      // Countdown timer
-      function updateCountdown() {
-        const target = new Date();
-        target.setDate(target.getDate() + 3);
-        target.setHours(23, 59, 59);
-        const now = new Date();
-        const diff = target - now;
-        if (diff <= 0) return;
-        document.getElementById("days").innerHTML = Math.floor(
-          diff / (1000 * 60 * 60 * 24),
-        );
-        document.getElementById("hours").innerHTML = Math.floor(
-          (diff % 86400000) / 3600000,
-        );
-        document.getElementById("minutes").innerHTML = Math.floor(
-          (diff % 3600000) / 60000,
-        );
-        document.getElementById("seconds").innerHTML = Math.floor(
-          (diff % 60000) / 1000,
-        );
-      }
-      setInterval(updateCountdown, 1000);
-      updateCountdown();
-
-      // Comparison slider
-      const slider = document.getElementById("sliderHandle");
-      const overlay = document.querySelector(".comparison-overlay");
-      if (slider && overlay) {
-        let isDragging = false;
-        slider.addEventListener("mousedown", () => (isDragging = true));
-        window.addEventListener("mouseup", () => (isDragging = false));
-        window.addEventListener("mousemove", (e) => {
-          if (!isDragging) return;
-          const rect = document
-            .querySelector(".comparison-slider")
-            .getBoundingClientRect();
-          let x = (e.clientX - rect.left) / rect.width;
-          x = Math.max(0, Math.min(1, x));
-          overlay.style.width = x * 100 + "%";
-          slider.style.left = x * 100 + "%";
-        });
-      }
-
-      // Swiper testimonials
-      new Swiper(".testimonial-swiper", {
-        loop: true,
-        autoplay: { delay: 3000, disableOnInteraction: false },
-        pagination: { el: ".swiper-pagination", clickable: true },
-        slidesPerView: 1,
-        breakpoints: { 768: { slidesPerView: 2 }, 992: { slidesPerView: 3 } },
-      });
-
-      // Particle background
-      const canvas = document.getElementById("particles-bg");
-      if (canvas) {
-        const ctx = canvas.getContext("2d");
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        let particles = [];
-        for (let i = 0; i < 50; i++) {
-          particles.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            radius: Math.random() * 2 + 1,
-            alpha: Math.random(),
-          });
-        }
-        function drawParticles() {
-          if (!ctx) return;
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-          particles.forEach((p) => {
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(91, 192, 255, ${p.alpha * 0.3})`;
-            ctx.fill();
-          });
-          requestAnimationFrame(drawParticles);
-        }
-        drawParticles();
-        window.addEventListener("resize", () => {
-          canvas.width = window.innerWidth;
-          canvas.height = window.innerHeight;
-        });
-      }
-
-      // Animated counter
-      function animateNumbers() {
-        const statNumbers = document.querySelectorAll(
-          ".stat-number[data-target]",
-        );
-        statNumbers.forEach((el) => {
-          const target = parseFloat(el.getAttribute("data-target"));
-          if (!el.hasAttribute("data-animated")) {
-            el.setAttribute("data-animated", "true");
-            let current = 0;
-            const increment = target / 50;
-            const timer = setInterval(() => {
-              current += increment;
-              if (current >= target) {
-                el.innerText = target + "%";
-                clearInterval(timer);
-              } else {
-                el.innerText = Math.floor(current) + "%";
-              }
-            }, 20);
-          }
-        });
-      }
-
-      const observerOptions = { threshold: 0.3 };
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            animateNumbers();
-            observer.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-
-      document.querySelectorAll(".stat-number[data-target]").forEach((el) => {
-        observer.observe(el.closest(".bg-white, .stat-badge") || el);
-      });
-
-      // EmailJS
-      emailjs.init("paf7FPTk7vuhToyxX");
-      const form = document.getElementById("contact-form");
-      const btn = document.getElementById("btnEnviar");
-      const status = document.getElementById("statusMsg");
-      if (form) {
-        form.addEventListener("submit", (e) => {
-          e.preventDefault();
-          btn.disabled = true;
-          btn.innerHTML = '<span class="btn-spinner"></span> Enviando...';
-          emailjs
-            .sendForm("service_xru296e", "template_k43eadc", form)
-            .then(() => {
-              status.style.color = "green";
-              status.innerHTML = "Mensaje enviado correctamente ✅";
-              form.reset();
-            })
-            .catch(() => {
-              status.style.color = "red";
-              status.innerHTML = "Error al enviar el mensaje ❌";
-            })
-            .finally(() => {
-              btn.disabled = false;
-              btn.innerHTML = "Enviar mensaje";
-            });
-        });
-      }
-
-      // Map
-      const mapElement = document.getElementById("map");
-      if (mapElement) {
-        const map = L.map("map").setView([13.9943, -89.5572], 13);
-        L.tileLayer(
-          "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-          {
-            attribution:
-              '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>',
-            subdomains: "abcd",
-            maxZoom: 19,
-          },
-        ).addTo(map);
-
-        L.marker([13.987, -89.556])
-          .addTo(map)
-          .bindPopup("<b>Super Selectos</b><br>Centro Santa Ana");
-        L.marker([13.995, -89.558])
-          .addTo(map)
-          .bindPopup("<b>Walmart</b><br>Santa Ana");
-        L.marker([13.99, -89.56])
-          .addTo(map)
-          .bindPopup("<b>Farmacia Simán</b><br>Santa Ana");
-        L.marker([13.9943, -89.5572])
-          .addTo(map)
-          .bindPopup("<b>Glass Pro</b><br>Oficina Central")
-          .openPopup();
-      }
-
-      // Navbar scroll effect
-      window.addEventListener("scroll", () => {
-        const navbar = document.getElementById("mainNavbar");
-        if (window.scrollY > 50) navbar.classList.add("scrolled");
-        else navbar.classList.remove("scrolled");
-      });
-    </script>
+    <script src="./js/mapa.js"></script>
   </body>
 </html>
