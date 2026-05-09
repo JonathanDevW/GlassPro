@@ -46,6 +46,8 @@
     <link rel="stylesheet" href="./css/chatbot.css">
 
     <link rel="stylesheet" href="./css/perfectProduct.css">
+
+    <link rel="stylesheet" href="./css/glasses.css">
   </head>
   <body>
     <!-- Page Loader -->
@@ -390,6 +392,55 @@
     </div>
 </section>
 
+
+
+<!-- ========== REALIDAD AUMENTADA - LIMPIEZA DE LENTES ========== -->
+<section class="ar-section" id="ar-experience">
+    <div class="container">
+        <div class="text-center mb-4" data-aos="fade-up">
+            <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill mb-3">
+                <i class="fa-solid fa-vr-cardboard me-1"></i> Experiencia Interactiva
+            </span>
+            <h2 class="section-title" style="color: white;">Limpia tus lentes con Glass Pro</h2>
+            <p class="text-white-50 mt-3">Pasa el mouse o tu dedo sobre los lentes para limpiar la suciedad</p>
+        </div>
+
+        <div class="ar-container" id="arContainer">
+            <canvas id="arCanvas"></canvas>
+            
+            <div class="ar-glass-panel">
+                <i class="fa-solid fa-glasses"></i> Glass Pro | Limpieza Virtual
+            </div>
+            
+            <div class="ar-clean-progress">
+                <i class="fa-regular fa-circle-check"></i> Limpieza: <span id="cleanPercent">0</span>%
+            </div>
+            
+            <div class="ar-overlay">
+                <div class="ar-instruction">
+                    <i class="fa-regular fa-mouse-pointer"></i>
+                    <span>🖱️ Pasa el mouse sobre los lentes para limpiarlos</span>
+                    <span style="display: none;" class="mobile-instruction">👆 Desliza tu dedo sobre los lentes</span>
+                </div>
+            </div>
+            
+            <button class="ar-reset-btn" id="arResetBtn">
+                <i class="fa-regular fa-rotate-right"></i> Volver a empañar
+            </button>
+            
+            <div class="ar-message" id="arMessage">
+                🎉 ¡Lentes completamente limpios! 🎉
+            </div>
+        </div>
+        
+        <div class="text-center mt-4" data-aos="fade-up" data-aos-delay="200">
+            <p class="text-white-50 small">
+                <i class="fa-regular fa-lightbulb"></i> Así de fácil es limpiar tus lentes con Glass Pro
+            </p>
+        </div>
+    </div>
+</section>
+
       <!-- Sección de Video Comercial / Promocional -->
       <section class="commercial-section py-5" id="comercial">
         <div class="container">
@@ -531,7 +582,6 @@
       <div class="container py-5" id="testimonios">
         <div class="text-center mb-5" data-aos="fade-up">
           <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
-          <p>+10,000 clientes satisfechos</p>
         </div>
         <div class="swiper testimonial-swiper" data-aos="fade-up">
           <div class="swiper-wrapper">
@@ -993,6 +1043,10 @@
 
     <script src="./js/chatbot.js"></script>
     <script src="./js/quiz.js"></script>
+    <!-- Three.js y experiencia AR -->
+<!-- En lugar de type="module", usa un script normal -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="./js/glasses.js"></script>
     <!-- Scripts -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
